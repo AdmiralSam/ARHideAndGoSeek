@@ -9,12 +9,9 @@
 /* Begin PBXBuildFile section */
 		035637C01BFD864600FD45A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637BF1BFD864600FD45A4 /* main.m */; };
 		035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637C21BFD864600FD45A4 /* AppDelegate.m */; };
-		035637C51BFD864600FD45A4 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C41BFD864600FD45A4 /* Shader.fsh */; };
-		035637C71BFD864600FD45A4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C61BFD864600FD45A4 /* Shader.vsh */; };
 		035637CA1BFD864600FD45A4 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637C91BFD864600FD45A4 /* GameViewController.m */; };
-		035637CD1BFD864600FD45A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637CB1BFD864600FD45A4 /* Main.storyboard */; };
-		035637CF1BFD864600FD45A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035637CE1BFD864600FD45A4 /* Assets.xcassets */; };
-		035637D21BFD864600FD45A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637D01BFD864600FD45A4 /* LaunchScreen.storyboard */; };
+		035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C41BFD864600FD45A4 /* Shader.fsh */; };
+		035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C61BFD864600FD45A4 /* Shader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,14 +19,14 @@
 		035637BF1BFD864600FD45A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		035637C11BFD864600FD45A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		035637C21BFD864600FD45A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		035637C41BFD864600FD45A4 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
-		035637C61BFD864600FD45A4 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
+		035637C41BFD864600FD45A4 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		035637C61BFD864600FD45A4 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		035637C81BFD864600FD45A4 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		035637C91BFD864600FD45A4 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		035637CC1BFD864600FD45A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		035637CE1BFD864600FD45A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		035637D11BFD864600FD45A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		035637D31BFD864600FD45A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		035637E21BFD8B5400FD45A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		035637E61BFD8BAC00FD45A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		035637E81BFD8BAC00FD45A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,16 +59,11 @@
 		035637BD1BFD864600FD45A4 /* AR Hide And Go Seek */ = {
 			isa = PBXGroup;
 			children = (
-				035637C11BFD864600FD45A4 /* AppDelegate.h */,
-				035637C21BFD864600FD45A4 /* AppDelegate.m */,
-				035637C41BFD864600FD45A4 /* Shader.fsh */,
-				035637C61BFD864600FD45A4 /* Shader.vsh */,
-				035637C81BFD864600FD45A4 /* GameViewController.h */,
-				035637C91BFD864600FD45A4 /* GameViewController.m */,
-				035637CB1BFD864600FD45A4 /* Main.storyboard */,
 				035637CE1BFD864600FD45A4 /* Assets.xcassets */,
-				035637D01BFD864600FD45A4 /* LaunchScreen.storyboard */,
-				035637D31BFD864600FD45A4 /* Info.plist */,
+				035637E01BFD8A9700FD45A4 /* Objective-C Source */,
+				035637EB1BFD8BC500FD45A4 /* C++ Source */,
+				035637E11BFD8AA400FD45A4 /* Shaders */,
+				035637E41BFD8B6D00FD45A4 /* Base.lproj */,
 				035637BE1BFD864600FD45A4 /* Supporting Files */,
 			);
 			path = "AR Hide And Go Seek";
@@ -80,9 +72,46 @@
 		035637BE1BFD864600FD45A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				035637E21BFD8B5400FD45A4 /* Info.plist */,
 				035637BF1BFD864600FD45A4 /* main.m */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		035637E01BFD8A9700FD45A4 /* Objective-C Source */ = {
+			isa = PBXGroup;
+			children = (
+				035637C11BFD864600FD45A4 /* AppDelegate.h */,
+				035637C21BFD864600FD45A4 /* AppDelegate.m */,
+				035637C81BFD864600FD45A4 /* GameViewController.h */,
+				035637C91BFD864600FD45A4 /* GameViewController.m */,
+			);
+			path = "Objective-C Source";
+			sourceTree = "<group>";
+		};
+		035637E11BFD8AA400FD45A4 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				035637C41BFD864600FD45A4 /* Shader.fsh */,
+				035637C61BFD864600FD45A4 /* Shader.vsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		035637E41BFD8B6D00FD45A4 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				035637E51BFD8BAC00FD45A4 /* LaunchScreen.storyboard */,
+				035637E71BFD8BAC00FD45A4 /* Main.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		035637EB1BFD8BC500FD45A4 /* C++ Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "C++ Source";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,11 +172,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				035637CD1BFD864600FD45A4 /* Main.storyboard in Resources */,
-				035637C71BFD864600FD45A4 /* Shader.vsh in Resources */,
-				035637CF1BFD864600FD45A4 /* Assets.xcassets in Resources */,
-				035637D21BFD864600FD45A4 /* LaunchScreen.storyboard in Resources */,
-				035637C51BFD864600FD45A4 /* Shader.fsh in Resources */,
+				035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */,
+				035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,20 +193,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		035637CB1BFD864600FD45A4 /* Main.storyboard */ = {
+		035637E51BFD8BAC00FD45A4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				035637CC1BFD864600FD45A4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		035637D01BFD864600FD45A4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				035637D11BFD864600FD45A4 /* Base */,
+				035637E61BFD8BAC00FD45A4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		035637E71BFD8BAC00FD45A4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				035637E81BFD8BAC00FD45A4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -273,7 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "AR Hide And Go Seek/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -285,7 +311,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "AR Hide And Go Seek/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
 				PRODUCT_NAME = "$(TARGET_NAME)";
