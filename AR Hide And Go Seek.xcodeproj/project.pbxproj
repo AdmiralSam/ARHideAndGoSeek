@@ -116,6 +116,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = WT2GEFA9Q6;
 					};
 				};
 			};
@@ -271,6 +272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "AR Hide And Go Seek/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
@@ -282,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "AR Hide And Go Seek/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
@@ -308,6 +311,7 @@
 				035637D81BFD864600FD45A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
