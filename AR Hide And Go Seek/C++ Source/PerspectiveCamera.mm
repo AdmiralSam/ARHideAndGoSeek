@@ -25,8 +25,8 @@ mat4 PerspectiveCamera::GetViewMatrix()
 {
     mat4 viewMatrix = translate(mat4(), position);
     viewMatrix = rotate(viewMatrix, rotation[2], vec3(0, 0, 1));
-    viewMatrix = rotate(viewMatrix, rotation[0], vec3(1, 0, 0));
     viewMatrix = rotate(viewMatrix, rotation[1], vec3(0, 1, 0));
+    viewMatrix = rotate(viewMatrix, rotation[0], vec3(1, 0, 0));
     return inverse(viewMatrix);
 }
 

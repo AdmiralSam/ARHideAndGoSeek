@@ -1,5 +1,5 @@
 //
-//  ShaderProgram.cpp
+//  ShaderProgram.mm
 //  Model Based Tracking
 //
 //  Created by Samuel Dong on 11/10/15.

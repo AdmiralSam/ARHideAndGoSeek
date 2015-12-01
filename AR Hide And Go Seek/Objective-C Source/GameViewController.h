@@ -6,8 +6,8 @@
 //  Copyright © 2015 SamuelNatalyRussell. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
+#import <UIKit/UIKit.h>
 
 @interface GameViewController : GLKViewController
 
