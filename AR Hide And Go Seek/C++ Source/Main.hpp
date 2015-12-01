@@ -6,13 +6,10 @@
 //  Copyright © 2015 SamuelNatalyRussell. All rights reserved.
 //
 
-#ifndef Main_hpp
-#define Main_hpp
+#pragma once
 
 void Initialize(float width, float height);
 void Dispose();
 
 void Draw();
 void Update(float deltaTime);
-
-#endif /* Main_hpp */
