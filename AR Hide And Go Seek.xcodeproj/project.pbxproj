@@ -21,6 +21,9 @@
 		03ED459E1C0D5BEB000D3263 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED459D1C0D5BEB000D3263 /* Foundation.framework */; };
 		03ED45A11C0D5D12000D3263 /* ShaderProgram.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45A01C0D5D12000D3263 /* ShaderProgram.mm */; };
 		03ED45A41C0D5D3C000D3263 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45A31C0D5D3C000D3263 /* Utility.m */; };
+		03ED45A71C0D6474000D3263 /* PerspectiveCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45A61C0D6474000D3263 /* PerspectiveCamera.mm */; };
+		03ED45AA1C0D6481000D3263 /* BasicMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45A91C0D6481000D3263 /* BasicMesh.mm */; };
+		03ED471F1C0D66A7000D3263 /* TextureManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED471E1C0D66A7000D3263 /* TextureManager.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,12 @@
 		03ED45A01C0D5D12000D3263 /* ShaderProgram.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShaderProgram.mm; sourceTree = "<group>"; };
 		03ED45A21C0D5D3C000D3263 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		03ED45A31C0D5D3C000D3263 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		03ED45A51C0D6474000D3263 /* PerspectiveCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PerspectiveCamera.hpp; sourceTree = "<group>"; };
+		03ED45A61C0D6474000D3263 /* PerspectiveCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PerspectiveCamera.mm; sourceTree = "<group>"; };
+		03ED45A81C0D6481000D3263 /* BasicMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BasicMesh.hpp; sourceTree = "<group>"; };
+		03ED45A91C0D6481000D3263 /* BasicMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BasicMesh.mm; sourceTree = "<group>"; };
+		03ED471D1C0D66A7000D3263 /* TextureManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureManager.hpp; sourceTree = "<group>"; };
+		03ED471E1C0D66A7000D3263 /* TextureManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TextureManager.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +152,12 @@
 				03ED45951C0D5A9E000D3263 /* Main.hpp */,
 				03ED459F1C0D5D12000D3263 /* ShaderProgram.hpp */,
 				03ED45A01C0D5D12000D3263 /* ShaderProgram.mm */,
+				03ED45A51C0D6474000D3263 /* PerspectiveCamera.hpp */,
+				03ED45A61C0D6474000D3263 /* PerspectiveCamera.mm */,
+				03ED45A81C0D6481000D3263 /* BasicMesh.hpp */,
+				03ED45A91C0D6481000D3263 /* BasicMesh.mm */,
+				03ED471D1C0D66A7000D3263 /* TextureManager.hpp */,
+				03ED471E1C0D66A7000D3263 /* TextureManager.mm */,
 			);
 			path = "C++ Source";
 			sourceTree = "<group>";
@@ -219,10 +234,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03ED45A71C0D6474000D3263 /* PerspectiveCamera.mm in Sources */,
 				035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */,
 				035637CA1BFD864600FD45A4 /* GameViewController.mm in Sources */,
+				03ED45AA1C0D6481000D3263 /* BasicMesh.mm in Sources */,
 				03ED45A11C0D5D12000D3263 /* ShaderProgram.mm in Sources */,
 				03ED45961C0D5A9E000D3263 /* Main.mm in Sources */,
+				03ED471F1C0D66A7000D3263 /* TextureManager.mm in Sources */,
 				03ED45A41C0D5D3C000D3263 /* Utility.m in Sources */,
 				035637C01BFD864600FD45A4 /* main.m in Sources */,
 			);
@@ -337,6 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
@@ -349,6 +368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
