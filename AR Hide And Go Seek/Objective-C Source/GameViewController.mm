@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import "OpenGLES/ES3/gl.h"
+#import "Main.hpp"
 
 @interface GameViewController ()
 {
@@ -71,19 +72,23 @@
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
+    Initialize(self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
 - (void)tearDownGL
 {
     [EAGLContext setCurrentContext:self.context];
+    Dispose();
 }
 
 - (void)update
 {
+    Update([self timeSinceLastUpdate]);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+    Draw();
 }
 
 @end

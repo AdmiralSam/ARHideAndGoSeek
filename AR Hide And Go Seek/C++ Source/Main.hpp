@@ -9,6 +9,10 @@
 #ifndef Main_hpp
 #define Main_hpp
 
-#include <stdio.h>
+void Initialize(float width, float height);
+void Dispose();
+
+void Draw();
+void Update(float deltaTime);
 
 #endif /* Main_hpp */
