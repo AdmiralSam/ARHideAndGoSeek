@@ -6,9 +6,13 @@
 //  Copyright © 2015 SamuelNatalyRussell. All rights reserved.
 //
 
-varying lowp vec4 colorVarying;
+#version 300 es
+
+in vec4 colorVarying;
+
+out vec4 fragmentColor;
 
 void main()
 {
-    gl_FragColor = colorVarying;
+    fragmentColor = colorVarying;
 }

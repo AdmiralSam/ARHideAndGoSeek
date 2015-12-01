@@ -148,8 +148,8 @@
 		035637EB1BFD8BC500FD45A4 /* C++ Source */ = {
 			isa = PBXGroup;
 			children = (
-				03ED45941C0D5A9E000D3263 /* Main.mm */,
 				03ED45951C0D5A9E000D3263 /* Main.hpp */,
+				03ED45941C0D5A9E000D3263 /* Main.mm */,
 				03ED459F1C0D5D12000D3263 /* ShaderProgram.hpp */,
 				03ED45A01C0D5D12000D3263 /* ShaderProgram.mm */,
 				03ED45A51C0D6474000D3263 /* PerspectiveCamera.hpp */,

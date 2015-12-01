@@ -6,10 +6,12 @@
 //  Copyright © 2015 SamuelNatalyRussell. All rights reserved.
 //
 
-attribute vec4 position;
-attribute vec3 normal;
+#version 300 es
 
-varying lowp vec4 colorVarying;
+in vec4 position;
+in vec3 normal;
+
+out vec4 colorVarying;
 
 uniform mat4 modelViewProjectionMatrix;
 uniform mat3 normalMatrix;
