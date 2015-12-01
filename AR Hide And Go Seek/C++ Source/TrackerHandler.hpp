@@ -18,7 +18,7 @@ class TrackerHandler
 {
 public:
     TrackerHandler();
-    virtual ~TrackerHander();
+    virtual ~TrackerHandler();
     
     void Draw(ShaderProgram* program);
     void Update(float deltaTime);
