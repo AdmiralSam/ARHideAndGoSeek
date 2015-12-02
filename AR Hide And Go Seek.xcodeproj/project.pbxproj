@@ -15,6 +15,8 @@
 		035637EE1BFD903800FD45A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E51BFD8BAC00FD45A4 /* LaunchScreen.storyboard */; };
 		035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E71BFD8BAC00FD45A4 /* Main.storyboard */; };
 		038FAE8D1C0E293100575BFD /* TrackerHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 038FAE8B1C0E293100575BFD /* TrackerHandler.mm */; };
+		038FAE901C0EA6DE00575BFD /* BasicMesh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */; };
+		038FAE911C0EA6DE00575BFD /* BasicMesh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */; };
 		03ED45961C0D5A9E000D3263 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45941C0D5A9E000D3263 /* Main.mm */; };
 		03ED45981C0D5BD7000D3263 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45971C0D5BD7000D3263 /* OpenGLES.framework */; };
 		03ED459A1C0D5BDF000D3263 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45991C0D5BDF000D3263 /* GLKit.framework */; };
@@ -42,6 +44,8 @@
 		035637E81BFD8BAC00FD45A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		038FAE8B1C0E293100575BFD /* TrackerHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrackerHandler.mm; sourceTree = "<group>"; };
 		038FAE8C1C0E293100575BFD /* TrackerHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TrackerHandler.hpp; sourceTree = "<group>"; };
+		038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicMesh.fsh; sourceTree = "<group>"; };
+		038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicMesh.vsh; sourceTree = "<group>"; };
 		03ED45941C0D5A9E000D3263 /* Main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Main.mm; sourceTree = "<group>"; };
 		03ED45951C0D5A9E000D3263 /* Main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Main.hpp; sourceTree = "<group>"; };
 		03ED45971C0D5BD7000D3263 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -133,6 +137,8 @@
 		035637E11BFD8AA400FD45A4 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */,
+				038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */,
 				035637C41BFD864600FD45A4 /* Shader.fsh */,
 				035637C61BFD864600FD45A4 /* Shader.vsh */,
 			);
@@ -229,6 +235,8 @@
 				035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */,
 				035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */,
 				035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */,
+				038FAE901C0EA6DE00575BFD /* BasicMesh.fsh in Resources */,
+				038FAE911C0EA6DE00575BFD /* BasicMesh.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
