@@ -18,7 +18,7 @@
 class TrackerHandler
 {
 public:
-    TrackerHandler(TextureManager* manager);
+    TrackerHandler(TextureManager* manager, int w, int h);
     virtual ~TrackerHandler();
     
     void Draw(ShaderProgram* program);
@@ -35,12 +35,20 @@ public:
     
 private:
 #if Debug
+	#define MAX_DISTANCE 150.0
+	
     enum class JoystickState { None, LeftJoystick, RightJoystick };
+	
+	JoystickState joystickState;
+	float joyStickRightx, joyStickRighty;
+	float joyStickLeftx, joyStickLefty;
+	void ToJoystickCoordinates(int x, int y, float &joystickX, float &joystickY);
 #else
 #endif
     glm::vec3 position;
     float yawAngle, pitchAngle;
-    
+	int width, height;
+	
     BasicMesh* roomModel;
     float* depthBuffer;
     
