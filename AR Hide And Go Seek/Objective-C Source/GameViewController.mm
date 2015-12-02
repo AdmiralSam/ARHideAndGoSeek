@@ -40,6 +40,8 @@
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanEvent:)];
+	panGesture.minimumNumberOfTouches = 1;
+	panGesture.maximumNumberOfTouches = 1;
     [self.view addGestureRecognizer:panGesture];
     
     [self setupGL];
@@ -109,7 +111,7 @@
             PanMoved(translation.x, translation.y);
             break;
             
-        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateEnded:
             PanEnded();
             break;
             

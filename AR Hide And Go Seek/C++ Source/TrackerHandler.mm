@@ -8,6 +8,7 @@
 
 #include "TrackerHandler.hpp"
 #include "glm/gtx/rotate_vector.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 using namespace std;
 using namespace glm;
@@ -15,8 +16,13 @@ using namespace glm;
 TrackerHandler::TrackerHandler(TextureManager* manager, int w, int h)
 {
 	roomModel = new BasicMesh("classroom.obj", manager);
-	position  = vec3(0.0, 0.0, 14.0);
+	roomModel->SetRotation(vec3(0.0, -pi<float>()/2.0, -pi<float>()/2.0));
+	
+	position  = vec3(0.0, 1.62, 0.0);
 	yawAngle = pitchAngle = 0.0;
+	
+	joyStickRightx = joyStickRighty = 0.0;
+	joyStickLeftx  = joyStickLefty  = 0.0;
 	
 	width = w;
 	height = h;
@@ -30,6 +36,8 @@ TrackerHandler::~TrackerHandler()
 
 void TrackerHandler::Draw(ShaderProgram* program)
 {
+	glUniformMatrix4fv(program->GetLocation("projection"), 1, GL_FALSE, value_ptr(GetProjectionMatrix()));
+	glUniformMatrix4fv(program->GetLocation("view"), 1, GL_FALSE, value_ptr(GetViewMatrix()));
 	roomModel->Draw(program);
 }
 
@@ -43,7 +51,7 @@ void TrackerHandler::Update(float deltaTime)
 	vec3 f = rotate(vec3(0.0, 0.0, -1.0), yawAngle, vec3(0.0, 1.0, 0.0));
 	vec3 s = rotate(vec3(1.0, 0.0, 0.0), yawAngle, vec3(0.0, 1.0, 0.0));
 	vec3 direction = -1.0f * f * joyStickLefty + s * joyStickLeftx;
-	position += 5.0f * direction * (float)deltaTime;
+	position += 2.0f * direction * (float)deltaTime;
 	
 }
 

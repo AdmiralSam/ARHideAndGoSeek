@@ -15,8 +15,6 @@
 		035637EE1BFD903800FD45A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E51BFD8BAC00FD45A4 /* LaunchScreen.storyboard */; };
 		035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E71BFD8BAC00FD45A4 /* Main.storyboard */; };
 		038FAE8D1C0E293100575BFD /* TrackerHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 038FAE8B1C0E293100575BFD /* TrackerHandler.mm */; };
-		038FAE901C0EA6DE00575BFD /* BasicMesh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */; };
-		038FAE911C0EA6DE00575BFD /* BasicMesh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */; };
 		03ED45961C0D5A9E000D3263 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45941C0D5A9E000D3263 /* Main.mm */; };
 		03ED45981C0D5BD7000D3263 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45971C0D5BD7000D3263 /* OpenGLES.framework */; };
 		03ED459A1C0D5BDF000D3263 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45991C0D5BDF000D3263 /* GLKit.framework */; };
@@ -33,6 +31,8 @@
 		10409F141C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10409F0E1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg */; };
 		10409F151C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10409F0F1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg */; };
 		10409F161C0EC8D9004BF469 /* classroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = 10409F101C0EC8D9004BF469 /* classroom.obj */; };
+		10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */; };
+		10409F181C0EC9C7004BF469 /* BasicMesh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,7 +230,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = WT2GEFA9Q6;
+						DevelopmentTeam = 7RH9U63868;
 					};
 				};
 			};
@@ -262,11 +262,13 @@
 				035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */,
 				10409F131C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg in Resources */,
 				10409F151C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg in Resources */,
+				10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */,
 				10409F111C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg in Resources */,
 				10409F121C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg in Resources */,
 				035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */,
 				035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */,
 				10409F141C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg in Resources */,
+				10409F181C0EC9C7004BF469 /* BasicMesh.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,11 +401,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,11 +416,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

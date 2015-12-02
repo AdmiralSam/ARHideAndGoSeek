@@ -22,7 +22,7 @@ void Initialize(float width, float height)
     glEnable(GL_DEPTH_TEST);
     
     textureManager = new TextureManager();
-    trackerHandler = new TrackerHandler(textureManager);
+    trackerHandler = new TrackerHandler(textureManager, width, height);
     
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
 }
