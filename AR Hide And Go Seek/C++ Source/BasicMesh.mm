@@ -48,12 +48,6 @@ BasicMesh::~BasicMesh()
     glDeleteBuffers(1, &positionBufferID);
     glDeleteBuffers(1, &uvBufferID);
     glDeleteBuffers(1, &indexBufferID);
-    /*
-    for(int i = 0; i < textureIDs.size(); i++)
-    {
-        textureManager->DeleteTexture(textureIDs[i]);
-    }
-    */
 }
 
 void BasicMesh::Draw(ShaderProgram* program)
