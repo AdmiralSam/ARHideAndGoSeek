@@ -13,3 +13,7 @@ void Dispose();
 
 void Draw();
 void Update(float deltaTime);
+
+void PanStarted(int x, int y);
+void PanMoved(int deltaX, int deltaY);
+void PanEnded();
