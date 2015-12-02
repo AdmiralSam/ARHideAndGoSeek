@@ -19,6 +19,8 @@
 - (void)setupGL;
 - (void)tearDownGL;
 
+- (void)onPanEvent:(UIPanGestureRecognizer*) recognizer;
+
 @end
 
 @implementation GameViewController
@@ -36,6 +38,9 @@
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanEvent:)];
+    [self.view addGestureRecognizer:panGesture];
     
     [self setupGL];
 }
@@ -89,6 +94,28 @@
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     Draw();
+}
+
+- (void)onPanEvent:(UIPanGestureRecognizer *)recognizer
+{
+    CGPoint startingPoint = [recognizer locationInView:self.view];
+    CGPoint translation = [recognizer translationInView:self.view];
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            PanStarted(startingPoint.x, startingPoint.y);
+            break;
+        
+        case UIGestureRecognizerStateChanged:
+            PanMoved(translation.x, translation.y);
+            break;
+            
+        case UIGestureRecognizerStateFailed:
+            PanEnded();
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end
