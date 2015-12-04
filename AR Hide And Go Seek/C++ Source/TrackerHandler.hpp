@@ -24,7 +24,7 @@ public:
     void Draw(ShaderProgram* program);
     void Update(float deltaTime);
     
-    std::vector<std::vector<bool> > CheckVisibility(std::vector<std::vector<glm::vec3> > testPoints);
+    std::vector<bool> CheckVisibility(std::vector<glm::vec4> testPoints);
     
     glm::mat4 GetProjectionMatrix();
     glm::mat4 GetViewMatrix();
@@ -38,23 +38,26 @@ private:
 	#define MAX_DISTANCE 150.0
 	
     enum class JoystickState { None, LeftJoystick, RightJoystick };
+    JoystickState joystickState;
+    
+    glm::vec3 position;
+    float yawAngle, pitchAngle;
 	
-	JoystickState joystickState;
 	float joyStickRightx, joyStickRighty;
 	float joyStickLeftx, joyStickLefty;
 	void ToJoystickCoordinates(int x, int y, float &joystickX, float &joystickY);
+    
+    ShaderProgram* depthShader;
 #else
 #endif
-    glm::vec3 position;
-    float yawAngle, pitchAngle;
 	int width, height;
 	
     BasicMesh* roomModel;
-    float* depthBuffer;
+    unsigned char* depthBuffer;
     
     void FillDepthBuffer();//depth=A/Z+B where A=zFar*zNear/(zFar-zNear) and B=zFar/(zFar-zNear)
     
-    inline bool InFrustrum(glm::vec3 point)
+    inline bool InFrustrum(glm::vec4 point)
     {
         return point.x <= 1.0f && point.x >= -1.0f && point.y <= 1.0f && point.y >= -1.0f && point.z >= 0;
     }

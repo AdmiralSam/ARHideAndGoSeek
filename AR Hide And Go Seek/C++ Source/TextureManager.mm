@@ -44,10 +44,10 @@ void TextureManager::DeleteTexture(string textureName)
 void TextureManager::DeleteTexture(GLuint textureID)
 {
     glDeleteTextures(1, &textureID);
-    for(auto textureName = loadedTextures.begin(); textureName != loadedTextures.end(); textureName++)
+    for(auto textureName : loadedTextures)
     {
-        if (textureName->second == textureID) {
-            loadedTextures.erase(textureName);
+        if (textureName.second == textureID) {
+            loadedTextures.erase(textureName.first);
             break;
         }
     }

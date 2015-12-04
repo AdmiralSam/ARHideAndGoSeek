@@ -8,11 +8,14 @@
 
 #version 300 es
 
+in lowp vec2 interpolatedUV;
+
 out lowp vec4 fragmentColor;
 
-uniform lowp vec4 color;
+uniform sampler2D uvMap;
 
 void main()
 {
-    fragmentColor = color;
+    int depth = int(256.0 * gl_FragCoord.z);
+    fragmentColor = vec4(float(depth) / 256.0, float(depth) / 256.0, float(depth) / 256.0, 1.0);
 }

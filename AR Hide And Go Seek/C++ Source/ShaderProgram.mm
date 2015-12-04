@@ -9,6 +9,8 @@
 #include "ShaderProgram.hpp"
 #include "Utility.h"
 
+#include <iostream>
+
 using namespace std;
 
 ShaderProgram::ShaderProgram(string name, vector<string> attributes, vector<string> uniforms)
@@ -16,14 +18,14 @@ ShaderProgram::ShaderProgram(string name, vector<string> attributes, vector<stri
     shaderName = name;
     shaderProgramID = glCreateProgram();
     Load();
-    for(int i = 0; i < attributes.size(); i++)
+    for(auto attribute : attributes)
     {
-        locations[attributes[i]] = glGetAttribLocation(shaderProgramID, attributes[i].c_str());
-        glEnableVertexAttribArray(locations[attributes[i]]);
+        locations[attribute] = glGetAttribLocation(shaderProgramID, attribute.c_str());
+        glEnableVertexAttribArray(locations[attribute]);
     }
-    for(int i = 0; i < uniforms.size(); i++)
+    for(auto uniform : uniforms)
     {
-        locations[uniforms[i]] = glGetUniformLocation(shaderProgramID, uniforms[i].c_str());
+        locations[uniform] = glGetUniformLocation(shaderProgramID, uniform.c_str());
     }
 }
 
