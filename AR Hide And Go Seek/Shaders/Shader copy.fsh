@@ -10,7 +10,7 @@
 
 in lowp vec2 interpolatedUV;
 
-out lowp vec4 fragmentColor;
+out highp vec4 fragmentColor;
 
 uniform sampler2D uvMap;
 

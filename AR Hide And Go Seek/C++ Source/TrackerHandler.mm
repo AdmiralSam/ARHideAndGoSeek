@@ -74,18 +74,11 @@ void TrackerHandler::Update(float deltaTime)
 
 vector<bool> TrackerHandler::CheckVisibility(vector<vec4> testPoints)
 {
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
-            int row = height / 2 + height * i / 2;
-            int column = width / 2 + width * j / 2;
-            printf("%f:", depthBuffer[4 * (row * 2 * width + column)] / 255.0f);
-        }
-        printf("\n");
-    }
-    printf("\n");
 	vector<bool> visible;
+    mat4 projection = GetProjectionMatrix();
+    mat4 view = GetViewMatrix();
     for(auto point : testPoints) {
-        vec4 transformedPoint = GetProjectionMatrix() * GetViewMatrix() * point;
+        vec4 transformedPoint = projection * view * point;
         transformedPoint = transformedPoint / transformedPoint.w;
         if(InFrustrum(transformedPoint)) {
             int row = (int)((transformedPoint.y + 1) * height);
@@ -103,7 +96,7 @@ vector<bool> TrackerHandler::CheckVisibility(vector<vec4> testPoints)
 
 mat4 TrackerHandler::GetProjectionMatrix()
 {
-	return perspectiveFov<float>(pi<float>()/3.0f, width, height, 0.1f, 20.0f);
+	return perspectiveFov<float>(pi<float>()/3.0f, width, height, 0.1f, 15.0f);
 }
 
 mat4 TrackerHandler::GetViewMatrix()
