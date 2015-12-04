@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0336BD311C116BA200E126BB /* light blue cube.png in Resources */ = {isa = PBXBuildFile; fileRef = 0336BD2F1C116BA200E126BB /* light blue cube.png */; };
+		0336BD321C116BA200E126BB /* light blue.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0336BD301C116BA200E126BB /* light blue.obj */; };
 		035637C01BFD864600FD45A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637BF1BFD864600FD45A4 /* main.m */; };
 		035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637C21BFD864600FD45A4 /* AppDelegate.m */; };
 		035637CA1BFD864600FD45A4 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 035637C91BFD864600FD45A4 /* GameViewController.mm */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0336BD2F1C116BA200E126BB /* light blue cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light blue cube.png"; sourceTree = "<group>"; };
+		0336BD301C116BA200E126BB /* light blue.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "light blue.obj"; sourceTree = "<group>"; };
 		035637BB1BFD864600FD45A4 /* AR Hide And Go Seek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR Hide And Go Seek.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		035637BF1BFD864600FD45A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		035637C11BFD864600FD45A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 		10409F0A1C0EA918004BF469 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				0336BD2F1C116BA200E126BB /* light blue cube.png */,
+				0336BD301C116BA200E126BB /* light blue.obj */,
 				10409F0B1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg */,
 				10409F0C1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg */,
 				10409F0D1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg */,
@@ -269,6 +275,8 @@
 				035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */,
 				10409F131C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg in Resources */,
 				10409F151C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg in Resources */,
+				0336BD311C116BA200E126BB /* light blue cube.png in Resources */,
+				0336BD321C116BA200E126BB /* light blue.obj in Resources */,
 				10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */,
 				10409F111C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg in Resources */,
 				10409F121C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg in Resources */,

@@ -62,7 +62,7 @@ void TrackerHandler::Update(float deltaTime)
 	yawAngle   += -pi<float>() * deltaTime * joyStickRightx;
 	pitchAngle += -pi<float>() * deltaTime * joyStickRighty;
 	
-	pitchAngle = std::max(-pi<float>()/8, std::min(pitchAngle, pi<float>() / 8));
+	pitchAngle = std::max(-pi<float>()/6, std::min(pitchAngle, pi<float>() / 6));
 	
 	vec3 f = rotate(vec3(0.0, 0.0, -1.0), yawAngle, vec3(0.0, 1.0, 0.0));
 	vec3 s = rotate(vec3(1.0, 0.0, 0.0), yawAngle, vec3(0.0, 1.0, 0.0));
@@ -85,6 +85,10 @@ vector<bool> TrackerHandler::CheckVisibility(vector<vec4> testPoints)
             int column = (int)((transformedPoint.x + 1) * width);
             float depthThere = depthBuffer[4 * (row * 2 * width + column)] / 255.0f;
             visible.push_back(depthThere > transformedPoint.z);
+        }
+        else if(InFrustrum(transformedPoint * 0.8f))
+        {
+            visible.push_back(true);
         }
         else
         {
