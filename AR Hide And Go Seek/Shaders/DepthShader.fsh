@@ -1,5 +1,5 @@
 //
-//  Shader.fsh
+//  DepthShader.fsh
 //  AR Hide And Go Seek
 //
 //  Created by Samuel Dong on 11/18/15.
@@ -8,11 +8,7 @@
 
 #version 300 es
 
-in lowp vec2 interpolatedUV;
-
 out highp vec4 fragmentColor;
-
-uniform sampler2D uvMap;
 
 void main()
 {

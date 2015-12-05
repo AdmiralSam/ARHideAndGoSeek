@@ -16,7 +16,8 @@
 		035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C61BFD864600FD45A4 /* Shader.vsh */; };
 		035637EE1BFD903800FD45A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E51BFD8BAC00FD45A4 /* LaunchScreen.storyboard */; };
 		035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E71BFD8BAC00FD45A4 /* Main.storyboard */; };
-		038FAE8D1C0E293100575BFD /* TrackerHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 038FAE8B1C0E293100575BFD /* TrackerHandler.mm */; };
+		03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4A1C1285BB000C8673 /* SensorManager.mm */; };
+		03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */; };
 		03ED45961C0D5A9E000D3263 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45941C0D5A9E000D3263 /* Main.mm */; };
 		03ED45981C0D5BD7000D3263 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45971C0D5BD7000D3263 /* OpenGLES.framework */; };
 		03ED459A1C0D5BDF000D3263 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45991C0D5BDF000D3263 /* GLKit.framework */; };
@@ -27,8 +28,8 @@
 		03ED45A71C0D6474000D3263 /* PerspectiveCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45A61C0D6474000D3263 /* PerspectiveCamera.mm */; };
 		03ED45AA1C0D6481000D3263 /* BasicMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45A91C0D6481000D3263 /* BasicMesh.mm */; };
 		03ED471F1C0D66A7000D3263 /* TextureManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED471E1C0D66A7000D3263 /* TextureManager.mm */; };
-		03F8BF2D1C1032EB001B5833 /* Shader copy.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 03F8BF2B1C1032EB001B5833 /* Shader copy.fsh */; };
-		03F8BF2E1C1032EB001B5833 /* Shader copy.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 03F8BF2C1C1032EB001B5833 /* Shader copy.vsh */; };
+		03F8BF2D1C1032EB001B5833 /* DepthShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 03F8BF2B1C1032EB001B5833 /* DepthShader.fsh */; };
+		03F8BF2E1C1032EB001B5833 /* DepthShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 03F8BF2C1C1032EB001B5833 /* DepthShader.vsh */; };
 		10409F111C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10409F0B1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg */; };
 		10409F121C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10409F0C1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg */; };
 		10409F131C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10409F0D1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg */; };
@@ -54,10 +55,12 @@
 		035637E21BFD8B5400FD45A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		035637E61BFD8BAC00FD45A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		035637E81BFD8BAC00FD45A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
-		038FAE8B1C0E293100575BFD /* TrackerHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrackerHandler.mm; sourceTree = "<group>"; };
-		038FAE8C1C0E293100575BFD /* TrackerHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TrackerHandler.hpp; sourceTree = "<group>"; };
 		038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicMesh.fsh; sourceTree = "<group>"; };
 		038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicMesh.vsh; sourceTree = "<group>"; };
+		03A64D4A1C1285BB000C8673 /* SensorManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SensorManager.mm; sourceTree = "<group>"; };
+		03A64D4B1C1285BB000C8673 /* SensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SensorManager.hpp; sourceTree = "<group>"; };
+		03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VirtualSensorManager.mm; sourceTree = "<group>"; };
+		03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualSensorManager.hpp; sourceTree = "<group>"; };
 		03ED45941C0D5A9E000D3263 /* Main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Main.mm; sourceTree = "<group>"; };
 		03ED45951C0D5A9E000D3263 /* Main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Main.hpp; sourceTree = "<group>"; };
 		03ED45971C0D5BD7000D3263 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -74,8 +77,8 @@
 		03ED45A91C0D6481000D3263 /* BasicMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BasicMesh.mm; sourceTree = "<group>"; };
 		03ED471D1C0D66A7000D3263 /* TextureManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureManager.hpp; sourceTree = "<group>"; };
 		03ED471E1C0D66A7000D3263 /* TextureManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TextureManager.mm; sourceTree = "<group>"; };
-		03F8BF2B1C1032EB001B5833 /* Shader copy.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "Shader copy.fsh"; sourceTree = "<group>"; };
-		03F8BF2C1C1032EB001B5833 /* Shader copy.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "Shader copy.vsh"; sourceTree = "<group>"; };
+		03F8BF2B1C1032EB001B5833 /* DepthShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthShader.fsh; sourceTree = "<group>"; };
+		03F8BF2C1C1032EB001B5833 /* DepthShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthShader.vsh; sourceTree = "<group>"; };
 		10409F0B1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 090f6b4a65924643acc26e2a0e8dceef_000.jpg; sourceTree = "<group>"; };
 		10409F0C1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 090f6b4a65924643acc26e2a0e8dceef_001.jpg; sourceTree = "<group>"; };
 		10409F0D1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 090f6b4a65924643acc26e2a0e8dceef_002.jpg; sourceTree = "<group>"; };
@@ -160,8 +163,8 @@
 			children = (
 				038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */,
 				038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */,
-				03F8BF2B1C1032EB001B5833 /* Shader copy.fsh */,
-				03F8BF2C1C1032EB001B5833 /* Shader copy.vsh */,
+				03F8BF2B1C1032EB001B5833 /* DepthShader.fsh */,
+				03F8BF2C1C1032EB001B5833 /* DepthShader.vsh */,
 				035637C41BFD864600FD45A4 /* Shader.fsh */,
 				035637C61BFD864600FD45A4 /* Shader.vsh */,
 			);
@@ -190,8 +193,10 @@
 				03ED45A01C0D5D12000D3263 /* ShaderProgram.mm */,
 				03ED471D1C0D66A7000D3263 /* TextureManager.hpp */,
 				03ED471E1C0D66A7000D3263 /* TextureManager.mm */,
-				038FAE8C1C0E293100575BFD /* TrackerHandler.hpp */,
-				038FAE8B1C0E293100575BFD /* TrackerHandler.mm */,
+				03A64D4B1C1285BB000C8673 /* SensorManager.hpp */,
+				03A64D4A1C1285BB000C8673 /* SensorManager.mm */,
+				03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */,
+				03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */,
 			);
 			path = "C++ Source";
 			sourceTree = "<group>";
@@ -271,7 +276,7 @@
 			files = (
 				035637EE1BFD903800FD45A4 /* LaunchScreen.storyboard in Resources */,
 				10409F161C0EC8D9004BF469 /* classroom.obj in Resources */,
-				03F8BF2E1C1032EB001B5833 /* Shader copy.vsh in Resources */,
+				03F8BF2E1C1032EB001B5833 /* DepthShader.vsh in Resources */,
 				035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */,
 				10409F131C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg in Resources */,
 				10409F151C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg in Resources */,
@@ -280,7 +285,7 @@
 				10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */,
 				10409F111C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg in Resources */,
 				10409F121C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg in Resources */,
-				03F8BF2D1C1032EB001B5833 /* Shader copy.fsh in Resources */,
+				03F8BF2D1C1032EB001B5833 /* DepthShader.fsh in Resources */,
 				035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */,
 				035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */,
 				10409F141C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg in Resources */,
@@ -296,15 +301,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				03ED45A71C0D6474000D3263 /* PerspectiveCamera.mm in Sources */,
+				03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */,
 				035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */,
 				035637CA1BFD864600FD45A4 /* GameViewController.mm in Sources */,
-				038FAE8D1C0E293100575BFD /* TrackerHandler.mm in Sources */,
 				03ED45AA1C0D6481000D3263 /* BasicMesh.mm in Sources */,
 				03ED45A11C0D5D12000D3263 /* ShaderProgram.mm in Sources */,
 				03ED45961C0D5A9E000D3263 /* Main.mm in Sources */,
 				03ED471F1C0D66A7000D3263 /* TextureManager.mm in Sources */,
 				03ED45A41C0D5D3C000D3263 /* Utility.m in Sources */,
 				035637C01BFD864600FD45A4 /* main.m in Sources */,
+				03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

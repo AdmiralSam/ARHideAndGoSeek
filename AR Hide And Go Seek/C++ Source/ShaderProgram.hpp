@@ -18,7 +18,7 @@ class ShaderProgram
 {
 public:
     ShaderProgram(std::string name, std::vector<std::string> attributes, std::vector<std::string> uniforms);
-    virtual ~ShaderProgram();
+    ~ShaderProgram();
     
     void Use();
     

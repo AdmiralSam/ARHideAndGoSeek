@@ -21,7 +21,7 @@ class BasicMesh
 {
 public:
     BasicMesh(std::string filename, TextureManager* manager);
-    virtual ~BasicMesh();
+    ~BasicMesh();
     
     void Draw(ShaderProgram* program);
     

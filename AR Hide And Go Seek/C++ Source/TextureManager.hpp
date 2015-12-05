@@ -17,7 +17,7 @@ class TextureManager
 {
 public:
     TextureManager();
-    virtual ~TextureManager();
+    ~TextureManager();
     
     GLuint LoadTexture(std::string textureName);
     void DeleteTexture(std::string textureName);

@@ -15,7 +15,7 @@ class PerspectiveCamera
 {
 public:
     PerspectiveCamera(float fieldOfView, float width, float height, float near, float far);
-    virtual ~PerspectiveCamera();
+    ~PerspectiveCamera();
     
     glm::vec3 GetPosition() {return position;}
     glm::vec3 GetRotation() {return rotation;}

@@ -9,7 +9,7 @@
 #include "Main.hpp"
 #include "OpenGLES/ES3/gl.h"
 #include "glm/gtc/type_ptr.hpp"
-#include "TrackerHandler.hpp"
+#include "VirtualSensorManager.hpp"
 
 #include <vector>
 #include <set>
@@ -19,19 +19,19 @@ using namespace std;
 using namespace glm;
 
 TextureManager* textureManager;
-TrackerHandler* trackerHandler;
+SensorManager* trackerHandler;
 
 ShaderProgram* basicMeshShader;
 
 BasicMesh* cube;
 
-vector<vec4> points;
+vector<vec3> points;
 vector<bool> visible;
 
 int currentRow, currentColumn;
 int targetRow, targetColumn;
 
-vec4 positionFromRowColumn(int row, int column);
+vec3 positionFromRowColumn(int row, int column);
 int indexFromRowColumn(int row, int column);
 void rowColumnFromIndex(int index, int& row, int& column);
 void updateTarget();
@@ -43,13 +43,14 @@ void Initialize(float width, float height)
     glEnable(GL_DEPTH_TEST);
     
     textureManager = new TextureManager();
-    trackerHandler = new TrackerHandler(textureManager, width, height);
+    trackerHandler = new VirtualSensorManager(textureManager, width, height);
     
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
     for (int i = 0; i < 80; i++) {
         for (int j = 0; j < 40; j++) {
-            points.emplace_back(-5.5f + 0.1f * i, 0.1f, -3.0f + 0.1f * j, 1.0f);
+            points.emplace_back(-5.5f + 0.1f * i, 0.1f, -3.0f + 0.1f * j);
+            visible.push_back(false);
         }
     }
     
@@ -72,7 +73,7 @@ void Draw()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     basicMeshShader->Use();
-    trackerHandler->Draw(basicMeshShader);
+    trackerHandler->Draw();
     glUniformMatrix4fv(basicMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(trackerHandler->GetProjectionMatrix()));
     glUniformMatrix4fv(basicMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(trackerHandler->GetViewMatrix()));
     cube->Draw(basicMeshShader);
@@ -80,7 +81,7 @@ void Draw()
 
 void Update(float deltaTime)
 {
-    visible = trackerHandler->CheckVisibility(points);
+    trackerHandler->CheckVisibility(points, visible);
     if(visible[indexFromRowColumn(targetRow, targetColumn)]){
         updateTarget();
     }
@@ -94,8 +95,9 @@ void Update(float deltaTime)
         {
             currentColumn += (targetColumn - currentColumn) / columnMovements;
         }
-        vec4 newPosition = positionFromRowColumn(currentRow, currentColumn);
-        cube->SetPosition(vec3(newPosition.x, 0.05f, newPosition.z));
+        vec3 newPosition = positionFromRowColumn(currentRow, currentColumn);
+        newPosition.y = 0.05f;
+        cube->SetPosition(newPosition);
     }
     trackerHandler->Update(deltaTime);
 }
@@ -138,7 +140,7 @@ void rowColumnFromIndex(int index, int& row, int& column) {
     column = index % 40;
 }
 
-vec4 positionFromRowColumn(int row, int column) {
+vec3 positionFromRowColumn(int row, int column) {
     return points[indexFromRowColumn(row, column)];
 }
 
