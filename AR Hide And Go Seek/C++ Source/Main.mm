@@ -10,6 +10,7 @@
 #include "OpenGLES/ES3/gl.h"
 #include "glm/gtc/type_ptr.hpp"
 #include "VirtualSensorManager.hpp"
+#include "VisibilityGrid.hpp"
 
 #include <vector>
 #include <set>
@@ -23,18 +24,12 @@ SensorManager* trackerHandler;
 
 ShaderProgram* basicMeshShader;
 
-BasicMesh* cube;
+VisibilityGrid* grid;
 
-vector<vec3> points;
-vector<bool> visible;
+BasicMesh* cube;
 
 int currentRow, currentColumn;
 int targetRow, targetColumn;
-
-vec3 positionFromRowColumn(int row, int column);
-int indexFromRowColumn(int row, int column);
-void rowColumnFromIndex(int index, int& row, int& column);
-void updateTarget();
 
 void Initialize(float width, float height)
 {
@@ -47,12 +42,7 @@ void Initialize(float width, float height)
     
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
-    for (int i = 0; i < 80; i++) {
-        for (int j = 0; j < 40; j++) {
-            points.emplace_back(-5.5f + 0.1f * i, 0.1f, -3.0f + 0.1f * j);
-            visible.push_back(false);
-        }
-    }
+    grid = new VisibilityGrid(-5.5f, 3.5f, -3.0f, 1.0f, 0.1f, 90, 40);
     
     cube = new BasicMesh("light blue.obj", textureManager);
     cube->SetScale(vec3(0.05f, 0.05f, 0.05f));
@@ -81,9 +71,9 @@ void Draw()
 
 void Update(float deltaTime)
 {
-    trackerHandler->CheckVisibility(points, visible);
-    if(visible[indexFromRowColumn(targetRow, targetColumn)]){
-        updateTarget();
+    grid->UpdateVisibility(trackerHandler);
+    if(grid->IsVisible(targetRow, targetColumn)){
+        grid->ClosestInvisible(currentRow, currentColumn, targetRow, targetColumn);
     }
     int columnMovements = abs(targetColumn - currentColumn);
     int rowMovements = abs(targetRow - currentRow);
@@ -95,53 +85,11 @@ void Update(float deltaTime)
         {
             currentColumn += (targetColumn - currentColumn) / columnMovements;
         }
-        vec3 newPosition = positionFromRowColumn(currentRow, currentColumn);
+        vec3 newPosition = grid->PositionFromRowColumn(currentRow, currentColumn);
         newPosition.y = 0.05f;
         cube->SetPosition(newPosition);
     }
     trackerHandler->Update(deltaTime);
-}
-
-void updateTarget() {
-    set<int> lookedAt;
-    queue<int> frontier;
-    int dx[] = {1, 0, -1, 0};
-    int dy[] = {0, 1, 0, -1};
-    frontier.push(indexFromRowColumn(currentRow, currentColumn));
-    while(frontier.size() > 0) {
-        int current = frontier.front();
-        frontier.pop();
-        if(!visible[current]) {
-            rowColumnFromIndex(current, targetRow, targetColumn);
-            return;
-        }
-        if (lookedAt.find(current) != lookedAt.end()) {
-            continue;
-        }
-        lookedAt.insert(current);
-        for(int i = 0; i < 4; i++) {
-            int row, column;
-            rowColumnFromIndex(current, row, column);
-            row += dy[i];
-            column += dx[i];
-            if (row >= 0 && row < 80 && column >= 0 && column < 40) {
-                frontier.push(indexFromRowColumn(row, column));
-            }
-        }
-    }
-}
-
-int indexFromRowColumn(int row, int column) {
-    return row * 40 + column;
-}
-
-void rowColumnFromIndex(int index, int& row, int& column) {
-    row = index / 40;
-    column = index % 40;
-}
-
-vec3 positionFromRowColumn(int row, int column) {
-    return points[indexFromRowColumn(row, column)];
 }
 
 void PanStarted(int x, int y)

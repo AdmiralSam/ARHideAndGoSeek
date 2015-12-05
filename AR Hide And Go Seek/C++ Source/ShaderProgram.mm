@@ -54,6 +54,10 @@ void ShaderProgram::Use()
 
 GLuint ShaderProgram::GetLocation(string name)
 {
+    if(locations.find(name) == locations.end())
+    {
+        return -1;
+    }
     return locations[name];
 }
 
