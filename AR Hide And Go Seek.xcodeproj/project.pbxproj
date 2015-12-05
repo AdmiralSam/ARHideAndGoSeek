@@ -19,6 +19,8 @@
 		03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4A1C1285BB000C8673 /* SensorManager.mm */; };
 		03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */; };
 		03A64D521C12BBC2000C8673 /* VisibilityGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D501C12BBC2000C8673 /* VisibilityGrid.mm */; };
+		03A64D551C12FC05000C8673 /* joystickInner.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D531C12FC05000C8673 /* joystickInner.png */; };
+		03A64D561C12FC05000C8673 /* joystickOuter.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D541C12FC05000C8673 /* joystickOuter.png */; };
 		03ED45961C0D5A9E000D3263 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45941C0D5A9E000D3263 /* Main.mm */; };
 		03ED45981C0D5BD7000D3263 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45971C0D5BD7000D3263 /* OpenGLES.framework */; };
 		03ED459A1C0D5BDF000D3263 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45991C0D5BDF000D3263 /* GLKit.framework */; };
@@ -63,6 +65,8 @@
 		03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualSensorManager.hpp; sourceTree = "<group>"; };
 		03A64D501C12BBC2000C8673 /* VisibilityGrid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VisibilityGrid.mm; sourceTree = "<group>"; };
 		03A64D511C12BBC2000C8673 /* VisibilityGrid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VisibilityGrid.hpp; sourceTree = "<group>"; };
+		03A64D531C12FC05000C8673 /* joystickInner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickInner.png; sourceTree = "<group>"; };
+		03A64D541C12FC05000C8673 /* joystickOuter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickOuter.png; sourceTree = "<group>"; };
 		03ED45941C0D5A9E000D3263 /* Main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Main.mm; sourceTree = "<group>"; };
 		03ED45951C0D5A9E000D3263 /* Main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Main.hpp; sourceTree = "<group>"; };
 		03ED45971C0D5BD7000D3263 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -211,6 +215,8 @@
 				10409F0D1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg */,
 				10409F0E1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg */,
 				10409F0F1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg */,
+				03A64D531C12FC05000C8673 /* joystickInner.png */,
+				03A64D541C12FC05000C8673 /* joystickOuter.png */,
 				10409F101C0EC8D9004BF469 /* classroom.obj */,
 			);
 			path = Assets;
@@ -283,9 +289,11 @@
 				0336BD311C116BA200E126BB /* light blue cube.png in Resources */,
 				0336BD321C116BA200E126BB /* light blue.obj in Resources */,
 				10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */,
+				03A64D561C12FC05000C8673 /* joystickOuter.png in Resources */,
 				10409F111C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg in Resources */,
 				10409F121C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg in Resources */,
 				03F8BF2D1C1032EB001B5833 /* DepthShader.fsh in Resources */,
+				03A64D551C12FC05000C8673 /* joystickInner.png in Resources */,
 				035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */,
 				035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */,
 				10409F141C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg in Resources */,

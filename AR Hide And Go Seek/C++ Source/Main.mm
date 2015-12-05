@@ -20,7 +20,7 @@ using namespace std;
 using namespace glm;
 
 TextureManager* textureManager;
-SensorManager* trackerHandler;
+SensorManager* sensorManager;
 
 ShaderProgram* basicMeshShader;
 
@@ -36,9 +36,11 @@ void Initialize(float width, float height)
     glViewport(0, 0, width, height);
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     textureManager = new TextureManager();
-    trackerHandler = new VirtualSensorManager(textureManager, width, height);
+    sensorManager = new VirtualSensorManager(textureManager, width, height);
     
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
@@ -56,22 +58,23 @@ void Initialize(float width, float height)
 void Dispose()
 {
     delete textureManager;
-    delete trackerHandler;
+    delete sensorManager;
 }
 
 void Draw()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     basicMeshShader->Use();
-    trackerHandler->Draw();
-    glUniformMatrix4fv(basicMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(trackerHandler->GetProjectionMatrix()));
-    glUniformMatrix4fv(basicMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(trackerHandler->GetViewMatrix()));
+    sensorManager->Draw();
+    glUniformMatrix4fv(basicMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
+    glUniformMatrix4fv(basicMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
     cube->Draw(basicMeshShader);
+    sensorManager->DrawUI();
 }
 
 void Update(float deltaTime)
 {
-    grid->UpdateVisibility(trackerHandler);
+    grid->UpdateVisibility(sensorManager);
     if(grid->IsVisible(targetRow, targetColumn)){
         grid->ClosestInvisible(currentRow, currentColumn, targetRow, targetColumn);
     }
@@ -89,20 +92,20 @@ void Update(float deltaTime)
         newPosition.y = 0.05f;
         cube->SetPosition(newPosition);
     }
-    trackerHandler->Update(deltaTime);
+    sensorManager->Update(deltaTime);
 }
 
 void PanStarted(int x, int y)
 {
-    trackerHandler->PanStarted(x, y);
+    sensorManager->PanStarted(x, y);
 }
 
 void PanMoved(int deltaX, int deltaY)
 {
-    trackerHandler->PanMoved(deltaX, deltaY);
+    sensorManager->PanMoved(deltaX, deltaY);
 }
 
 void PanEnded()
 {
-    trackerHandler->PanEnded();
+    sensorManager->PanEnded();
 }
