@@ -50,4 +50,10 @@ private:
     glm::vec2 leftJoystick, rightJoystick;
     glm::vec2 leftOffset, rightOffset;
     glm::vec2 leftCenter, rightCenter;
+    
+    GLuint joystickBaseID, joystickStickID;
+    GLuint positionBufferID, uvBufferID, indexBufferID;
+    
+    void Setup2DDrawing();
+    void DrawImage(int x, int y, int drawWidth, int drawHeight, GLuint textureID);
 };

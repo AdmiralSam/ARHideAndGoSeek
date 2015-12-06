@@ -11,8 +11,8 @@
 #include "glm/gtx/rotate_vector.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
-#define JoystickStartingRadius 100
-#define JoystickMaximumRadius 150
+#define JoystickStartingRadius 50
+#define JoystickMaximumRadius 60
 #define TurnVelocity pi<float>()
 #define MaximumPitch pi<float>() / 6
 #define Speed 2.0f
@@ -25,8 +25,8 @@ VirtualSensorManager::VirtualSensorManager(TextureManager* manager, int screenWi
     width = 2 * screenWidth;
     height = 2 * screenHeight;
     
-    leftCenter = vec2(screenWidth * 0.25f, screenHeight * 0.6f);
-    rightCenter = vec2(screenWidth * 0.75f, screenHeight * 0.6f);
+    leftCenter = vec2(screenWidth * 0.2f, screenHeight * 0.8f);
+    rightCenter = vec2(screenWidth * 0.8f, screenHeight * 0.8f);
     
     basicShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     roomModel = new BasicMesh("classroom.obj", manager);
@@ -38,6 +38,11 @@ VirtualSensorManager::VirtualSensorManager(TextureManager* manager, int screenWi
     position = vec3(0.0f, 1.62f, 0.0f);
     yawAngle = 0.0f;
     pitchAngle = 0.0f;
+    
+    Setup2DDrawing();
+    
+    joystickBaseID = manager->LoadTexture("joystickOuter.png");
+    joystickStickID = manager->LoadTexture("joystickInner.png");
 }
 
 VirtualSensorManager::~VirtualSensorManager()
@@ -77,7 +82,12 @@ void VirtualSensorManager::Update(float deltaTime)
 
 void VirtualSensorManager::DrawUI()
 {
-    //TODO
+    DrawImage(leftCenter.x, leftCenter.y, 100, 100, joystickBaseID);
+    DrawImage(rightCenter.x, rightCenter.y, 100, 100, joystickBaseID);
+    vec2 leftLocation = leftCenter + (float)JoystickMaximumRadius * leftJoystick;
+    vec2 rightLocation = rightCenter + (float)JoystickMaximumRadius * rightJoystick;
+    DrawImage(leftLocation.x, leftLocation.y, 100, 100, joystickStickID);
+    DrawImage(rightLocation.x, rightLocation.y, 100, 100, joystickStickID);
 }
 
 mat4 VirtualSensorManager::GetProjectionMatrix()
@@ -171,4 +181,46 @@ void VirtualSensorManager::PanEnded()
             break;
     }
     joystickState = JoystickState::None;
+}
+
+void VirtualSensorManager::Setup2DDrawing()
+{
+    float positions[] = {-1, -1, 0, 1, 1, -1, 0, 1, 1, 1, 0, 1, -1, 1, 0, 1};
+    float uvs[] = {0, 0, 1, 0, 1, 1, 0, 1};
+    unsigned int indicies[] = {0, 1, 2, 2, 3, 0};
+    
+    glGenBuffers(1, &positionBufferID);
+    glGenBuffers(1, &uvBufferID);
+    glGenBuffers(1, &indexBufferID);
+    glBindBuffer(GL_ARRAY_BUFFER, positionBufferID);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, uvBufferID);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(uvs), uvs, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicies), indicies, GL_STATIC_DRAW);
+}
+
+void VirtualSensorManager::DrawImage(int x, int y, int drawWidth, int drawHeight, GLuint textureID)
+{
+    float screenX = 2.0f * x / width * 2.0f - 1.0f;
+    float screenY = 2.0f * (height / 2 - y) / height * 2.0f - 1.0f;
+    float xScale = 2.0f * drawWidth / width;
+    float yScale = 2.0f * drawHeight / height;
+    mat4 model = translate(mat4(), vec3(screenX, screenY, 0.0f));
+    model = scale(model, vec3(xScale, yScale, 1.0f));
+    glDisable(GL_DEPTH_TEST);
+    basicShader->Use();
+    glUniformMatrix4fv(basicShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(mat4()));
+    glUniformMatrix4fv(basicShader->GetLocation("view"), 1, GL_FALSE, value_ptr(mat4()));
+    glUniformMatrix4fv(basicShader->GetLocation("model"), 1, GL_FALSE, value_ptr(model));
+    glBindBuffer(GL_ARRAY_BUFFER, positionBufferID);
+    glVertexAttribPointer(basicShader->GetLocation("position"), 4, GL_FLOAT, GL_FALSE, 0, NULL);
+    glBindBuffer(GL_ARRAY_BUFFER, uvBufferID);
+    glVertexAttribPointer(basicShader->GetLocation("uv"), 2, GL_FLOAT, GL_FALSE, 0, NULL);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID);
+    glActiveTexture(GL_TEXTURE0);
+    glUniform1f(basicShader->GetLocation("uvMap"), 0.0f);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+    glEnable(GL_DEPTH_TEST);
 }
