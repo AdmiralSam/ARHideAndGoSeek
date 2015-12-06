@@ -11,6 +11,7 @@
 #include "glm/gtc/type_ptr.hpp"
 #include "VirtualSensorManager.hpp"
 #include "VisibilityGrid.hpp"
+#include "AdvancedMesh.hpp"
 
 #include <vector>
 #include <set>
@@ -23,10 +24,13 @@ TextureManager* textureManager;
 SensorManager* sensorManager;
 
 ShaderProgram* basicMeshShader;
+ShaderProgram* advancedMeshShader;
 
 VisibilityGrid* grid;
 
 BasicMesh* cube;
+
+AdvancedMesh* test;
 
 int currentRow, currentColumn;
 int targetRow, targetColumn;
@@ -45,6 +49,8 @@ void Initialize(float width, float height)
 	
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
+    advancedMeshShader = new ShaderProgram("AdvancedMesh", {"position", "uv", "normal", "bone1Index", "bone2Index", "weight"}, {"projection", "view", "model", "bind", "pose", "uvMap"});
+    
     grid = new VisibilityGrid(-5.5f, 3.5f, -3.0f, 1.0f, 0.1f, 90, 40);
     
     cube = new BasicMesh("light blue.obj", textureManager);
@@ -54,6 +60,8 @@ void Initialize(float width, float height)
     currentColumn = 30;
     targetRow = 55;
     targetColumn = 30;
+    
+    test = new AdvancedMesh("wigglySnake.iqe", textureManager);
 }
 
 void Dispose()
@@ -70,6 +78,10 @@ void Draw()
     glUniformMatrix4fv(basicMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
     glUniformMatrix4fv(basicMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
     cube->Draw(basicMeshShader);
+    advancedMeshShader->Use();
+    glUniformMatrix4fv(advancedMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
+    glUniformMatrix4fv(advancedMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
+    test->Draw(advancedMeshShader);
     sensorManager->DrawUI();
 }
 

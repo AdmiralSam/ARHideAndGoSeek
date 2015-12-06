@@ -48,7 +48,7 @@
     [self.view addGestureRecognizer:panGesture];
 	
 	sharedSensorInstance = [StructureSensorS sharedSensorInstance];
-	[sharedSensorInstance initializeSensor:self];
+	//[sharedSensorInstance initializeSensor:self];
 	
     [self setupGL];
 }

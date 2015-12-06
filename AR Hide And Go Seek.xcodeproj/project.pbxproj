@@ -23,6 +23,9 @@
 		03D957911C13EFCF001C8B64 /* better.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D957901C13EFCF001C8B64 /* better.png */; };
 		03D957931C13EFE5001C8B64 /* wigglySnake.iqe in Resources */ = {isa = PBXBuildFile; fileRef = 03D957921C13EFE5001C8B64 /* wigglySnake.iqe */; };
 		03D957961C13F0D0001C8B64 /* AdvancedMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */; };
+		03D957971C13F5EA001C8B64 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
+		03D9579A1C140E63001C8B64 /* AdvancedMesh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 03D957981C140E63001C8B64 /* AdvancedMesh.fsh */; };
+		03D9579B1C140E63001C8B64 /* AdvancedMesh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 03D957991C140E63001C8B64 /* AdvancedMesh.vsh */; };
 		03ED45961C0D5A9E000D3263 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45941C0D5A9E000D3263 /* Main.mm */; };
 		03ED45981C0D5BD7000D3263 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45971C0D5BD7000D3263 /* OpenGLES.framework */; };
 		03ED459A1C0D5BDF000D3263 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45991C0D5BDF000D3263 /* GLKit.framework */; };
@@ -56,7 +59,6 @@
 		1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0601C12AD09004BF469 /* CoreMotion.framework */; };
 		1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0621C12AD0F004BF469 /* libz.tbd */; };
 		10D17F511C13F2D100EE20E5 /* VisibilityGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */; };
-		10D17F521C13F37000EE20E5 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		03D957921C13EFE5001C8B64 /* wigglySnake.iqe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wigglySnake.iqe; sourceTree = "<group>"; };
 		03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdvancedMesh.mm; sourceTree = "<group>"; };
 		03D957951C13F0D0001C8B64 /* AdvancedMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AdvancedMesh.hpp; sourceTree = "<group>"; };
+		03D957981C140E63001C8B64 /* AdvancedMesh.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AdvancedMesh.fsh; sourceTree = "<group>"; };
+		03D957991C140E63001C8B64 /* AdvancedMesh.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AdvancedMesh.vsh; sourceTree = "<group>"; };
 		03ED45941C0D5A9E000D3263 /* Main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Main.mm; sourceTree = "<group>"; };
 		03ED45951C0D5A9E000D3263 /* Main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Main.hpp; sourceTree = "<group>"; };
 		03ED45971C0D5BD7000D3263 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -133,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10D17F521C13F37000EE20E5 /* Structure.framework in Frameworks */,
+				03D957971C13F5EA001C8B64 /* Structure.framework in Frameworks */,
 				1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */,
 				1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */,
 				1040A05F1C12AD04004BF469 /* QuartzCore.framework in Frameworks */,
@@ -228,6 +232,8 @@
 		035637E11BFD8AA400FD45A4 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				03D957981C140E63001C8B64 /* AdvancedMesh.fsh */,
+				03D957991C140E63001C8B64 /* AdvancedMesh.vsh */,
 				038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */,
 				038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */,
 				03F8BF2B1C1032EB001B5833 /* DepthShader.fsh */,
@@ -264,8 +270,8 @@
 				10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */,
 				03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */,
 				03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */,
-				03A64D511C12BBC2000C8673 /* VisibilityGrid.hpp */,
-				03A64D501C12BBC2000C8673 /* VisibilityGrid.mm */,
+				1040A0431C12A9F2004BF469 /* StructureSensorManager.mm */,
+				1040A0441C12A9F2004BF469 /* StructureSensorManager.hpp */,
 				03D957951C13F0D0001C8B64 /* AdvancedMesh.hpp */,
 				03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */,
 			);
@@ -322,7 +328,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 7RH9U63868;
+						DevelopmentTeam = WT2GEFA9Q6;
 					};
 				};
 			};
@@ -352,6 +358,7 @@
 				035637EE1BFD903800FD45A4 /* LaunchScreen.storyboard in Resources */,
 				10409F161C0EC8D9004BF469 /* classroom.obj in Resources */,
 				03F8BF2E1C1032EB001B5833 /* DepthShader.vsh in Resources */,
+				03D9579A1C140E63001C8B64 /* AdvancedMesh.fsh in Resources */,
 				035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */,
 				10409F131C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg in Resources */,
 				10409F151C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg in Resources */,
@@ -369,6 +376,7 @@
 				03D957931C13EFE5001C8B64 /* wigglySnake.iqe in Resources */,
 				10409F141C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg in Resources */,
 				10409F181C0EC9C7004BF469 /* BasicMesh.vsh in Resources */,
+				03D9579B1C140E63001C8B64 /* AdvancedMesh.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,12 +527,17 @@
 					And,
 					Go,
 					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
 				);
-				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
+				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-SeekT";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-SeekS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -549,12 +562,17 @@
 					And,
 					Go,
 					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
 				);
-				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
+				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-SeekT";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-SeekS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
