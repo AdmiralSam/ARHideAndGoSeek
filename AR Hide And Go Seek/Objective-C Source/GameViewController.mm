@@ -10,8 +10,11 @@
 #import "OpenGLES/ES3/gl.h"
 #import "Main.hpp"
 
-@interface GameViewController ()
+#import "StructureSensorS.h"
+@interface GameViewController () 
 {
+	@private
+	StructureSensorS *sharedSensorInstance;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -43,8 +46,17 @@
 	panGesture.minimumNumberOfTouches = 1;
 	panGesture.maximumNumberOfTouches = 1;
     [self.view addGestureRecognizer:panGesture];
-    
+	
+	sharedSensorInstance = [StructureSensorS sharedSensorInstance];
+	[sharedSensorInstance initializeSensor:self];
+	
     [self setupGL];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	[sharedSensorInstance connectAndStartStreaming];
 }
 
 - (void)dealloc
@@ -121,3 +133,10 @@
 }
 
 @end
+
+
+
+
+
+
+

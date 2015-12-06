@@ -44,7 +44,8 @@ void Initialize(float width, float height)
     
     textureManager = new TextureManager();
     trackerHandler = new VirtualSensorManager(textureManager, width, height);
-    
+	//trackerHandler = new StructureSensorManager(textureManager, width, height);
+	
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
     for (int i = 0; i < 80; i++) {
