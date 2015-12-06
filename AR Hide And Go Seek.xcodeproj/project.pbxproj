@@ -18,7 +18,6 @@
 		035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E71BFD8BAC00FD45A4 /* Main.storyboard */; };
 		03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4A1C1285BB000C8673 /* SensorManager.mm */; };
 		03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */; };
-		03A64D521C12BBC2000C8673 /* VisibilityGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D501C12BBC2000C8673 /* VisibilityGrid.mm */; };
 		03A64D551C12FC05000C8673 /* joystickInner.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D531C12FC05000C8673 /* joystickInner.png */; };
 		03A64D561C12FC05000C8673 /* joystickOuter.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D541C12FC05000C8673 /* joystickOuter.png */; };
 		03D957911C13EFCF001C8B64 /* better.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D957901C13EFCF001C8B64 /* better.png */; };
@@ -43,6 +42,21 @@
 		10409F161C0EC8D9004BF469 /* classroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = 10409F101C0EC8D9004BF469 /* classroom.obj */; };
 		10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */; };
 		10409F181C0EC9C7004BF469 /* BasicMesh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */; };
+		1040A0451C12A9F2004BF469 /* StructureSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1040A0431C12A9F2004BF469 /* StructureSensorManager.mm */; };
+		1040A0471C12AAEE004BF469 /* StructureSensorS.m in Sources */ = {isa = PBXBuildFile; fileRef = 1040A0461C12AAEE004BF469 /* StructureSensorS.m */; };
+		1040A04F1C12ACCC004BF469 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04E1C12ACCC004BF469 /* ExternalAccessory.framework */; };
+		1040A0511C12ACD9004BF469 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0501C12ACD9004BF469 /* CoreVideo.framework */; };
+		1040A0531C12ACDE004BF469 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0521C12ACDE004BF469 /* CoreImage.framework */; };
+		1040A0551C12ACE3004BF469 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0541C12ACE3004BF469 /* CoreGraphics.framework */; };
+		1040A0571C12ACE8004BF469 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0561C12ACE8004BF469 /* CoreMedia.framework */; };
+		1040A0591C12ACED004BF469 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0581C12ACED004BF469 /* ImageIO.framework */; };
+		1040A05B1C12ACF7004BF469 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A05A1C12ACF7004BF469 /* Accelerate.framework */; };
+		1040A05D1C12ACFE004BF469 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A05C1C12ACFE004BF469 /* AVFoundation.framework */; };
+		1040A05F1C12AD04004BF469 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A05E1C12AD04004BF469 /* QuartzCore.framework */; };
+		1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0601C12AD09004BF469 /* CoreMotion.framework */; };
+		1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0621C12AD0F004BF469 /* libz.tbd */; };
+		10D17F511C13F2D100EE20E5 /* VisibilityGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */; };
+		10D17F521C13F37000EE20E5 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,8 +80,6 @@
 		03A64D4B1C1285BB000C8673 /* SensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SensorManager.hpp; sourceTree = "<group>"; };
 		03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VirtualSensorManager.mm; sourceTree = "<group>"; };
 		03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualSensorManager.hpp; sourceTree = "<group>"; };
-		03A64D501C12BBC2000C8673 /* VisibilityGrid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VisibilityGrid.mm; sourceTree = "<group>"; };
-		03A64D511C12BBC2000C8673 /* VisibilityGrid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VisibilityGrid.hpp; sourceTree = "<group>"; };
 		03A64D531C12FC05000C8673 /* joystickInner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickInner.png; sourceTree = "<group>"; };
 		03A64D541C12FC05000C8673 /* joystickOuter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickOuter.png; sourceTree = "<group>"; };
 		03D957901C13EFCF001C8B64 /* better.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = better.png; sourceTree = "<group>"; };
@@ -96,6 +108,24 @@
 		10409F0E1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 090f6b4a65924643acc26e2a0e8dceef_003.jpg; sourceTree = "<group>"; };
 		10409F0F1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 090f6b4a65924643acc26e2a0e8dceef_004.jpg; sourceTree = "<group>"; };
 		10409F101C0EC8D9004BF469 /* classroom.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classroom.obj; sourceTree = "<group>"; };
+		1040A0431C12A9F2004BF469 /* StructureSensorManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StructureSensorManager.mm; sourceTree = "<group>"; };
+		1040A0441C12A9F2004BF469 /* StructureSensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StructureSensorManager.hpp; sourceTree = "<group>"; };
+		1040A0461C12AAEE004BF469 /* StructureSensorS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StructureSensorS.m; sourceTree = "<group>"; };
+		1040A0481C12AB01004BF469 /* StructureSensorS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StructureSensorS.h; sourceTree = "<group>"; };
+		1040A04B1C12AC96004BF469 /* Structure.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Structure.framework; path = "AR Hide And Go Seek/Structure.framework"; sourceTree = "<group>"; };
+		1040A04E1C12ACCC004BF469 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		1040A0501C12ACD9004BF469 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		1040A0521C12ACDE004BF469 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		1040A0541C12ACE3004BF469 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1040A0561C12ACE8004BF469 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1040A0581C12ACED004BF469 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1040A05A1C12ACF7004BF469 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		1040A05C1C12ACFE004BF469 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1040A05E1C12AD04004BF469 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1040A0601C12AD09004BF469 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		1040A0621C12AD0F004BF469 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		10D17F4F1C13F2D100EE20E5 /* VisibilityGrid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VisibilityGrid.hpp; sourceTree = "<group>"; };
+		10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VisibilityGrid.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +133,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D17F521C13F37000EE20E5 /* Structure.framework in Frameworks */,
+				1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */,
+				1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */,
+				1040A05F1C12AD04004BF469 /* QuartzCore.framework in Frameworks */,
+				1040A05D1C12ACFE004BF469 /* AVFoundation.framework in Frameworks */,
+				1040A05B1C12ACF7004BF469 /* Accelerate.framework in Frameworks */,
+				1040A0591C12ACED004BF469 /* ImageIO.framework in Frameworks */,
+				1040A0571C12ACE8004BF469 /* CoreMedia.framework in Frameworks */,
+				1040A0551C12ACE3004BF469 /* CoreGraphics.framework in Frameworks */,
+				1040A0531C12ACDE004BF469 /* CoreImage.framework in Frameworks */,
+				1040A0511C12ACD9004BF469 /* CoreVideo.framework in Frameworks */,
+				1040A04F1C12ACCC004BF469 /* ExternalAccessory.framework in Frameworks */,
 				03ED459E1C0D5BEB000D3263 /* Foundation.framework in Frameworks */,
 				03ED459C1C0D5BE3000D3263 /* UIKit.framework in Frameworks */,
 				03ED459A1C0D5BDF000D3263 /* GLKit.framework in Frameworks */,
@@ -116,6 +158,18 @@
 		035637B21BFD864600FD45A4 = {
 			isa = PBXGroup;
 			children = (
+				1040A0621C12AD0F004BF469 /* libz.tbd */,
+				1040A0601C12AD09004BF469 /* CoreMotion.framework */,
+				1040A05E1C12AD04004BF469 /* QuartzCore.framework */,
+				1040A05C1C12ACFE004BF469 /* AVFoundation.framework */,
+				1040A05A1C12ACF7004BF469 /* Accelerate.framework */,
+				1040A0581C12ACED004BF469 /* ImageIO.framework */,
+				1040A0561C12ACE8004BF469 /* CoreMedia.framework */,
+				1040A0541C12ACE3004BF469 /* CoreGraphics.framework */,
+				1040A0521C12ACDE004BF469 /* CoreImage.framework */,
+				1040A0501C12ACD9004BF469 /* CoreVideo.framework */,
+				1040A04E1C12ACCC004BF469 /* ExternalAccessory.framework */,
+				1040A04B1C12AC96004BF469 /* Structure.framework */,
 				03ED459D1C0D5BEB000D3263 /* Foundation.framework */,
 				03ED459B1C0D5BE3000D3263 /* UIKit.framework */,
 				03ED45991C0D5BDF000D3263 /* GLKit.framework */,
@@ -159,6 +213,8 @@
 		035637E01BFD8A9700FD45A4 /* Objective-C Source */ = {
 			isa = PBXGroup;
 			children = (
+				1040A0461C12AAEE004BF469 /* StructureSensorS.m */,
+				1040A0481C12AB01004BF469 /* StructureSensorS.h */,
 				035637C11BFD864600FD45A4 /* AppDelegate.h */,
 				035637C21BFD864600FD45A4 /* AppDelegate.m */,
 				03ED45A21C0D5D3C000D3263 /* Utility.h */,
@@ -204,6 +260,8 @@
 				03ED471E1C0D66A7000D3263 /* TextureManager.mm */,
 				03A64D4B1C1285BB000C8673 /* SensorManager.hpp */,
 				03A64D4A1C1285BB000C8673 /* SensorManager.mm */,
+				10D17F4F1C13F2D100EE20E5 /* VisibilityGrid.hpp */,
+				10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */,
 				03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */,
 				03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */,
 				03A64D511C12BBC2000C8673 /* VisibilityGrid.hpp */,
@@ -264,7 +322,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = WT2GEFA9Q6;
+						DevelopmentTeam = 7RH9U63868;
 					};
 				};
 			};
@@ -321,9 +379,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03A64D521C12BBC2000C8673 /* VisibilityGrid.mm in Sources */,
+				10D17F511C13F2D100EE20E5 /* VisibilityGrid.mm in Sources */,
 				03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */,
 				035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */,
+				1040A0471C12AAEE004BF469 /* StructureSensorS.m in Sources */,
 				035637CA1BFD864600FD45A4 /* GameViewController.mm in Sources */,
 				03ED45AA1C0D6481000D3263 /* BasicMesh.mm in Sources */,
 				03ED45A11C0D5D12000D3263 /* ShaderProgram.mm in Sources */,
@@ -331,6 +390,7 @@
 				03ED471F1C0D66A7000D3263 /* TextureManager.mm in Sources */,
 				03D957961C13F0D0001C8B64 /* AdvancedMesh.mm in Sources */,
 				03ED45A41C0D5D3C000D3263 /* Utility.m in Sources */,
+				1040A0451C12A9F2004BF469 /* StructureSensorManager.mm in Sources */,
 				035637C01BFD864600FD45A4 /* main.m in Sources */,
 				03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */,
 			);
@@ -446,11 +506,25 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
+				);
+				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-SeekT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -462,11 +536,25 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
+				);
+				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-SeekT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
