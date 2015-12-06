@@ -11,4 +11,5 @@
 
 @interface GameViewController : GLKViewController
 
+//+ (void) showAlertWithMessage: (NSString *) message;
 @end

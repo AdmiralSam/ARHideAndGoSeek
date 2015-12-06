@@ -41,7 +41,8 @@ void Initialize(float width, float height)
     
     textureManager = new TextureManager();
     sensorManager = new VirtualSensorManager(textureManager, width, height);
-    
+	//trackerHandler = new StructureSensorManager(textureManager, width, height);
+	
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
     grid = new VisibilityGrid(-5.5f, 3.5f, -3.0f, 1.0f, 0.1f, 90, 40);
