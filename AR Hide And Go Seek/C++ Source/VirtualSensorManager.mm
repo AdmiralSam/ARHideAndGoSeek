@@ -14,7 +14,7 @@
 #define JoystickStartingRadius 50
 #define JoystickMaximumRadius 60
 #define TurnVelocity pi<float>()
-#define MaximumPitch pi<float>() / 6
+#define MaximumPitch pi<float>() / 3
 #define Speed 2.0f
 
 using namespace std;

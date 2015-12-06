@@ -21,6 +21,9 @@
 		03A64D521C12BBC2000C8673 /* VisibilityGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D501C12BBC2000C8673 /* VisibilityGrid.mm */; };
 		03A64D551C12FC05000C8673 /* joystickInner.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D531C12FC05000C8673 /* joystickInner.png */; };
 		03A64D561C12FC05000C8673 /* joystickOuter.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D541C12FC05000C8673 /* joystickOuter.png */; };
+		03D957911C13EFCF001C8B64 /* better.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D957901C13EFCF001C8B64 /* better.png */; };
+		03D957931C13EFE5001C8B64 /* wigglySnake.iqe in Resources */ = {isa = PBXBuildFile; fileRef = 03D957921C13EFE5001C8B64 /* wigglySnake.iqe */; };
+		03D957961C13F0D0001C8B64 /* AdvancedMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */; };
 		03ED45961C0D5A9E000D3263 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45941C0D5A9E000D3263 /* Main.mm */; };
 		03ED45981C0D5BD7000D3263 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45971C0D5BD7000D3263 /* OpenGLES.framework */; };
 		03ED459A1C0D5BDF000D3263 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ED45991C0D5BDF000D3263 /* GLKit.framework */; };
@@ -67,6 +70,10 @@
 		03A64D511C12BBC2000C8673 /* VisibilityGrid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VisibilityGrid.hpp; sourceTree = "<group>"; };
 		03A64D531C12FC05000C8673 /* joystickInner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickInner.png; sourceTree = "<group>"; };
 		03A64D541C12FC05000C8673 /* joystickOuter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickOuter.png; sourceTree = "<group>"; };
+		03D957901C13EFCF001C8B64 /* better.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = better.png; sourceTree = "<group>"; };
+		03D957921C13EFE5001C8B64 /* wigglySnake.iqe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wigglySnake.iqe; sourceTree = "<group>"; };
+		03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdvancedMesh.mm; sourceTree = "<group>"; };
+		03D957951C13F0D0001C8B64 /* AdvancedMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AdvancedMesh.hpp; sourceTree = "<group>"; };
 		03ED45941C0D5A9E000D3263 /* Main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Main.mm; sourceTree = "<group>"; };
 		03ED45951C0D5A9E000D3263 /* Main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Main.hpp; sourceTree = "<group>"; };
 		03ED45971C0D5BD7000D3263 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -201,6 +208,8 @@
 				03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */,
 				03A64D511C12BBC2000C8673 /* VisibilityGrid.hpp */,
 				03A64D501C12BBC2000C8673 /* VisibilityGrid.mm */,
+				03D957951C13F0D0001C8B64 /* AdvancedMesh.hpp */,
+				03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */,
 			);
 			path = "C++ Source";
 			sourceTree = "<group>";
@@ -208,6 +217,8 @@
 		10409F0A1C0EA918004BF469 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				03D957921C13EFE5001C8B64 /* wigglySnake.iqe */,
+				03D957901C13EFCF001C8B64 /* better.png */,
 				0336BD2F1C116BA200E126BB /* light blue cube.png */,
 				0336BD301C116BA200E126BB /* light blue.obj */,
 				10409F0B1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg */,
@@ -296,6 +307,8 @@
 				03A64D551C12FC05000C8673 /* joystickInner.png in Resources */,
 				035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */,
 				035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */,
+				03D957911C13EFCF001C8B64 /* better.png in Resources */,
+				03D957931C13EFE5001C8B64 /* wigglySnake.iqe in Resources */,
 				10409F141C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg in Resources */,
 				10409F181C0EC9C7004BF469 /* BasicMesh.vsh in Resources */,
 			);
@@ -316,6 +329,7 @@
 				03ED45A11C0D5D12000D3263 /* ShaderProgram.mm in Sources */,
 				03ED45961C0D5A9E000D3263 /* Main.mm in Sources */,
 				03ED471F1C0D66A7000D3263 /* TextureManager.mm in Sources */,
+				03D957961C13F0D0001C8B64 /* AdvancedMesh.mm in Sources */,
 				03ED45A41C0D5D3C000D3263 /* Utility.m in Sources */,
 				035637C01BFD864600FD45A4 /* main.m in Sources */,
 				03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */,
