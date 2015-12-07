@@ -68,5 +68,6 @@ struct SlamData
 - (void)clearSLAM;
 - (void)lockColorCameraExposure:(BOOL)exposureShouldBeLocked andLockWhiteBalance:(BOOL)whiteBalanceShouldBeLocked andLockFocus:(BOOL)focusShouldBeLocked;
 void setManualExposureAndAutoISO (AVCaptureDevice* videoDevice, double targetExposureInSecs);
+- (GLKMatrix4)GetPose;
 
 @end

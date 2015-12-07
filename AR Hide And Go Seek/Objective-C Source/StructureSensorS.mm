@@ -18,6 +18,8 @@
 	STSensorController *sensorController;
 	
 	AVCaptureSession *captureSession;
+    
+    GLKMatrix4 lastPose;
 }
 
 - (void)printMessage:(NSString *)message;
@@ -58,6 +60,8 @@ double nowInSeconds();
 	
 	sensorController = [STSensorController sharedController];
 	sensorController.delegate = self;
+    
+    _lastGravity = GLKVector3Make (0,0,0); // Will be done by IMU initialization if IMU is added
 }
 
 - (BOOL) connectAndStartStreaming
@@ -390,6 +394,15 @@ double nowInSeconds();
     [self lockColorCameraExposure:true andLockWhiteBalance:true andLockFocus:true];
     
     _slamState.isTracking = YES;
+}
+
+- (GLKMatrix4)GetPose
+{
+    if (_slamState.lastSceneKitTrackerUpdateProcessed.couldEstimatePose) {
+        lastPose =_slamState.lastSceneKitTrackerUpdateProcessed.cameraPose;
+        [self printMessage:@"aC"];
+    }
+        return lastPose;
 }
 
 - (void)clearSLAM
