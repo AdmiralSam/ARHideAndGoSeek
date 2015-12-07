@@ -18,12 +18,12 @@ ShaderProgram::ShaderProgram(string name, vector<string> attributes, vector<stri
     shaderName = name;
     shaderProgramID = glCreateProgram();
     Load();
-    for(auto attribute : attributes)
+    attributeList = attributes;
+    for (auto attribute : attributes)
     {
         locations[attribute] = glGetAttribLocation(shaderProgramID, attribute.c_str());
-        glEnableVertexAttribArray(locations[attribute]);
     }
-    for(auto uniform : uniforms)
+    for (auto uniform : uniforms)
     {
         locations[uniform] = glGetUniformLocation(shaderProgramID, uniform.c_str());
     }
@@ -50,6 +50,18 @@ void ShaderProgram::Load()
 void ShaderProgram::Use()
 {
     glUseProgram(shaderProgramID);
+    for (auto attribute : attributeList)
+    {
+        glEnableVertexAttribArray(locations[attribute]);
+    }
+}
+
+void ShaderProgram::Finish()
+{
+    for (auto attribute : attributeList)
+    {
+        glDisableVertexAttribArray(locations[attribute]);
+    }
 }
 
 GLuint ShaderProgram::GetLocation(string name)

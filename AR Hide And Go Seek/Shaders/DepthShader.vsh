@@ -9,6 +9,7 @@
 #version 300 es
 
 in vec4 position;
+in vec2 uv;
 
 uniform mat4 projection;
 uniform mat4 view;
@@ -16,5 +17,6 @@ uniform mat4 model;
 
 void main()
 {
+    vec2 temp = uv;
     gl_Position = projection * view * model * position;
 }

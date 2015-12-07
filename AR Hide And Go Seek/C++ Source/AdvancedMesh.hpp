@@ -11,6 +11,7 @@
 #include "glm/glm.hpp"
 #include "ShaderProgram.hpp"
 #include "TextureManager.hpp"
+#include "Animation.hpp"
 
 #include <string>
 #include <vector>
@@ -23,6 +24,9 @@ public:
     ~AdvancedMesh();
     
     void Draw(ShaderProgram* program);
+    void Update(float deltaTime);
+    
+    void PlayAnimation(std::string animation);
     
     void SetPosition(glm::vec3 newPosition) {position = newPosition;}
     void SetRotation(glm::vec3 newRotation) {rotation = newRotation;}
@@ -39,14 +43,21 @@ private:
     GLuint indexBufferID;
     GLuint bone1BufferID;
     GLuint bone2BufferID;
-    GLuint weightBufferID;
+    GLuint bone3BufferID;
+    GLuint bone4BufferID;
+    GLuint weight1BufferID;
+    GLuint weight2BufferID;
+    GLuint weight3BufferID;
+    GLuint weight4BufferID;
     GLuint textureID;
     
     int numberOfIndicies;
     
     std::map<int, std::vector<int> > rig;
     std::vector<glm::mat4> bindPose;
-    std::vector<glm::mat4> testPose;
+    std::map<std::string, Animation*> animations;
+    
+    std::string currentAnimation;
     
     void RecursePose(std::vector<glm::mat4>& individualPose, std::vector<glm::mat4>& resultantPose);
     
@@ -54,5 +65,5 @@ private:
     
     glm::mat4 GetModelMatrix();
     
-    void LoadMesh(std::string filename, TextureManager* manager, std::vector<float>& positionArray, std::vector<float>& uvArray, std::vector<float>& normalArray, std::vector<unsigned int>& indexArray, std::vector<int>& bone1Array, std::vector<int>& bone2Array, std::vector<float>& weightArray);
+    void LoadMesh(std::string filename, TextureManager* manager, std::vector<float>& positionArray, std::vector<float>& uvArray, std::vector<float>& normalArray, std::vector<unsigned int>& indexArray, std::vector<int>& bone1Array, std::vector<int>& bone2Array, std::vector<int>& bone3Array, std::vector<int>& bone4Array, std::vector<float>& weight1Array, std::vector<float>& weight2Array, std::vector<float>& weight3Array, std::vector<float>& weight4Array);
 };

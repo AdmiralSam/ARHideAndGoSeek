@@ -32,10 +32,10 @@ VirtualSensorManager::VirtualSensorManager(TextureManager* manager, int screenWi
     roomModel = new BasicMesh("classroom.obj", manager);
     roomModel->SetRotation(vec3(0.0f, -pi<float>() / 2.0f, -pi<float>() / 2.0f));
     
-    depthShader = new ShaderProgram("DepthShader", {"position"}, {"projection", "view", "model"});
+    depthShader = new ShaderProgram("DepthShader", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     depthBuffer = (unsigned char*)malloc(sizeof(unsigned char) * 4 * width * height);
     
-    position = vec3(0.0f, 1.62f, 0.0f);
+    position = vec3(0.0f, 1.0f, 0.0f);
     yawAngle = 0.0f;
     pitchAngle = 0.0f;
     
@@ -59,6 +59,7 @@ void VirtualSensorManager::Draw()
     glUniformMatrix4fv(depthShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(GetProjectionMatrix()));
     glUniformMatrix4fv(depthShader->GetLocation("view"), 1, GL_FALSE, value_ptr(GetViewMatrix()));
     roomModel->Draw(depthShader);
+    depthShader->Finish();
     glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, depthBuffer);
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -66,6 +67,7 @@ void VirtualSensorManager::Draw()
     glUniformMatrix4fv(basicShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(GetProjectionMatrix()));
     glUniformMatrix4fv(basicShader->GetLocation("view"), 1, GL_FALSE, value_ptr(GetViewMatrix()));
     roomModel->Draw(basicShader);
+    basicShader->Finish();
 }
 
 void VirtualSensorManager::Update(float deltaTime)
@@ -219,8 +221,9 @@ void VirtualSensorManager::DrawImage(int x, int y, int drawWidth, int drawHeight
     glVertexAttribPointer(basicShader->GetLocation("uv"), 2, GL_FLOAT, GL_FALSE, 0, NULL);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID);
     glActiveTexture(GL_TEXTURE0);
-    glUniform1f(basicShader->GetLocation("uvMap"), 0.0f);
+    glUniform1i(basicShader->GetLocation("uvMap"), 0);
     glBindTexture(GL_TEXTURE_2D, textureID);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+    basicShader->Finish();
     glEnable(GL_DEPTH_TEST);
 }

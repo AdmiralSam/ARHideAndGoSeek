@@ -21,6 +21,7 @@ public:
     ~ShaderProgram();
     
     void Use();
+    void Finish();
     
     GLuint GetLocation(std::string name);
     
@@ -29,6 +30,7 @@ public:
 private:
     std::string shaderName;
     std::map<std::string, GLuint> locations;
+    std::vector<std::string> attributeList;
     
     GLuint shaderProgramID;
     
