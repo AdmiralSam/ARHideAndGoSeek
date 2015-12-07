@@ -53,7 +53,7 @@
 		10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */; };
 		10409F181C0EC9C7004BF469 /* BasicMesh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */; };
 		1040A0451C12A9F2004BF469 /* StructureSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1040A0431C12A9F2004BF469 /* StructureSensorManager.mm */; };
-		1040A0471C12AAEE004BF469 /* StructureSensorS.m in Sources */ = {isa = PBXBuildFile; fileRef = 1040A0461C12AAEE004BF469 /* StructureSensorS.m */; };
+		1040A0471C12AAEE004BF469 /* StructureSensorS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1040A0461C12AAEE004BF469 /* StructureSensorS.mm */; };
 		1040A04F1C12ACCC004BF469 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04E1C12ACCC004BF469 /* ExternalAccessory.framework */; };
 		1040A0511C12ACD9004BF469 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0501C12ACD9004BF469 /* CoreVideo.framework */; };
 		1040A0531C12ACDE004BF469 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0521C12ACDE004BF469 /* CoreImage.framework */; };
@@ -129,7 +129,7 @@
 		10409F101C0EC8D9004BF469 /* classroom.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classroom.obj; sourceTree = "<group>"; };
 		1040A0431C12A9F2004BF469 /* StructureSensorManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StructureSensorManager.mm; sourceTree = "<group>"; };
 		1040A0441C12A9F2004BF469 /* StructureSensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StructureSensorManager.hpp; sourceTree = "<group>"; };
-		1040A0461C12AAEE004BF469 /* StructureSensorS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StructureSensorS.m; sourceTree = "<group>"; };
+		1040A0461C12AAEE004BF469 /* StructureSensorS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StructureSensorS.mm; sourceTree = "<group>"; };
 		1040A0481C12AB01004BF469 /* StructureSensorS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StructureSensorS.h; sourceTree = "<group>"; };
 		1040A04B1C12AC96004BF469 /* Structure.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Structure.framework; path = "AR Hide And Go Seek/Structure.framework"; sourceTree = "<group>"; };
 		1040A04E1C12ACCC004BF469 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
@@ -145,6 +145,8 @@
 		1040A0621C12AD0F004BF469 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		10D17F4F1C13F2D100EE20E5 /* VisibilityGrid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VisibilityGrid.hpp; sourceTree = "<group>"; };
 		10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VisibilityGrid.mm; sourceTree = "<group>"; };
+		46AFBF471C140B67000D7784 /* TrackerThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackerThread.h; sourceTree = "<group>"; };
+		46AFBF481C140B67000D7784 /* TrackerThread.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrackerThread.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,8 +234,10 @@
 		035637E01BFD8A9700FD45A4 /* Objective-C Source */ = {
 			isa = PBXGroup;
 			children = (
-				1040A0461C12AAEE004BF469 /* StructureSensorS.m */,
+				1040A0461C12AAEE004BF469 /* StructureSensorS.mm */,
 				1040A0481C12AB01004BF469 /* StructureSensorS.h */,
+				46AFBF471C140B67000D7784 /* TrackerThread.h */,
+				46AFBF481C140B67000D7784 /* TrackerThread.mm */,
 				035637C11BFD864600FD45A4 /* AppDelegate.h */,
 				035637C21BFD864600FD45A4 /* AppDelegate.m */,
 				03ED45A21C0D5D3C000D3263 /* Utility.h */,
@@ -419,9 +423,10 @@
 				10D17F511C13F2D100EE20E5 /* VisibilityGrid.mm in Sources */,
 				03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */,
 				035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */,
-				1040A0471C12AAEE004BF469 /* StructureSensorS.m in Sources */,
+				1040A0471C12AAEE004BF469 /* StructureSensorS.mm in Sources */,
 				035637CA1BFD864600FD45A4 /* GameViewController.mm in Sources */,
 				03ED45AA1C0D6481000D3263 /* BasicMesh.mm in Sources */,
+				46AFBF491C140B67000D7784 /* TrackerThread.mm in Sources */,
 				03ED45A11C0D5D12000D3263 /* ShaderProgram.mm in Sources */,
 				03ED45961C0D5A9E000D3263 /* Main.mm in Sources */,
 				03ED471F1C0D66A7000D3263 /* TextureManager.mm in Sources */,
@@ -476,6 +481,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -520,6 +526,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

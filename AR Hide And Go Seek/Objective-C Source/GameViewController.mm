@@ -5,6 +5,7 @@
 //  Created by Samuel Dong on 11/18/15.
 //  Copyright © 2015 SamuelNatalyRussell. All rights reserved.
 //
+//  With code from the Unbounded Tracker API example program from Occipital
 
 #import "GameViewController.h"
 #import "OpenGLES/ES3/gl.h"
@@ -56,7 +57,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	[sharedSensorInstance connectAndStartStreaming];
+	[sharedSensorInstance connectAndStartStreaming];  // Start structure camera
+    [sharedSensorInstance onStructureSensorStartedStreamingWithContext:self.context];  // Calls InitializeSLAMWithContext
+    //[sharedSensorInstance enterTrackingState]; moved to sensorDidOutputSynchronizedDepthFrame
 }
 
 - (void)dealloc
