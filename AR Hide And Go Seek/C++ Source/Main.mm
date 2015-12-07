@@ -58,7 +58,7 @@ void Initialize(float width, float height)
     targetRow = 55;
     targetColumn = 30;
     
-    test = new AdvancedMesh("FinishedSkittyTextured4decimate.iqe", textureManager);
+    test = new AdvancedMesh("Skitty.iqe", textureManager);
     test->PlayAnimation("Idle");
     test->SetScale(vec3(0.2f, 0.2f, 0.2f));
     test->SetPosition(vec3(0.0f, 0.05f, 0.0f));
