@@ -36,23 +36,5 @@ public:
 private:
 	int width, height;
 	ShaderProgram* basicShader;
-	TextureManager* textureManager;
-	
-	
-	
-
+    BasicMesh* roomModel;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,6 +10,7 @@
 #include "OpenGLES/ES3/gl.h"
 #include "glm/gtc/type_ptr.hpp"
 #include "VirtualSensorManager.hpp"
+#include "StructureSensorManager.hpp"
 #include "VisibilityGrid.hpp"
 #include "AdvancedMesh.hpp"
 
@@ -45,7 +46,7 @@ void Initialize(float width, float height)
     
     textureManager = new TextureManager();
     sensorManager = new VirtualSensorManager(textureManager, width, height);
-	//trackerHandler = new StructureSensorManager(textureManager, width, height);
+	//sensorManager = new StructureSensorManager(textureManager, width, height);
 	
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
@@ -58,7 +59,7 @@ void Initialize(float width, float height)
     targetRow = 55;
     targetColumn = 30;
     
-    test = new AdvancedMesh("Skitty.iqe", textureManager);
+    test = new AdvancedMesh("some2.iqe", textureManager);
     test->PlayAnimation("Idle");
     test->SetScale(vec3(0.2f, 0.2f, 0.2f));
     test->SetPosition(vec3(0.0f, 0.05f, 0.0f));
@@ -108,7 +109,7 @@ void Update(float deltaTime)
     }
     grid->UpdateVisibility(sensorManager);
     if(grid->IsVisible(targetRow, targetColumn)){
-        grid->ClosestInvisible(currentRow, currentColumn, targetRow, targetColumn);
+        grid->RandomInvisible(currentRow, currentColumn, targetRow, targetColumn);
     }
     int columnMovements = abs(targetColumn - currentColumn);
     int rowMovements = abs(targetRow - currentRow);
@@ -122,7 +123,7 @@ void Update(float deltaTime)
         }
         vec3 newPosition = grid->PositionFromRowColumn(currentRow, currentColumn);
         newPosition.y = 0.05f;
-        //test->SetPosition(newPosition);
+        test->SetPosition(newPosition);
     }
     sensorManager->Update(deltaTime);
     test->Update(deltaTime);

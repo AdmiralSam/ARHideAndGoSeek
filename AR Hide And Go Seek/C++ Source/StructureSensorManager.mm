@@ -7,25 +7,36 @@
 //
 
 #include "StructureSensorManager.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "StructureSensorS.h"
 
 using namespace glm;
 
 StructureSensorManager::StructureSensorManager(TextureManager* manager, int screenWidth, int screenHeight)
 {
-	textureManager = manager;
 	width  = screenWidth;
 	height = screenHeight;
 	
+    basicShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
+    roomModel = new BasicMesh("classroom.obj", manager);
+    roomModel->SetRotation(vec3(0.0f, -pi<float>() / 2.0f, -pi<float>() / 2.0f));
+    
+    [[StructureSensorS sharedSensorInstance] connectAndStartStreaming];
 }
 
 StructureSensorManager::~StructureSensorManager()
 {
-	free(textureManager);
+    delete roomModel;
+    delete basicShader;
 }
 
 void StructureSensorManager::Draw()
 {
-	
+    basicShader->Use();
+    glUniformMatrix4fv(basicShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(GetProjectionMatrix()));
+    glUniformMatrix4fv(basicShader->GetLocation("view"), 1, GL_FALSE, value_ptr(GetViewMatrix()));
+    roomModel->Draw(basicShader);
 }
 
 void StructureSensorManager::Update(float deltaTime)
@@ -40,16 +51,21 @@ void StructureSensorManager::DrawUI()
 
 mat4 StructureSensorManager::GetProjectionMatrix()
 {
-	mat4 m;
-	
-	return m;
+	return perspectiveFov<float>(pi<float>() / 3.0f, width, height, 0.1f, 15.0f);
 }
 
 mat4 StructureSensorManager::GetViewMatrix()
 {
-	mat4 m;
-	
-	return m;
+    GLKMatrix4 view = [[StructureSensorS sharedSensorInstance] getPose];
+    mat4 glView;
+    for (int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            glView[i][j] = view.m[4 * i + j];
+        }
+    }
+    return glView;
 }
 
 void StructureSensorManager::CheckVisibility(std::vector<glm::vec3>& points, std::vector<bool>& visibility)
@@ -71,32 +87,3 @@ void StructureSensorManager::PanEnded()
 {
 	//n/a
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

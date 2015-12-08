@@ -16,11 +16,13 @@
 		035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C61BFD864600FD45A4 /* Shader.vsh */; };
 		035637EE1BFD903800FD45A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E51BFD8BAC00FD45A4 /* LaunchScreen.storyboard */; };
 		035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E71BFD8BAC00FD45A4 /* Main.storyboard */; };
+		03A490131C16502600377FFC /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
+		03A490161C16518A00377FFC /* Animal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A490141C16518A00377FFC /* Animal.mm */; };
 		03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4A1C1285BB000C8673 /* SensorManager.mm */; };
 		03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */; };
 		03A64D551C12FC05000C8673 /* joystickInner.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D531C12FC05000C8673 /* joystickInner.png */; };
 		03A64D561C12FC05000C8673 /* joystickOuter.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D541C12FC05000C8673 /* joystickOuter.png */; };
-		03B713801C15342800F90CF7 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
+		03B713831C15594100F90CF7 /* some2.iqe in Resources */ = {isa = PBXBuildFile; fileRef = 03B713821C15594100F90CF7 /* some2.iqe */; };
 		03D957961C13F0D0001C8B64 /* AdvancedMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */; };
 		03D9579A1C140E63001C8B64 /* AdvancedMesh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 03D957981C140E63001C8B64 /* AdvancedMesh.fsh */; };
 		03D9579B1C140E63001C8B64 /* AdvancedMesh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 03D957991C140E63001C8B64 /* AdvancedMesh.vsh */; };
@@ -80,12 +82,15 @@
 		035637E81BFD8BAC00FD45A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicMesh.fsh; sourceTree = "<group>"; };
 		038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicMesh.vsh; sourceTree = "<group>"; };
+		03A490141C16518A00377FFC /* Animal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Animal.mm; sourceTree = "<group>"; };
+		03A490151C16518A00377FFC /* Animal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Animal.hpp; sourceTree = "<group>"; };
 		03A64D4A1C1285BB000C8673 /* SensorManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SensorManager.mm; sourceTree = "<group>"; };
 		03A64D4B1C1285BB000C8673 /* SensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SensorManager.hpp; sourceTree = "<group>"; };
 		03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VirtualSensorManager.mm; sourceTree = "<group>"; };
 		03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualSensorManager.hpp; sourceTree = "<group>"; };
 		03A64D531C12FC05000C8673 /* joystickInner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickInner.png; sourceTree = "<group>"; };
 		03A64D541C12FC05000C8673 /* joystickOuter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickOuter.png; sourceTree = "<group>"; };
+		03B713821C15594100F90CF7 /* some2.iqe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = some2.iqe; sourceTree = "<group>"; };
 		03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdvancedMesh.mm; sourceTree = "<group>"; };
 		03D957951C13F0D0001C8B64 /* AdvancedMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AdvancedMesh.hpp; sourceTree = "<group>"; };
 		03D957981C140E63001C8B64 /* AdvancedMesh.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AdvancedMesh.fsh; sourceTree = "<group>"; };
@@ -143,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03B713801C15342800F90CF7 /* Structure.framework in Frameworks */,
+				03A490131C16502600377FFC /* Structure.framework in Frameworks */,
 				1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */,
 				1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */,
 				1040A05F1C12AD04004BF469 /* QuartzCore.framework in Frameworks */,
@@ -223,8 +228,8 @@
 		035637E01BFD8A9700FD45A4 /* Objective-C Source */ = {
 			isa = PBXGroup;
 			children = (
-				1040A0461C12AAEE004BF469 /* StructureSensorS.mm */,
 				1040A0481C12AB01004BF469 /* StructureSensorS.h */,
+				1040A0461C12AAEE004BF469 /* StructureSensorS.mm */,
 				46AFBF471C140B67000D7784 /* TrackerThread.h */,
 				46AFBF481C140B67000D7784 /* TrackerThread.mm */,
 				035637C11BFD864600FD45A4 /* AppDelegate.h */,
@@ -278,12 +283,14 @@
 				10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */,
 				03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */,
 				03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */,
-				1040A0431C12A9F2004BF469 /* StructureSensorManager.mm */,
 				1040A0441C12A9F2004BF469 /* StructureSensorManager.hpp */,
+				1040A0431C12A9F2004BF469 /* StructureSensorManager.mm */,
 				03D957951C13F0D0001C8B64 /* AdvancedMesh.hpp */,
 				03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */,
 				03D9579D1C1416D5001C8B64 /* Animation.hpp */,
 				03D9579C1C1416D5001C8B64 /* Animation.mm */,
+				03A490151C16518A00377FFC /* Animal.hpp */,
+				03A490141C16518A00377FFC /* Animal.mm */,
 			);
 			path = "C++ Source";
 			sourceTree = "<group>";
@@ -301,6 +308,7 @@
 				03A64D531C12FC05000C8673 /* joystickInner.png */,
 				03A64D541C12FC05000C8673 /* joystickOuter.png */,
 				10409F101C0EC8D9004BF469 /* classroom.obj */,
+				03B713821C15594100F90CF7 /* some2.iqe */,
 				03D957A41C144FC1001C8B64 /* Skitty.iqe */,
 				03D957A11C144A31001C8B64 /* skittyTexture.png */,
 			);
@@ -373,6 +381,7 @@
 				10409F131C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg in Resources */,
 				03D957A51C144FC1001C8B64 /* Skitty.iqe in Resources */,
 				10409F151C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg in Resources */,
+				03B713831C15594100F90CF7 /* some2.iqe in Resources */,
 				0336BD311C116BA200E126BB /* light blue cube.png in Resources */,
 				0336BD321C116BA200E126BB /* light blue.obj in Resources */,
 				10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */,
@@ -397,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03A490161C16518A00377FFC /* Animal.mm in Sources */,
 				10D17F511C13F2D100EE20E5 /* VisibilityGrid.mm in Sources */,
 				03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */,
 				035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */,
@@ -541,6 +551,16 @@
 					And,
 					Go,
 					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
 				);
 				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
@@ -560,6 +580,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
 					"$(PROJECT_DIR)/AR",
 					Hide,
 					And,

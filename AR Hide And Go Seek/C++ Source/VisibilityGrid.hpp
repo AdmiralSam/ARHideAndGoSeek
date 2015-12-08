@@ -25,6 +25,7 @@ public:
     
     bool IsVisible(int row, int column);
     void ClosestInvisible(int row, int column, int& invisibileRow, int& invisibleColumn);
+    void RandomInvisible(int row, int column, int& invisibleRow, int& invisibleColumn);
     
 private:
     int numberOfRows, numberOfColumns;

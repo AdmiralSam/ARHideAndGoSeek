@@ -11,6 +11,8 @@
 void Initialize(float width, float height);
 void Dispose();
 
+void Start();
+
 void Draw();
 void Update(float deltaTime);
 

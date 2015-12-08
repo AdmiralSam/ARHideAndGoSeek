@@ -49,17 +49,14 @@
     [self.view addGestureRecognizer:panGesture];
 	
 	sharedSensorInstance = [StructureSensorS sharedSensorInstance];
-	//[sharedSensorInstance initializeSensor:self];
-	
+	[sharedSensorInstance initializeSensor:self withContext:self.context];
+    
     [self setupGL];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-	[super viewDidAppear:animated];
-	[sharedSensorInstance connectAndStartStreaming];  // Start structure camera
-    [sharedSensorInstance onStructureSensorStartedStreamingWithContext:self.context];  // Calls InitializeSLAMWithContext
-    //[sharedSensorInstance enterTrackingState]; moved to sensorDidOutputSynchronizedDepthFrame
+    [super viewDidAppear:animated];
 }
 
 - (void)dealloc

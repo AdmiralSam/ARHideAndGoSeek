@@ -84,3 +84,16 @@ void VisibilityGrid::ClosestInvisible(int row, int column, int& invisibleRow, in
         }
     }
 }
+
+void VisibilityGrid::RandomInvisible(int row, int column, int& invisibleRow, int& invisibleColumn)
+{
+    vector<int> invisible;
+    for (int i = 0; i < gridVisibility.size(); i++)
+    {
+        if (!gridVisibility[i])
+        {
+            invisible.push_back(i);
+        }
+    }
+    rowColumnFromIndex(invisible[(int)(random() % invisible.size()
+                                       )], invisibleRow, invisibleColumn);}
