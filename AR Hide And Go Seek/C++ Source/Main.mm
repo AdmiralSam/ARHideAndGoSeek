@@ -45,8 +45,8 @@ void Initialize(float width, float height)
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     textureManager = new TextureManager();
-    sensorManager = new VirtualSensorManager(textureManager, width, height);
-	//sensorManager = new StructureSensorManager(textureManager, width, height);
+    //sensorManager = new VirtualSensorManager(textureManager, width, height);
+	sensorManager = new StructureSensorManager(textureManager, width, height);
 	
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
