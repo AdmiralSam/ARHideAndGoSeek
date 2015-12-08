@@ -62,6 +62,9 @@
 		1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0601C12AD09004BF469 /* CoreMotion.framework */; };
 		1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0621C12AD0F004BF469 /* libz.tbd */; };
 		10D17F511C13F2D100EE20E5 /* VisibilityGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */; };
+		10D17F531C16A17700EE20E5 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
+		10D17F5A1C16C04400EE20E5 /* CameraShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 10D17F581C16C04400EE20E5 /* CameraShader.fsh */; };
+		10D17F5B1C16C04400EE20E5 /* CameraShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 10D17F591C16C04400EE20E5 /* CameraShader.vsh */; };
 		46AFBF491C140B67000D7784 /* TrackerThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46AFBF481C140B67000D7784 /* TrackerThread.mm */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +142,8 @@
 		1040A0621C12AD0F004BF469 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		10D17F4F1C13F2D100EE20E5 /* VisibilityGrid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VisibilityGrid.hpp; sourceTree = "<group>"; };
 		10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VisibilityGrid.mm; sourceTree = "<group>"; };
+		10D17F581C16C04400EE20E5 /* CameraShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = CameraShader.fsh; sourceTree = "<group>"; };
+		10D17F591C16C04400EE20E5 /* CameraShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = CameraShader.vsh; sourceTree = "<group>"; };
 		46AFBF471C140B67000D7784 /* TrackerThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackerThread.h; sourceTree = "<group>"; };
 		46AFBF481C140B67000D7784 /* TrackerThread.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrackerThread.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,6 +254,8 @@
 				03D957991C140E63001C8B64 /* AdvancedMesh.vsh */,
 				038FAE8E1C0EA6DE00575BFD /* BasicMesh.fsh */,
 				038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */,
+				10D17F581C16C04400EE20E5 /* CameraShader.fsh */,
+				10D17F591C16C04400EE20E5 /* CameraShader.vsh */,
 				03F8BF2B1C1032EB001B5833 /* DepthShader.fsh */,
 				03F8BF2C1C1032EB001B5833 /* DepthShader.vsh */,
 				035637C41BFD864600FD45A4 /* PointShader.fsh */,
@@ -346,7 +353,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = WT2GEFA9Q6;
+						DevelopmentTeam = 7RH9U63868;
 					};
 				};
 			};
@@ -388,7 +395,9 @@
 				03A64D561C12FC05000C8673 /* joystickOuter.png in Resources */,
 				10409F111C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg in Resources */,
 				03D957A31C144A31001C8B64 /* skittyTexture.png in Resources */,
+				10D17F5A1C16C04400EE20E5 /* CameraShader.fsh in Resources */,
 				10409F121C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg in Resources */,
+				10D17F5B1C16C04400EE20E5 /* CameraShader.vsh in Resources */,
 				03F8BF2D1C1032EB001B5833 /* DepthShader.fsh in Resources */,
 				03A64D551C12FC05000C8673 /* joystickInner.png in Resources */,
 				035637EC1BFD8C1B00FD45A4 /* PointShader.fsh in Resources */,
@@ -577,11 +586,11 @@
 					Go,
 					Seek,
 				);
-				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
+				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek3";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -631,11 +640,11 @@
 					Go,
 					Seek,
 				);
-				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
+				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek3";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
