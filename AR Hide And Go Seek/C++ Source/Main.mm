@@ -13,6 +13,7 @@
 #include "StructureSensorManager.hpp"
 #include "VisibilityGrid.hpp"
 #include "AdvancedMesh.hpp"
+#include "Animal.hpp"
 
 #include <vector>
 #include <set>
@@ -29,13 +30,13 @@ ShaderProgram* advancedMeshShader;
 
 VisibilityGrid* grid;
 
-AdvancedMesh* test;
+Animal* animal;
 
 int currentRow, currentColumn;
 int targetRow, targetColumn;
 
-float sesTime = 0;
-bool idle = true;
+vector<int> rows;
+vector<int> columns;
 
 void Initialize(float width, float height)
 {
@@ -54,16 +55,7 @@ void Initialize(float width, float height)
     
     grid = new VisibilityGrid(-5.5f, 3.5f, -3.0f, 1.0f, 0.1f, 90, 40);
     
-    currentRow = 55;
-    currentColumn = 30;
-    targetRow = 55;
-    targetColumn = 30;
-    
-    test = new AdvancedMesh("some2.iqe", textureManager);
-    test->PlayAnimation("Idle");
-    test->SetScale(vec3(0.2f, 0.2f, 0.2f));
-    test->SetPosition(vec3(0.0f, 0.05f, 0.0f));
-    test->SetRotation(vec3(0.0f, -pi<float>() / 2.0f, -pi<float>() / 2.0f));
+    animal = new Animal(grid, textureManager);
 }
 
 void Dispose()
@@ -83,8 +75,8 @@ void Draw()
     glUniformMatrix4fv(advancedMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
     glUniformMatrix4fv(advancedMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
     glUniform3f(advancedMeshShader->GetLocation("ambientColor"), 0.25f, 0.25f, 0.25f);
-    glUniform3f(advancedMeshShader->GetLocation("lightColor"), 0.75f, 0.75f, 0.75f);
-    test->Draw(advancedMeshShader);
+    glUniform3f(advancedMeshShader->GetLocation("lightColor"), 1.0f, 1.0f, 1.0f);
+    animal->Draw(advancedMeshShader);
     advancedMeshShader->Finish();
     glEnable(GL_BLEND);
     sensorManager->DrawUI();
@@ -93,40 +85,9 @@ void Draw()
 
 void Update(float deltaTime)
 {
-    sesTime += deltaTime;
-    if(sesTime > 20)
-    {
-        sesTime = 0;
-        idle = !idle;
-        if(idle)
-        {
-            test->PlayAnimation("Idle");
-        }
-        else
-        {
-            test->PlayAnimation("Running");
-        }
-    }
     grid->UpdateVisibility(sensorManager);
-    if(grid->IsVisible(targetRow, targetColumn)){
-        grid->RandomInvisible(currentRow, currentColumn, targetRow, targetColumn);
-    }
-    int columnMovements = abs(targetColumn - currentColumn);
-    int rowMovements = abs(targetRow - currentRow);
-    if(columnMovements > 0 || rowMovements > 0){
-        if(rowMovements > columnMovements) {
-            currentRow += (targetRow - currentRow) / rowMovements;
-        }
-        else
-        {
-            currentColumn += (targetColumn - currentColumn) / columnMovements;
-        }
-        vec3 newPosition = grid->PositionFromRowColumn(currentRow, currentColumn);
-        newPosition.y = 0.05f;
-        test->SetPosition(newPosition);
-    }
     sensorManager->Update(deltaTime);
-    test->Update(deltaTime);
+    animal->Update(deltaTime);
 }
 
 void PanStarted(int x, int y)

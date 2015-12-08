@@ -65,7 +65,7 @@ void VisibilityGrid::ClosestInvisible(int row, int column, int& invisibleRow, in
     while(frontier.size() > 0) {
         int current = frontier.front();
         frontier.pop();
-        if(!gridVisibility[current]) {
+        if(grid[current] && !gridVisibility[current]) {
             rowColumnFromIndex(current, invisibleRow, invisibleColumn);
             return;
         }
@@ -90,10 +90,93 @@ void VisibilityGrid::RandomInvisible(int row, int column, int& invisibleRow, int
     vector<int> invisible;
     for (int i = 0; i < gridVisibility.size(); i++)
     {
-        if (!gridVisibility[i])
+        if (grid[i] && !gridVisibility[i])
         {
             invisible.push_back(i);
         }
     }
     rowColumnFromIndex(invisible[(int)(random() % invisible.size()
-                                       )], invisibleRow, invisibleColumn);}
+                                       )], invisibleRow, invisibleColumn);
+}
+
+void VisibilityGrid::FindPath(int row, int column, int targetRow, int targetColumn, vector<int>& pathRows, vector<int>& pathColumns)
+{
+    int dx[] = {1, 1, 0, -1, -1, -1, 0, 1};
+    int dy[] = {0, -1, -1, -1, 0, 1, 1, 1};
+    set<int> closedSet;
+    set<int> openSet;
+    map<int, int> cameFrom;
+    vector<float> distanceSoFar;
+    vector<float> estimatedDistance;
+    for (int i = 0; i < gridPoints.size(); i++)
+    {
+        distanceSoFar.push_back(1000000);
+        estimatedDistance.push_back(1000000);
+    }
+    openSet.insert(indexFromRowColumn(row, column));
+    distanceSoFar[indexFromRowColumn(row, column)] = 0;
+    estimatedDistance[indexFromRowColumn(row, column)] = distance(PositionFromRowColumn(row, column), PositionFromRowColumn(targetRow, targetColumn));
+    while (openSet.size() > 0)
+    {
+        int lowestF = 1000000;
+        int lowestIndex = 0;
+        for (auto index : openSet)
+        {
+            if (estimatedDistance[index] < lowestF)
+            {
+                lowestF = estimatedDistance[index];
+                lowestIndex = index;
+            }
+        }
+        int lowestRow, lowestColumn;
+        rowColumnFromIndex(lowestIndex, lowestRow, lowestColumn);
+        if (targetRow == lowestRow && targetColumn == lowestColumn)
+        {
+            int pathIndex = lowestIndex;
+            while (pathIndex != -1)
+            {
+                int pathRow, pathColumn;
+                rowColumnFromIndex(pathIndex, pathRow, pathColumn);
+                pathRows.push_back(pathRow);
+                pathColumns.push_back(pathColumn);
+                if (cameFrom.find(pathIndex) != cameFrom.end())
+                {
+                    pathIndex = cameFrom[pathIndex];
+                }
+                else
+                {
+                    pathIndex = -1;
+                }
+            }
+            return;
+        }
+        openSet.erase(lowestIndex);
+        closedSet.insert(lowestIndex);
+        for (int i = 0; i < 8; i++)
+        {
+            int neighborRow = lowestRow + dy[i];
+            int neighborColumn = lowestColumn + dx[i];
+            int neighborIndex = indexFromRowColumn(neighborRow, neighborColumn);
+            if (neighborRow >= 0 && neighborRow < numberOfRows && neighborColumn >= 0 && neighborColumn <= numberOfColumns)
+            {
+                if (closedSet.find(neighborIndex) == closedSet.end())
+                {
+                    float tentativeDistance = distanceSoFar[lowestIndex] + distance(gridPoints[lowestIndex], gridPoints[neighborIndex]);
+                    if (openSet.find(neighborIndex) == openSet.end())
+                    {
+                        openSet.insert(neighborIndex);
+                        cameFrom[neighborIndex] = lowestIndex;
+                        distanceSoFar[neighborIndex] = tentativeDistance;
+                        estimatedDistance[neighborIndex] = tentativeDistance + distance(gridPoints[neighborIndex], PositionFromRowColumn(targetRow, targetColumn));
+                    }
+                    else if (tentativeDistance < distanceSoFar[neighborIndex])
+                    {
+                        cameFrom[neighborIndex] = lowestIndex;
+                        distanceSoFar[neighborIndex] = tentativeDistance;
+                        estimatedDistance[neighborIndex] = tentativeDistance + distance(gridPoints[neighborIndex], PositionFromRowColumn(targetRow, targetColumn));
+                    }
+                }
+            }
+        }
+    }
+}

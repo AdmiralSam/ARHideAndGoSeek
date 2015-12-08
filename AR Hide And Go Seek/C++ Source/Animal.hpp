@@ -8,7 +8,21 @@
 
 #pragma once
 
+#include "AdvancedMesh.hpp"
+#include "VisibilityGrid.hpp"
+
 class Animal
 {
+public:
+    Animal(VisibilityGrid* grid, TextureManager* manager);
+    ~Animal();
     
+    void Draw(ShaderProgram* program);
+    void Update(float deltaTime);
+private:
+    AdvancedMesh* mesh;
+    VisibilityGrid* visibilityGrid;
+    int targetRow, targetColumn;
+    int currentRow, currentColumn;
+    std::vector<int> pathRows, pathColumns;
 };

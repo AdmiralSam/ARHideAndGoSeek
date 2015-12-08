@@ -37,6 +37,8 @@ private:
     glm::vec3 rotation;
     glm::vec3 scale;
     
+    glm::mat4 blenderToGL;
+    
     GLuint positionBufferID;
     GLuint uvBufferID;
     GLuint normalBufferID;

@@ -67,6 +67,8 @@ AdvancedMesh::AdvancedMesh(string filename, TextureManager* manager)
     position = vec3();
     rotation = vec3();
     scale = vec3(1, 1, 1);
+    blenderToGL = rotate(mat4(), -pi<float>() / 2, vec3(0, 0, 1));
+    blenderToGL = rotate(blenderToGL, -pi<float>() / 2, vec3(0, 1, 0));
     
     currentAnimation = "";
 }
@@ -155,7 +157,7 @@ mat4 AdvancedMesh::GetModelMatrix()
     modelMatrix = rotate(modelMatrix, rotation[0], vec3(1, 0, 0));
     modelMatrix = rotate(modelMatrix, rotation[1], vec3(0, 1, 0));
     modelMatrix = glm::scale(modelMatrix, scale);
-    return modelMatrix;
+    return modelMatrix * blenderToGL;
 }
 
 void AdvancedMesh::LoadMesh(string filename, TextureManager* manager, vector<float>& positionArray, vector<float>& uvArray, vector<float>& normalArray, vector<unsigned int>& indexArray, vector<int>& bone1Array, vector<int>& bone2Array, vector<int>& bone3Array, vector<int>& bone4Array, vector<float>& weight1Array, vector<float>& weight2Array, vector<float>& weight3Array, vector<float>& weight4Array)

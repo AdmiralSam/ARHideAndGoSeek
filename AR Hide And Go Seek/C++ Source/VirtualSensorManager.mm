@@ -35,7 +35,7 @@ VirtualSensorManager::VirtualSensorManager(TextureManager* manager, int screenWi
     depthShader = new ShaderProgram("DepthShader", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     depthBuffer = (unsigned char*)malloc(sizeof(unsigned char) * 4 * width * height);
     
-    position = vec3(0.0f, 1.0f, 0.0f);
+    position = vec3(0.0f, 1.65f, 0.0f);
     yawAngle = 0.0f;
     pitchAngle = 0.0f;
     
