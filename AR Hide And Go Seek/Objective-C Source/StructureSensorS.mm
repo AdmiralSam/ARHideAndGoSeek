@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Structure/StructureSLAM.h>
 #import "StructureSensorS.h"
+#import <OpenGLES/ES3/glext.h>
+//#import <OpenGLES/ES2/glext.h>
 
 @interface StructureSensorS () <AVCaptureVideoDataOutputSampleBufferDelegate>
 {
@@ -35,6 +37,15 @@
     AVCaptureSession *captureSession;
     
     int badPoseCnt;
+	
+	
+	//CGFloat screenWidth;
+	//CGFloat screenHeight;
+	//size_t textureWidth;
+	//size_t textureHeight;
+	CVOpenGLESTextureCacheRef videoTextureCache;
+	CVOpenGLESTextureRef lumaTexture;
+	CVOpenGLESTextureRef chromaTexture;
 }
 
 - (void)printMessage:(NSString *)message;
@@ -92,6 +103,8 @@
     pose = GLKMatrix4MakeTranslation(0.0f, -1.5f, 0.0f);
     tracker.initialCameraPose = pose;
     ready = false;
+	
+	CVReturn err = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, context, NULL, &videoTextureCache);
 }
 
 - (BOOL) connectAndStartStreaming
@@ -196,8 +209,7 @@
                                 andColorFrame:(STColorFrame *)colorFrame
 {
     NSLog(@"begin - sensorDidOutputSynchronizedDepthFrame:");
-    
-    
+	
     //[self printMessage:@"Synchronized Depth Frame"];
     if (!ready)
     {
@@ -236,6 +248,66 @@
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
+	if (lumaTexture)
+	{
+		CFRelease(lumaTexture);
+		lumaTexture = NULL;
+	}
+	
+	if (chromaTexture)
+	{
+		CFRelease(chromaTexture);
+		chromaTexture = NULL;
+	}
+	
+	// Periodic texture cache flush every frame
+	CVOpenGLESTextureCacheFlush(videoTextureCache, 0);
+	
+	
+	CVReturn err;
+	CVImageBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+	size_t width = CVPixelBufferGetWidth(pixelBuffer);
+	size_t height = CVPixelBufferGetHeight(pixelBuffer);
+	
+	err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+													   videoTextureCache,
+													   pixelBuffer,
+													   NULL,
+													   GL_TEXTURE_2D,
+													   GL_LUMINANCE,
+													   (int)width,
+													   (int)height,
+													   GL_LUMINANCE,
+													   GL_UNSIGNED_BYTE,
+													   0,
+													   &lumaTexture);
+	
+	glBindTexture(CVOpenGLESTextureGetTarget(lumaTexture), CVOpenGLESTextureGetName(lumaTexture));
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	//glActiveTexture(GL_TEXTURE1);
+	
+	err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+													   videoTextureCache,
+													   pixelBuffer,
+													   NULL,
+													   GL_TEXTURE_2D,
+													   GL_LUMINANCE_ALPHA,
+													   (int)width/2,
+													   (int)height/2,
+													   GL_LUMINANCE_ALPHA,
+													   GL_UNSIGNED_BYTE,
+													   1,
+													   &chromaTexture);
+	
+	glBindTexture(CVOpenGLESTextureGetTarget(chromaTexture), CVOpenGLESTextureGetName(chromaTexture));
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	
     [sensorController frameSyncNewColorBuffer:sampleBuffer];
 }
 
@@ -243,18 +315,20 @@
 {
     captureSession = [[AVCaptureSession alloc] init];
     [captureSession beginConfiguration];
+	//[captureSession setSessionPreset:AVCaptureSessionPresetHigh];
+
     [captureSession setSessionPreset:AVCaptureSessionPreset640x480];
     
     AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     if([captureDevice lockForConfiguration:nil])
     {
-        if([captureDevice isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure])
+        if([captureDevice isExposureModeSupported:AVCaptureExposureModeAutoExpose])
         {
-            [captureDevice setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
+            [captureDevice setExposureMode:AVCaptureExposureModeAutoExpose];
         }
-        if([captureDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance])
+        if([captureDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance])
         {
-            [captureDevice setWhiteBalanceMode:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance];
+            [captureDevice setWhiteBalanceMode:AVCaptureWhiteBalanceModeAutoWhiteBalance];
         }
         
         [captureDevice setFocusModeLockedWithLensPosition:0.75f completionHandler:nil];
@@ -334,4 +408,39 @@
     }
 }
 
+- (GLuint)getLumaTextureID
+{
+	return CVOpenGLESTextureGetName(lumaTexture);
+}
+
+- (GLuint)getChromaTextureID
+{
+	return CVOpenGLESTextureGetName(chromaTexture);
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

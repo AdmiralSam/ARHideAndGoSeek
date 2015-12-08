@@ -23,5 +23,7 @@
 - (void) initializeSensor: (GLKViewController *)controller withContext: (EAGLContext*) context;
 - (BOOL) connectAndStartStreaming;
 - (GLKMatrix4) getPose;
+- (GLuint)getLumaTextureID;
+- (GLuint)getChromaTextureID;
 
 @end
