@@ -33,6 +33,8 @@
     BOOL ready;
     
     AVCaptureSession *captureSession;
+    
+    int badPoseCnt;
 }
 
 - (void)printMessage:(NSString *)message;
@@ -60,6 +62,8 @@
     {
         
     }
+    
+    badPoseCnt = 0;
     
     return self;
 }
@@ -210,11 +214,16 @@
         if ([tracker updateCameraPoseWithDepthFrame:depthFrame colorFrame:colorFrame error:nil])
         {
             pose = tracker.lastFrameCameraPose;
+            badPoseCnt = 0;
         }
         else
         {
-            [tracker reset];
-            tracker.initialCameraPose = pose;
+            badPoseCnt++;
+            if (badPoseCnt > 5) {
+                [tracker reset];
+                tracker.initialCameraPose = pose;
+                badPoseCnt = 0;
+            }
         }
     }
     

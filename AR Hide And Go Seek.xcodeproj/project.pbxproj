@@ -346,7 +346,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = WT2GEFA9Q6;
+						DevelopmentTeam = 7V27N27SQ2;
 					};
 				};
 			};
@@ -571,7 +571,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-SeekS";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -615,7 +615,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-SeekS";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

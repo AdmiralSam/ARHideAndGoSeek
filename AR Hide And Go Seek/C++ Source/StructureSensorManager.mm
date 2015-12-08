@@ -10,6 +10,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 #include "StructureSensorS.h"
+#include <GLKit/GLKit.h>
 
 using namespace glm;
 
@@ -57,6 +58,7 @@ mat4 StructureSensorManager::GetProjectionMatrix()
 mat4 StructureSensorManager::GetViewMatrix()
 {
     GLKMatrix4 view = [[StructureSensorS sharedSensorInstance] getPose];
+    
     mat4 glView;
     for (int i = 0; i < 4; i++)
     {
@@ -65,6 +67,14 @@ mat4 StructureSensorManager::GetViewMatrix()
             glView[i][j] = view.m[4 * i + j];
         }
     }
+    /*mat4 flipY = scale(mat4(), vec3(1.0f, -1.0f, -1.0f));
+    mat4 swapXandZ = mat4();
+    swapXandZ[0][0] = 0;
+    swapXandZ[0][1] = 1;
+    swapXandZ[1][0] = 1;
+    swapXandZ[1][1] = 0;
+    return swapXandZ * flipY * glView;*/
+    
     return glView;
 }
 
