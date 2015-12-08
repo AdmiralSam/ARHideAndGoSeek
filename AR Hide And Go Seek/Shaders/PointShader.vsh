@@ -1,5 +1,5 @@
 //
-//  DepthShader.vsh
+//  PointShader.vsh
 //  AR Hide And Go Seek
 //
 //  Created by Samuel Dong on 11/18/15.
@@ -9,9 +9,9 @@
 #version 300 es
 
 in vec4 position;
-in vec2 uv;
+in int visible;
 
-out vec4 vertexPosition;
+out vec4 color;
 
 uniform mat4 projection;
 uniform mat4 view;
@@ -19,7 +19,14 @@ uniform mat4 model;
 
 void main()
 {
-    vec2 temp = uv;
+    if (visible == 1)
+    {
+        color = vec4(0.0, 1.0, 0.0, 1.0);
+    }
+    else
+    {
+        color = vec4(1.0, 0.0, 0.0, 1.0);
+    }
     gl_Position = projection * view * model * position;
-    vertexPosition = gl_Position;
+    gl_PointSize = 2.0;
 }

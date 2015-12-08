@@ -25,4 +25,5 @@ private:
     int targetRow, targetColumn;
     int currentRow, currentColumn;
     std::vector<int> pathRows, pathColumns;
+    bool idle;
 };

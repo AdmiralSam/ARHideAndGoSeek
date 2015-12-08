@@ -21,6 +21,7 @@ Animal::Animal(VisibilityGrid* grid, TextureManager* manager)
     currentColumn = 30;
     targetRow = 55;
     targetColumn = 30;
+    idle = true;
 }
 
 Animal::~Animal()
@@ -35,28 +36,36 @@ void Animal::Draw(ShaderProgram* program)
 
 void Animal::Update(float deltaTime)
 {
+    mesh->Update(deltaTime);
     if(visibilityGrid->IsVisible(targetRow, targetColumn)){
         visibilityGrid->ClosestInvisible(currentRow, currentColumn, targetRow, targetColumn);
         pathRows.clear();
         pathColumns.clear();
         visibilityGrid->FindPath(currentRow, currentColumn, targetRow, targetColumn, pathRows, pathColumns);
-        mesh->PlayAnimation("Running");
+        pathRows.pop_back();
+        pathColumns.pop_back();
+        if (idle)
+        {
+            idle = false;
+            mesh->PlayAnimation("Running");
+        }
     }
     if(pathRows.size() > 0){
+        vec3 oldPosition = visibilityGrid->PositionFromRowColumn(currentRow, currentColumn);
         vec3 newPosition = visibilityGrid->PositionFromRowColumn(pathRows.back(), pathColumns.back());
-        vec3 destination = visibilityGrid->PositionFromRowColumn(targetRow, targetColumn);
         currentRow = pathRows.back();
         currentColumn = pathColumns.back();
         pathRows.pop_back();
         pathColumns.pop_back();
         if (pathRows.size() == 0)
         {
-            mesh->PlayAnimation("Idle");
+            if (!idle)
+            {
+                idle = true;
+                mesh->PlayAnimation("Idle");
+            }
         }
-        else
-        {
-            mesh->SetRotation(vec3(0.0f, atan(newPosition.z - destination.z, destination.x - newPosition.x), 0.0f));
-        }
+        mesh->SetRotation(vec3(0.0f, atan(oldPosition.z - newPosition.z, newPosition.x - oldPosition.x), 0.0f));
         newPosition.y = 0.05f;
         mesh->SetPosition(newPosition);
     }

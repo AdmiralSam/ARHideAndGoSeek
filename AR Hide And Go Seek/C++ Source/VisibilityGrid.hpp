@@ -19,6 +19,7 @@ public:
     VisibilityGrid(float minX, float maxX, float minZ, float maxZ, float y, int xPoints, int zPoints);
     ~VisibilityGrid();
     
+    void Draw(ShaderProgram* program);
     void UpdateVisibility(SensorManager* manager);
     
     glm::vec3 PositionFromRowColumn(int row, int column);
@@ -32,7 +33,10 @@ private:
     int numberOfRows, numberOfColumns;
     bool* grid;
     std::vector<glm::vec3> gridPoints;
-    std::vector<bool> gridVisibility;
+    std::vector<int> gridVisibility;
+    
+    GLuint positionBufferID;
+    GLuint visibleBufferID;
     
     inline int indexFromRowColumn(int row, int column)
     {

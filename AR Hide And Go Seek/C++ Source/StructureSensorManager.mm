@@ -78,7 +78,7 @@ mat4 StructureSensorManager::GetViewMatrix()
     return glView;
 }
 
-void StructureSensorManager::CheckVisibility(std::vector<glm::vec3>& points, std::vector<bool>& visibility)
+void StructureSensorManager::CheckVisibility(std::vector<glm::vec3>& points, std::vector<int>& visibility)
 {
 	
 }

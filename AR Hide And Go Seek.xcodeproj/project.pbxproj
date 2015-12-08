@@ -12,11 +12,11 @@
 		035637C01BFD864600FD45A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637BF1BFD864600FD45A4 /* main.m */; };
 		035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637C21BFD864600FD45A4 /* AppDelegate.m */; };
 		035637CA1BFD864600FD45A4 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 035637C91BFD864600FD45A4 /* GameViewController.mm */; };
-		035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C41BFD864600FD45A4 /* Shader.fsh */; };
-		035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C61BFD864600FD45A4 /* Shader.vsh */; };
+		035637EC1BFD8C1B00FD45A4 /* PointShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C41BFD864600FD45A4 /* PointShader.fsh */; };
+		035637ED1BFD8C1B00FD45A4 /* PointShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C61BFD864600FD45A4 /* PointShader.vsh */; };
 		035637EE1BFD903800FD45A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E51BFD8BAC00FD45A4 /* LaunchScreen.storyboard */; };
 		035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E71BFD8BAC00FD45A4 /* Main.storyboard */; };
-		0397F8721C169B5B006F9986 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
+		0397F8731C16ABE8006F9986 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
 		03A490161C16518A00377FFC /* Animal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A490141C16518A00377FFC /* Animal.mm */; };
 		03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4A1C1285BB000C8673 /* SensorManager.mm */; };
 		03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */; };
@@ -72,8 +72,8 @@
 		035637BF1BFD864600FD45A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		035637C11BFD864600FD45A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		035637C21BFD864600FD45A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		035637C41BFD864600FD45A4 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
-		035637C61BFD864600FD45A4 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		035637C41BFD864600FD45A4 /* PointShader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PointShader.fsh; sourceTree = "<group>"; };
+		035637C61BFD864600FD45A4 /* PointShader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PointShader.vsh; sourceTree = "<group>"; };
 		035637C81BFD864600FD45A4 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		035637C91BFD864600FD45A4 /* GameViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
 		035637CE1BFD864600FD45A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0397F8721C169B5B006F9986 /* Structure.framework in Frameworks */,
+				0397F8731C16ABE8006F9986 /* Structure.framework in Frameworks */,
 				1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */,
 				1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */,
 				1040A05F1C12AD04004BF469 /* QuartzCore.framework in Frameworks */,
@@ -251,8 +251,8 @@
 				038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */,
 				03F8BF2B1C1032EB001B5833 /* DepthShader.fsh */,
 				03F8BF2C1C1032EB001B5833 /* DepthShader.vsh */,
-				035637C41BFD864600FD45A4 /* Shader.fsh */,
-				035637C61BFD864600FD45A4 /* Shader.vsh */,
+				035637C41BFD864600FD45A4 /* PointShader.fsh */,
+				035637C61BFD864600FD45A4 /* PointShader.vsh */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -391,8 +391,8 @@
 				10409F121C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg in Resources */,
 				03F8BF2D1C1032EB001B5833 /* DepthShader.fsh in Resources */,
 				03A64D551C12FC05000C8673 /* joystickInner.png in Resources */,
-				035637EC1BFD8C1B00FD45A4 /* Shader.fsh in Resources */,
-				035637ED1BFD8C1B00FD45A4 /* Shader.vsh in Resources */,
+				035637EC1BFD8C1B00FD45A4 /* PointShader.fsh in Resources */,
+				035637ED1BFD8C1B00FD45A4 /* PointShader.vsh in Resources */,
 				10409F141C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg in Resources */,
 				10409F181C0EC9C7004BF469 /* BasicMesh.vsh in Resources */,
 				03D9579B1C140E63001C8B64 /* AdvancedMesh.vsh in Resources */,
@@ -571,6 +571,11 @@
 					And,
 					Go,
 					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
 				);
 				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
@@ -590,6 +595,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
 					"$(PROJECT_DIR)/AR",
 					Hide,
 					And,

@@ -27,6 +27,7 @@ SensorManager* sensorManager;
 
 ShaderProgram* basicMeshShader;
 ShaderProgram* advancedMeshShader;
+ShaderProgram* pointShader;
 
 VisibilityGrid* grid;
 
@@ -53,7 +54,9 @@ void Initialize(float width, float height)
     
     advancedMeshShader = new ShaderProgram("AdvancedMesh", {"position", "uv", "normal", "bone1Index", "bone2Index", "bone3Index", "bone4Index", "weight1", "weight2", "weight3", "weight4"}, {"projection", "view", "model", "bind", "pose", "uvMap", "ambientColor", "lightColor"});
     
-    grid = new VisibilityGrid(-5.5f, 3.5f, -3.0f, 1.0f, 0.1f, 90, 40);
+    pointShader = new ShaderProgram("Shader", {"position", "visible"}, {"projection", "view", "model"});
+    
+    grid = new VisibilityGrid(-5.4f, 3.4f, -2.9f, 0.9f, 0.1f, 90, 40);
     
     animal = new Animal(grid, textureManager);
 }
@@ -78,6 +81,13 @@ void Draw()
     glUniform3f(advancedMeshShader->GetLocation("lightColor"), 1.0f, 1.0f, 1.0f);
     animal->Draw(advancedMeshShader);
     advancedMeshShader->Finish();
+    glDisable(GL_DEPTH_TEST);
+    pointShader->Use();
+    glUniformMatrix4fv(pointShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
+    glUniformMatrix4fv(pointShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
+    grid->Draw(pointShader);
+    pointShader->Finish();
+    glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     sensorManager->DrawUI();
     glDisable(GL_BLEND);

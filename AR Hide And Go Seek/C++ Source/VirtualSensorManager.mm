@@ -106,7 +106,7 @@ mat4 VirtualSensorManager::GetViewMatrix()
     return inverse(cameraMatrix);
 }
 
-void VirtualSensorManager::CheckVisibility(vector<vec3>& points, vector<bool>& visibility)
+void VirtualSensorManager::CheckVisibility(vector<vec3>& points, vector<int>& visibility)
 {
     mat4 projectionMatrix = GetProjectionMatrix();
     mat4 viewMatrix = GetViewMatrix();
@@ -119,11 +119,11 @@ void VirtualSensorManager::CheckVisibility(vector<vec3>& points, vector<bool>& v
             int row = (int)((transformedPoint.y + 1) / 2 * height);
             int column = (int)((transformedPoint.x + 1) / 2 * width);
             float depth = depthBuffer[4 * (row * width + column)] / 255.0f;
-            visibility[i] = depth > transformedPoint.z;
+            visibility[i] = (depth > transformedPoint.z * 0.99f) ? 1 : 0;
         }
         else
         {
-            visibility[i] = false;
+            visibility[i] = 0;
         }
     }
 }

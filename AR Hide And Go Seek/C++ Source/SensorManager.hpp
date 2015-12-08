@@ -26,7 +26,7 @@ public:
     virtual glm::mat4 GetProjectionMatrix() = 0;
     virtual glm::mat4 GetViewMatrix() = 0;
     
-    virtual void CheckVisibility(std::vector<glm::vec3>& points, std::vector<bool>& visibility) = 0;
+    virtual void CheckVisibility(std::vector<glm::vec3>& points, std::vector<int>& visibility) = 0;
     
     virtual void PanStarted(int x, int y) = 0;
     virtual void PanMoved(int deltaX, int deltaY) = 0;

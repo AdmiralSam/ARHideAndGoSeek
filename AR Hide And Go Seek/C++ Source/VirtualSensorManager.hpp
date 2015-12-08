@@ -27,7 +27,7 @@ public:
     glm::mat4 GetProjectionMatrix() override;
     glm::mat4 GetViewMatrix() override;
     
-    void CheckVisibility(std::vector<glm::vec3>& points, std::vector<bool>& visibility) override;
+    void CheckVisibility(std::vector<glm::vec3>& points, std::vector<int>& visibility) override;
     
     void PanStarted(int x, int y) override;
     void PanMoved(int deltaX, int deltaY) override;

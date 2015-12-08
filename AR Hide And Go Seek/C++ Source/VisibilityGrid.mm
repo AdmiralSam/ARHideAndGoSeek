@@ -7,6 +7,7 @@
 //
 
 #include "VisibilityGrid.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 #include <set>
 #include <queue>
@@ -16,6 +17,7 @@ using namespace glm;
 
 VisibilityGrid::VisibilityGrid(float minX, float maxX, float minZ, float maxZ, float y, int xPoints, int zPoints)
 {
+    vector<float> positionArray;
     grid = (bool*)malloc(sizeof(bool) * xPoints * zPoints);
     for (int i = 0; i < xPoints; i++)
     {
@@ -24,11 +26,34 @@ VisibilityGrid::VisibilityGrid(float minX, float maxX, float minZ, float maxZ, f
         {
             float z = minZ + j * (maxZ - minZ) / (zPoints - 1);
             gridPoints.emplace_back(x, y, z);
-            gridVisibility.push_back(false);
+            positionArray.push_back(x);
+            positionArray.push_back(y);
+            positionArray.push_back(z);
+            positionArray.push_back(1.0f);
+            gridVisibility.push_back(0);
+            if (x >= 2.95f && x <= 3.45f && z >= 0.44f && z <= 0.99f)
+            {
+                grid[i * zPoints + j] = false; //Desk in corner
+            }
+            else if(x >= 2.365f && x <= 3.45f && z >= -1.6895 && z <= -0.945)
+            {
+                grid[i * zPoints + j] = false; //Podium
+            }
+            else
+            {
+                grid[i * zPoints + j] = true;
+            }
         }
     }
     numberOfRows = xPoints;
     numberOfColumns = zPoints;
+    
+    glGenBuffers(1, &positionBufferID);
+    glGenBuffers(1, &visibleBufferID);
+    glBindBuffer(GL_ARRAY_BUFFER, positionBufferID);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * positionArray.size(), &positionArray[0], GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, visibleBufferID);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(int) * gridVisibility.size(), &gridVisibility[0], GL_DYNAMIC_DRAW);
 }
 
 VisibilityGrid::~VisibilityGrid()
@@ -36,9 +61,21 @@ VisibilityGrid::~VisibilityGrid()
     delete grid;
 }
 
+void VisibilityGrid::Draw(ShaderProgram* program)
+{
+    glUniformMatrix4fv(program->GetLocation("model"), 1, GL_FALSE, value_ptr(mat4()));
+    glBindBuffer(GL_ARRAY_BUFFER, positionBufferID);
+    glVertexAttribPointer(program->GetLocation("position"), 4, GL_FLOAT, GL_FALSE, 0, NULL);
+    glBindBuffer(GL_ARRAY_BUFFER, visibleBufferID);
+    glVertexAttribPointer(program->GetLocation("visible"), 1, GL_INT, GL_FALSE, 0, NULL);
+    glDrawArrays(GL_POINTS, 0, numberOfRows * numberOfColumns);
+}
+
 void VisibilityGrid::UpdateVisibility(SensorManager* manager)
 {
     manager->CheckVisibility(gridPoints, gridVisibility);
+    glBindBuffer(GL_ARRAY_BUFFER, visibleBufferID);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(int) * gridVisibility.size(), &gridVisibility[0], GL_DYNAMIC_DRAW);
 }
 
 vec3 VisibilityGrid::PositionFromRowColumn(int row, int column)
@@ -52,7 +89,7 @@ bool VisibilityGrid::IsVisible(int row, int column)
     {
         return true;
     }
-    return gridVisibility[indexFromRowColumn(row, column)];
+    return gridVisibility[indexFromRowColumn(row, column)] == 1;
 }
 
 void VisibilityGrid::ClosestInvisible(int row, int column, int& invisibleRow, int& invisibleColumn)
@@ -65,11 +102,11 @@ void VisibilityGrid::ClosestInvisible(int row, int column, int& invisibleRow, in
     while(frontier.size() > 0) {
         int current = frontier.front();
         frontier.pop();
-        if(grid[current] && !gridVisibility[current]) {
+        if(grid[current] && gridVisibility[current] == 0) {
             rowColumnFromIndex(current, invisibleRow, invisibleColumn);
             return;
         }
-        if (lookedAt.find(current) != lookedAt.end()) {
+        if (lookedAt.find(current) != lookedAt.end() || !grid[current]) {
             continue;
         }
         lookedAt.insert(current);
@@ -90,7 +127,7 @@ void VisibilityGrid::RandomInvisible(int row, int column, int& invisibleRow, int
     vector<int> invisible;
     for (int i = 0; i < gridVisibility.size(); i++)
     {
-        if (grid[i] && !gridVisibility[i])
+        if (grid[i] && gridVisibility[i] == 0)
         {
             invisible.push_back(i);
         }
@@ -159,7 +196,7 @@ void VisibilityGrid::FindPath(int row, int column, int targetRow, int targetColu
             int neighborIndex = indexFromRowColumn(neighborRow, neighborColumn);
             if (neighborRow >= 0 && neighborRow < numberOfRows && neighborColumn >= 0 && neighborColumn <= numberOfColumns)
             {
-                if (closedSet.find(neighborIndex) == closedSet.end())
+                if (closedSet.find(neighborIndex) == closedSet.end() && grid[neighborIndex])
                 {
                     float tentativeDistance = distanceSoFar[lowestIndex] + distance(gridPoints[lowestIndex], gridPoints[neighborIndex]);
                     if (openSet.find(neighborIndex) == openSet.end())

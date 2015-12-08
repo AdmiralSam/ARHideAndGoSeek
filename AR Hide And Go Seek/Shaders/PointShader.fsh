@@ -1,5 +1,5 @@
 //
-//  Shader.vsh
+//  PointShader.fsh
 //  AR Hide And Go Seek
 //
 //  Created by Samuel Dong on 11/18/15.
@@ -8,13 +8,11 @@
 
 #version 300 es
 
-in vec4 position;
+in lowp vec4 color;
 
-uniform mat4 projection;
-uniform mat4 view;
-uniform mat4 model;
+out lowp vec4 fragmentColor;
 
 void main()
 {
-    gl_Position = projection * view * model * position;
+    fragmentColor = color;
 }
