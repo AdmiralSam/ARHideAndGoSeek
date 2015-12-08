@@ -54,7 +54,7 @@ void Initialize(float width, float height)
     
     advancedMeshShader = new ShaderProgram("AdvancedMesh", {"position", "uv", "normal", "bone1Index", "bone2Index", "bone3Index", "bone4Index", "weight1", "weight2", "weight3", "weight4"}, {"projection", "view", "model", "bind", "pose", "uvMap", "ambientColor", "lightColor"});
     
-    pointShader = new ShaderProgram("Shader", {"position", "visible"}, {"projection", "view", "model"});
+    pointShader = new ShaderProgram("PointShader", {"position", "visible"}, {"projection", "view", "model"});
     
     grid = new VisibilityGrid(-5.4f, 3.4f, -2.9f, 0.9f, 0.1f, 90, 40);
     

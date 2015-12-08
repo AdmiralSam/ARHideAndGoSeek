@@ -16,7 +16,7 @@
 		035637ED1BFD8C1B00FD45A4 /* PointShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 035637C61BFD864600FD45A4 /* PointShader.vsh */; };
 		035637EE1BFD903800FD45A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E51BFD8BAC00FD45A4 /* LaunchScreen.storyboard */; };
 		035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035637E71BFD8BAC00FD45A4 /* Main.storyboard */; };
-		0397F8731C16ABE8006F9986 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
+		0397F8741C16CCFB006F9986 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
 		03A490161C16518A00377FFC /* Animal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A490141C16518A00377FFC /* Animal.mm */; };
 		03A64D4C1C1285BB000C8673 /* SensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4A1C1285BB000C8673 /* SensorManager.mm */; };
 		03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */; };
@@ -62,7 +62,6 @@
 		1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0601C12AD09004BF469 /* CoreMotion.framework */; };
 		1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A0621C12AD0F004BF469 /* libz.tbd */; };
 		10D17F511C13F2D100EE20E5 /* VisibilityGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */; };
-		10D17F531C16A17700EE20E5 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
 		10D17F5A1C16C04400EE20E5 /* CameraShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 10D17F581C16C04400EE20E5 /* CameraShader.fsh */; };
 		10D17F5B1C16C04400EE20E5 /* CameraShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 10D17F591C16C04400EE20E5 /* CameraShader.vsh */; };
 		46AFBF491C140B67000D7784 /* TrackerThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46AFBF481C140B67000D7784 /* TrackerThread.mm */; };
@@ -153,7 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0397F8731C16ABE8006F9986 /* Structure.framework in Frameworks */,
+				0397F8741C16CCFB006F9986 /* Structure.framework in Frameworks */,
 				1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */,
 				1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */,
 				1040A05F1C12AD04004BF469 /* QuartzCore.framework in Frameworks */,
@@ -353,7 +352,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 7RH9U63868;
+						DevelopmentTeam = WT2GEFA9Q6;
 					};
 				};
 			};
@@ -585,8 +584,13 @@
 					And,
 					Go,
 					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
 				);
-				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
+				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -639,8 +643,13 @@
 					And,
 					Go,
 					Seek,
+					"$(PROJECT_DIR)/AR",
+					Hide,
+					And,
+					Go,
+					Seek,
 				);
-				HEADER_SEARCH_PATHS = /Users/NatalyMoreno/Documents/Code/Libraries/glm;
+				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
