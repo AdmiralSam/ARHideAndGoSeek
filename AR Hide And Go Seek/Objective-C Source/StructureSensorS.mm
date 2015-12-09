@@ -105,7 +105,7 @@
     ready = false;
     
     glGenTextures(1, &(depthTextureID));
-	CVReturn err = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, context, NULL, &videoTextureCache);
+	CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, context, NULL, &videoTextureCache);
 }
 
 - (BOOL) connectAndStartStreaming
@@ -154,7 +154,7 @@
     }
     
     
-    [self printMessage:temp];
+    //[self printMessage:temp];
     
     [self setupColorCamera];
     [self startColorCamera];

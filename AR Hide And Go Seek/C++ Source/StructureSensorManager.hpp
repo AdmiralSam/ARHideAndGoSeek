@@ -42,6 +42,14 @@ private:
 	ShaderProgram* cameraShader;
     ShaderProgram *depthBufferShader;
     BasicMesh* roomModel;
+    
+    bool debug;
+    bool freezeDepth;
+    GLuint debugButtonTrueID, debugButtonFalseID, freezeButtonTrueID, freezeButtonFalseID;
+    glm::vec2 debugLocation;
+    glm::vec2 freezeLocation;
 	
 	GLuint verticesID, uvsID, indexListID;
+    
+    void DrawImage(int x, int y, int drawWidth, int drawHeight, GLuint textureID);
 };

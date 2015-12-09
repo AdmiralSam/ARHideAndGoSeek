@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0336BD311C116BA200E126BB /* light blue cube.png in Resources */ = {isa = PBXBuildFile; fileRef = 0336BD2F1C116BA200E126BB /* light blue cube.png */; };
-		0336BD321C116BA200E126BB /* light blue.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0336BD301C116BA200E126BB /* light blue.obj */; };
+		0353F1E61C180F4200B56A57 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
+		0353F1EB1C1811CA00B56A57 /* unfreeze.png in Resources */ = {isa = PBXBuildFile; fileRef = 0353F1E71C1811CA00B56A57 /* unfreeze.png */; };
+		0353F1EC1C1811CA00B56A57 /* showGrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 0353F1E81C1811CA00B56A57 /* showGrid.png */; };
+		0353F1ED1C1811CA00B56A57 /* hideGrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 0353F1E91C1811CA00B56A57 /* hideGrid.png */; };
+		0353F1EE1C1811CA00B56A57 /* freeze.png in Resources */ = {isa = PBXBuildFile; fileRef = 0353F1EA1C1811CA00B56A57 /* freeze.png */; };
 		035637C01BFD864600FD45A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637BF1BFD864600FD45A4 /* main.m */; };
 		035637C31BFD864600FD45A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 035637C21BFD864600FD45A4 /* AppDelegate.m */; };
 		035637CA1BFD864600FD45A4 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 035637C91BFD864600FD45A4 /* GameViewController.mm */; };
@@ -21,14 +24,10 @@
 		03A64D4F1C128779000C8673 /* VirtualSensorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03A64D4D1C128779000C8673 /* VirtualSensorManager.mm */; };
 		03A64D551C12FC05000C8673 /* joystickInner.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D531C12FC05000C8673 /* joystickInner.png */; };
 		03A64D561C12FC05000C8673 /* joystickOuter.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A64D541C12FC05000C8673 /* joystickOuter.png */; };
-		03A884891C18065E002012EF /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1040A04B1C12AC96004BF469 /* Structure.framework */; };
-		03B713831C15594100F90CF7 /* some2.iqe in Resources */ = {isa = PBXBuildFile; fileRef = 03B713821C15594100F90CF7 /* some2.iqe */; };
 		03D957961C13F0D0001C8B64 /* AdvancedMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */; };
 		03D9579A1C140E63001C8B64 /* AdvancedMesh.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 03D957981C140E63001C8B64 /* AdvancedMesh.fsh */; };
 		03D9579B1C140E63001C8B64 /* AdvancedMesh.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 03D957991C140E63001C8B64 /* AdvancedMesh.vsh */; };
 		03D9579E1C1416D5001C8B64 /* Animation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03D9579C1C1416D5001C8B64 /* Animation.mm */; };
-		03D957A31C144A31001C8B64 /* skittyTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D957A11C144A31001C8B64 /* skittyTexture.png */; };
-		03D957A51C144FC1001C8B64 /* Skitty.iqe in Resources */ = {isa = PBXBuildFile; fileRef = 03D957A41C144FC1001C8B64 /* Skitty.iqe */; };
 		03EBE7241C17D094002C9A89 /* finalSkittyTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 03EBE7221C17D094002C9A89 /* finalSkittyTexture.png */; };
 		03EBE7251C17D094002C9A89 /* skittyRuns44.iqe in Resources */ = {isa = PBXBuildFile; fileRef = 03EBE7231C17D094002C9A89 /* skittyRuns44.iqe */; };
 		03ED45961C0D5A9E000D3263 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03ED45941C0D5A9E000D3263 /* Main.mm */; };
@@ -66,14 +65,15 @@
 		10D17F511C13F2D100EE20E5 /* VisibilityGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = 10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */; };
 		10D17F5A1C16C04400EE20E5 /* CameraShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 10D17F581C16C04400EE20E5 /* CameraShader.fsh */; };
 		10D17F5B1C16C04400EE20E5 /* CameraShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 10D17F591C16C04400EE20E5 /* CameraShader.vsh */; };
-		46AFBF491C140B67000D7784 /* TrackerThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46AFBF481C140B67000D7784 /* TrackerThread.mm */; };
 		46F831161C17F64C00632ACD /* DepthBufferShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 46F831151C17F64C00632ACD /* DepthBufferShader.fsh */; };
 		46F831181C17F66C00632ACD /* DepthBufferShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 46F831171C17F66C00632ACD /* DepthBufferShader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0336BD2F1C116BA200E126BB /* light blue cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light blue cube.png"; sourceTree = "<group>"; };
-		0336BD301C116BA200E126BB /* light blue.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "light blue.obj"; sourceTree = "<group>"; };
+		0353F1E71C1811CA00B56A57 /* unfreeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unfreeze.png; sourceTree = "<group>"; };
+		0353F1E81C1811CA00B56A57 /* showGrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showGrid.png; sourceTree = "<group>"; };
+		0353F1E91C1811CA00B56A57 /* hideGrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hideGrid.png; sourceTree = "<group>"; };
+		0353F1EA1C1811CA00B56A57 /* freeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freeze.png; sourceTree = "<group>"; };
 		035637BB1BFD864600FD45A4 /* AR Hide And Go Seek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR Hide And Go Seek.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		035637BF1BFD864600FD45A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		035637C11BFD864600FD45A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -96,15 +96,12 @@
 		03A64D4E1C128779000C8673 /* VirtualSensorManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualSensorManager.hpp; sourceTree = "<group>"; };
 		03A64D531C12FC05000C8673 /* joystickInner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickInner.png; sourceTree = "<group>"; };
 		03A64D541C12FC05000C8673 /* joystickOuter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickOuter.png; sourceTree = "<group>"; };
-		03B713821C15594100F90CF7 /* some2.iqe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = some2.iqe; sourceTree = "<group>"; };
 		03D957941C13F0D0001C8B64 /* AdvancedMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdvancedMesh.mm; sourceTree = "<group>"; };
 		03D957951C13F0D0001C8B64 /* AdvancedMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AdvancedMesh.hpp; sourceTree = "<group>"; };
 		03D957981C140E63001C8B64 /* AdvancedMesh.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AdvancedMesh.fsh; sourceTree = "<group>"; };
 		03D957991C140E63001C8B64 /* AdvancedMesh.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AdvancedMesh.vsh; sourceTree = "<group>"; };
 		03D9579C1C1416D5001C8B64 /* Animation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Animation.mm; sourceTree = "<group>"; };
 		03D9579D1C1416D5001C8B64 /* Animation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Animation.hpp; sourceTree = "<group>"; };
-		03D957A11C144A31001C8B64 /* skittyTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skittyTexture.png; sourceTree = "<group>"; };
-		03D957A41C144FC1001C8B64 /* Skitty.iqe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Skitty.iqe; sourceTree = "<group>"; };
 		03EBE7221C17D094002C9A89 /* finalSkittyTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finalSkittyTexture.png; sourceTree = "<group>"; };
 		03EBE7231C17D094002C9A89 /* skittyRuns44.iqe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = skittyRuns44.iqe; sourceTree = "<group>"; };
 		03ED45941C0D5A9E000D3263 /* Main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Main.mm; sourceTree = "<group>"; };
@@ -149,8 +146,6 @@
 		10D17F501C13F2D100EE20E5 /* VisibilityGrid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VisibilityGrid.mm; sourceTree = "<group>"; };
 		10D17F581C16C04400EE20E5 /* CameraShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = CameraShader.fsh; sourceTree = "<group>"; };
 		10D17F591C16C04400EE20E5 /* CameraShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = CameraShader.vsh; sourceTree = "<group>"; };
-		46AFBF471C140B67000D7784 /* TrackerThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackerThread.h; sourceTree = "<group>"; };
-		46AFBF481C140B67000D7784 /* TrackerThread.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrackerThread.mm; sourceTree = "<group>"; };
 		46F831151C17F64C00632ACD /* DepthBufferShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthBufferShader.fsh; sourceTree = "<group>"; };
 		46F831171C17F66C00632ACD /* DepthBufferShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthBufferShader.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,7 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03A884891C18065E002012EF /* Structure.framework in Frameworks */,
+				0353F1E61C180F4200B56A57 /* Structure.framework in Frameworks */,
 				1040A0631C12AD0F004BF469 /* libz.tbd in Frameworks */,
 				1040A0611C12AD09004BF469 /* CoreMotion.framework in Frameworks */,
 				1040A05F1C12AD04004BF469 /* QuartzCore.framework in Frameworks */,
@@ -242,8 +237,6 @@
 			children = (
 				1040A0481C12AB01004BF469 /* StructureSensorS.h */,
 				1040A0461C12AAEE004BF469 /* StructureSensorS.mm */,
-				46AFBF471C140B67000D7784 /* TrackerThread.h */,
-				46AFBF481C140B67000D7784 /* TrackerThread.mm */,
 				035637C11BFD864600FD45A4 /* AppDelegate.h */,
 				035637C21BFD864600FD45A4 /* AppDelegate.m */,
 				03ED45A21C0D5D3C000D3263 /* Utility.h */,
@@ -314,10 +307,12 @@
 		10409F0A1C0EA918004BF469 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				0353F1E71C1811CA00B56A57 /* unfreeze.png */,
+				0353F1E81C1811CA00B56A57 /* showGrid.png */,
+				0353F1E91C1811CA00B56A57 /* hideGrid.png */,
+				0353F1EA1C1811CA00B56A57 /* freeze.png */,
 				03EBE7221C17D094002C9A89 /* finalSkittyTexture.png */,
 				03EBE7231C17D094002C9A89 /* skittyRuns44.iqe */,
-				0336BD2F1C116BA200E126BB /* light blue cube.png */,
-				0336BD301C116BA200E126BB /* light blue.obj */,
 				10409F0B1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg */,
 				10409F0C1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg */,
 				10409F0D1C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg */,
@@ -326,9 +321,6 @@
 				03A64D531C12FC05000C8673 /* joystickInner.png */,
 				03A64D541C12FC05000C8673 /* joystickOuter.png */,
 				10409F101C0EC8D9004BF469 /* classroom.obj */,
-				03B713821C15594100F90CF7 /* some2.iqe */,
-				03D957A41C144FC1001C8B64 /* Skitty.iqe */,
-				03D957A11C144A31001C8B64 /* skittyTexture.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -364,7 +356,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 7V27N27SQ2;
+						DevelopmentTeam = WT2GEFA9Q6;
 					};
 				};
 			};
@@ -398,16 +390,14 @@
 				03D9579A1C140E63001C8B64 /* AdvancedMesh.fsh in Resources */,
 				03EBE7251C17D094002C9A89 /* skittyRuns44.iqe in Resources */,
 				035637EF1BFD903800FD45A4 /* Main.storyboard in Resources */,
+				0353F1EC1C1811CA00B56A57 /* showGrid.png in Resources */,
 				10409F131C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_002.jpg in Resources */,
-				03D957A51C144FC1001C8B64 /* Skitty.iqe in Resources */,
 				10409F151C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_004.jpg in Resources */,
-				03B713831C15594100F90CF7 /* some2.iqe in Resources */,
-				0336BD311C116BA200E126BB /* light blue cube.png in Resources */,
-				0336BD321C116BA200E126BB /* light blue.obj in Resources */,
+				0353F1EE1C1811CA00B56A57 /* freeze.png in Resources */,
 				10409F171C0EC9C7004BF469 /* BasicMesh.fsh in Resources */,
 				03A64D561C12FC05000C8673 /* joystickOuter.png in Resources */,
+				0353F1EB1C1811CA00B56A57 /* unfreeze.png in Resources */,
 				10409F111C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_000.jpg in Resources */,
-				03D957A31C144A31001C8B64 /* skittyTexture.png in Resources */,
 				10D17F5A1C16C04400EE20E5 /* CameraShader.fsh in Resources */,
 				10409F121C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_001.jpg in Resources */,
 				10D17F5B1C16C04400EE20E5 /* CameraShader.vsh in Resources */,
@@ -420,6 +410,7 @@
 				03D9579B1C140E63001C8B64 /* AdvancedMesh.vsh in Resources */,
 				46F831161C17F64C00632ACD /* DepthBufferShader.fsh in Resources */,
 				46F831181C17F66C00632ACD /* DepthBufferShader.vsh in Resources */,
+				0353F1ED1C1811CA00B56A57 /* hideGrid.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +428,6 @@
 				1040A0471C12AAEE004BF469 /* StructureSensorS.mm in Sources */,
 				035637CA1BFD864600FD45A4 /* GameViewController.mm in Sources */,
 				03ED45AA1C0D6481000D3263 /* BasicMesh.mm in Sources */,
-				46AFBF491C140B67000D7784 /* TrackerThread.mm in Sources */,
 				03ED45A11C0D5D12000D3263 /* ShaderProgram.mm in Sources */,
 				03ED45961C0D5A9E000D3263 /* Main.mm in Sources */,
 				03ED471F1C0D66A7000D3263 /* TextureManager.mm in Sources */,
@@ -564,63 +554,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
+					/Users/russell/Developer/ARHideAndGoSeek/AR,
 					Hide,
 					And,
 					Go,
@@ -631,11 +565,14 @@
 					Go,
 					Seek,
 				);
-				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
+				HEADER_SEARCH_PATHS = (
+					/Users/russell/Dropbox/School/cs290i/CS290I_HW3_v1/glm/,
+					/Users/SamuelDong/Documents/Libraries/glm,
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek3";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek44";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -648,63 +585,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
-					Hide,
-					And,
-					Go,
-					Seek,
-					"$(PROJECT_DIR)/AR",
+					/Users/russell/Developer/ARHideAndGoSeek/AR,
 					Hide,
 					And,
 					Go,
@@ -715,11 +596,14 @@
 					Go,
 					Seek,
 				);
-				HEADER_SEARCH_PATHS = /Users/SamuelDong/Documents/Libraries/glm;
+				HEADER_SEARCH_PATHS = (
+					/Users/russell/Dropbox/School/cs290i/CS290I_HW3_v1/glm/,
+					/Users/SamuelDong/Documents/Libraries/glm,
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek3";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek44";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

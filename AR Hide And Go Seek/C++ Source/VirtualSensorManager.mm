@@ -48,10 +48,10 @@ VirtualSensorManager::VirtualSensorManager(TextureManager* manager, int screenWi
     
     joystickBaseID = manager->LoadTexture("joystickOuter.png");
     joystickStickID = manager->LoadTexture("joystickInner.png");
-    debugButtonFalseID = manager->LoadTexture("joystickOuter.png");
-    debugButtonTrueID = manager->LoadTexture("joystickInner.png");
-    freezeButtonFalseID = manager->LoadTexture("joystickOuter.png");
-    freezeButtonTrueID = manager->LoadTexture("joystickInner.png");
+    debugButtonFalseID = manager->LoadTexture("showGrid.png");
+    debugButtonTrueID = manager->LoadTexture("hideGrid.png");
+    freezeButtonFalseID = manager->LoadTexture("freeze.png");
+    freezeButtonTrueID = manager->LoadTexture("unfreeze.png");
     defaultFrameBuffer = 2;
     glGenFramebuffers(1, &shadowFrameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, shadowFrameBuffer);
