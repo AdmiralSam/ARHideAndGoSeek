@@ -117,8 +117,8 @@ mat4 StructureSensorManager::GetProjectionMatrix()
 mat4 StructureSensorManager::GetViewMatrix()
 {
     GLKMatrix4 view = [[StructureSensorS sharedSensorInstance] getPose];
-    
     mat4 glView;
+    
     for (int i = 0; i < 4; i++)
     {
         for(int j = 0; j < 4; j++)
@@ -126,15 +126,11 @@ mat4 StructureSensorManager::GetViewMatrix()
             glView[i][j] = view.m[4 * i + j];
         }
     }
-    /*mat4 flipY = scale(mat4(), vec3(1.0f, -1.0f, -1.0f));
-    mat4 swapXandZ = mat4();
-    swapXandZ[0][0] = 0;
-    swapXandZ[0][1] = 1;
-    swapXandZ[1][0] = 1;
-    swapXandZ[1][1] = 0;
-    return swapXandZ * flipY * glView;*/
     
-    return glView;
+    // Y & Z need to be flipped and multiplied by inverse view
+    mat4 flipY = scale(mat4(), vec3(1.0f, -1.0f, -1.0f));
+    
+    return flipY * inverse(glView) * flipY;
 }
 
 void StructureSensorManager::CheckVisibility(std::vector<glm::vec3>& points, std::vector<int>& visibility)
