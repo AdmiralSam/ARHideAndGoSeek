@@ -13,7 +13,7 @@ using namespace glm;
 Animal::Animal(VisibilityGrid* grid, TextureManager* manager)
 {
     visibilityGrid = grid;
-    mesh = new AdvancedMesh("Skitty.iqe", manager); //some2.iqe for iPad
+    mesh = new AdvancedMesh("skittyRuns44.iqe", manager); //some2.iqe for iPad
     mesh->PlayAnimation("Idle");
     mesh->SetScale(vec3(0.1f, 0.1f, 0.1f));
     mesh->SetPosition(vec3(0.0f, 0.05f, 0.0f));
@@ -22,6 +22,7 @@ Animal::Animal(VisibilityGrid* grid, TextureManager* manager)
     targetRow = 55;
     targetColumn = 30;
     idle = true;
+    moveTime = 0;
 }
 
 Animal::~Animal()
@@ -38,7 +39,7 @@ void Animal::Update(float deltaTime)
 {
     mesh->Update(deltaTime);
     if(visibilityGrid->IsVisible(targetRow, targetColumn)){
-        visibilityGrid->ClosestInvisible(currentRow, currentColumn, targetRow, targetColumn);
+        visibilityGrid->ClosestInvisible(currentRow, currentColumn, targetRow, targetColumn, 10);
         pathRows.clear();
         pathColumns.clear();
         visibilityGrid->FindPath(currentRow, currentColumn, targetRow, targetColumn, pathRows, pathColumns);
@@ -49,24 +50,29 @@ void Animal::Update(float deltaTime)
             idle = false;
             mesh->PlayAnimation("Running");
         }
+        moveTime = 0;
     }
-    if(pathRows.size() > 0){
-        vec3 oldPosition = visibilityGrid->PositionFromRowColumn(currentRow, currentColumn);
-        vec3 newPosition = visibilityGrid->PositionFromRowColumn(pathRows.back(), pathColumns.back());
-        currentRow = pathRows.back();
-        currentColumn = pathColumns.back();
-        pathRows.pop_back();
-        pathColumns.pop_back();
-        if (pathRows.size() == 0)
-        {
-            if (!idle)
+    moveTime++;
+    if (moveTime > 1) {
+        moveTime = 0;
+        if(pathRows.size() > 0){
+            vec3 oldPosition = visibilityGrid->PositionFromRowColumn(currentRow, currentColumn);
+            vec3 newPosition = visibilityGrid->PositionFromRowColumn(pathRows.back(), pathColumns.back());
+            currentRow = pathRows.back();
+            currentColumn = pathColumns.back();
+            pathRows.pop_back();
+            pathColumns.pop_back();
+            if (pathRows.size() == 0)
             {
-                idle = true;
-                mesh->PlayAnimation("Idle");
+                if (!idle)
+                {
+                    idle = true;
+                    mesh->PlayAnimation("Idle");
+                }
             }
+            mesh->SetRotation(vec3(0.0f, atan(oldPosition.z - newPosition.z, newPosition.x - oldPosition.x), 0.0f));
+            newPosition.y = 0.05f;
+            mesh->SetPosition(newPosition);
         }
-        mesh->SetRotation(vec3(0.0f, atan(oldPosition.z - newPosition.z, newPosition.x - oldPosition.x), 0.0f));
-        newPosition.y = 0.05f;
-        mesh->SetPosition(newPosition);
     }
 }

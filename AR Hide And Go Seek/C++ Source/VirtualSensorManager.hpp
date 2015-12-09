@@ -29,9 +29,12 @@ public:
     
     void CheckVisibility(std::vector<glm::vec3>& points, std::vector<int>& visibility) override;
     
+    bool IsDebugMode() override;
+    
     void PanStarted(int x, int y) override;
     void PanMoved(int deltaX, int deltaY) override;
     void PanEnded() override;
+    void Tapped(int x, int y) override;
     
 private:
     int width, height;
@@ -54,6 +57,16 @@ private:
     GLuint joystickBaseID, joystickStickID;
     GLuint positionBufferID, uvBufferID, indexBufferID;
     
+    bool debug;
+    bool freezeDepth;
+    GLuint debugButtonTrueID, debugButtonFalseID, freezeButtonTrueID, freezeButtonFalseID;
+    glm::vec2 debugLocation;
+    glm::vec2 freezeLocation;
+    
+    GLuint shadowFrameBuffer;
+    GLuint depthTexture;
+    
     void Setup2DDrawing();
     void DrawImage(int x, int y, int drawWidth, int drawHeight, GLuint textureID);
+    void RenderShadowMap();
 };

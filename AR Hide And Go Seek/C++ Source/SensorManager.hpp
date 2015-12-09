@@ -28,9 +28,12 @@ public:
     
     virtual void CheckVisibility(std::vector<glm::vec3>& points, std::vector<int>& visibility) = 0;
     
+    virtual bool IsDebugMode() = 0;
+    
     virtual void PanStarted(int x, int y) = 0;
     virtual void PanMoved(int deltaX, int deltaY) = 0;
     virtual void PanEnded() = 0;
+    virtual void Tapped(int x, int y) = 0;
     
 protected:
     inline bool InFrustrum(glm::vec4 point)

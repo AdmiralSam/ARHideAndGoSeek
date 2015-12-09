@@ -27,6 +27,8 @@ VirtualSensorManager::VirtualSensorManager(TextureManager* manager, int screenWi
     
     leftCenter = vec2(screenWidth * 0.2f, screenHeight * 0.8f);
     rightCenter = vec2(screenWidth * 0.8f, screenHeight * 0.8f);
+    debugLocation = vec2(screenWidth * 0.2f, screenHeight * 0.2f);
+    freezeLocation = vec2(screenWidth * 0.8f, screenHeight * 0.2f);
     
     basicShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     roomModel = new BasicMesh("classroom.obj", manager);
@@ -41,8 +43,26 @@ VirtualSensorManager::VirtualSensorManager(TextureManager* manager, int screenWi
     
     Setup2DDrawing();
     
+    debug = false;
+    freezeDepth = false;
+    
     joystickBaseID = manager->LoadTexture("joystickOuter.png");
     joystickStickID = manager->LoadTexture("joystickInner.png");
+    debugButtonFalseID = manager->LoadTexture("joystickOuter.png");
+    debugButtonTrueID = manager->LoadTexture("joystickInner.png");
+    freezeButtonFalseID = manager->LoadTexture("joystickOuter.png");
+    freezeButtonTrueID = manager->LoadTexture("joystickInner.png");
+    
+    glGenFramebuffers(1, &shadowFrameBuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, shadowFrameBuffer);
+    glGenTextures(1, &depthTexture);
+    glBindTexture(GL_TEXTURE_2D, depthTexture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32F, width, height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthTexture, 0);
 }
 
 VirtualSensorManager::~VirtualSensorManager()
@@ -55,6 +75,7 @@ VirtualSensorManager::~VirtualSensorManager()
 
 void VirtualSensorManager::Draw()
 {
+    RenderShadowMap();
     depthShader->Use();
     glUniformMatrix4fv(depthShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(GetProjectionMatrix()));
     glUniformMatrix4fv(depthShader->GetLocation("view"), 1, GL_FALSE, value_ptr(GetViewMatrix()));
@@ -90,6 +111,9 @@ void VirtualSensorManager::DrawUI()
     vec2 rightLocation = rightCenter + (float)JoystickMaximumRadius * rightJoystick;
     DrawImage(leftLocation.x, leftLocation.y, 100, 100, joystickStickID);
     DrawImage(rightLocation.x, rightLocation.y, 100, 100, joystickStickID);
+    
+    DrawImage(debugLocation.x, debugLocation.y, 150, 100, debug ? debugButtonTrueID : debugButtonFalseID);
+    DrawImage(freezeLocation.x, freezeLocation.y, 150, 100, freezeDepth ? freezeButtonTrueID : freezeButtonFalseID);
 }
 
 mat4 VirtualSensorManager::GetProjectionMatrix()
@@ -114,7 +138,7 @@ void VirtualSensorManager::CheckVisibility(vector<vec3>& points, vector<int>& vi
     {
         vec4 transformedPoint = projectionMatrix * viewMatrix * vec4(points[i].x, points[i].y, points[i].z, 1.0f);
         transformedPoint /= transformedPoint.w;
-        if(InFrustrum(transformedPoint))
+        if(InFrustrum(transformedPoint) && !freezeDepth)
         {
             int row = (int)((transformedPoint.y + 1) / 2 * height);
             int column = (int)((transformedPoint.x + 1) / 2 * width);
@@ -126,6 +150,11 @@ void VirtualSensorManager::CheckVisibility(vector<vec3>& points, vector<int>& vi
             visibility[i] = 0;
         }
     }
+}
+
+bool VirtualSensorManager::IsDebugMode()
+{
+    return debug;
 }
 
 void VirtualSensorManager::PanStarted(int x, int y)
@@ -158,7 +187,6 @@ void VirtualSensorManager::PanMoved(int deltaX, int deltaY)
             {
                 rightJoystick = normalize(rightJoystick);
             }
-
             break;
             
         default:
@@ -183,6 +211,18 @@ void VirtualSensorManager::PanEnded()
             break;
     }
     joystickState = JoystickState::None;
+}
+
+void VirtualSensorManager::Tapped(int x, int y)
+{
+    if (x >= (debugLocation.x - 75) && x <= (debugLocation.x + 75) && y >= (debugLocation.y - 50) && y <= (debugLocation.y + 50))
+    {
+        debug = !debug;
+    }
+    if (x >= (freezeLocation.x - 75) && x <= (freezeLocation.x + 75) && y >= (freezeLocation.y - 50) && y <= (freezeLocation.y + 50))
+    {
+        freezeDepth = !freezeDepth;
+    }
 }
 
 void VirtualSensorManager::Setup2DDrawing()
@@ -226,4 +266,21 @@ void VirtualSensorManager::DrawImage(int x, int y, int drawWidth, int drawHeight
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
     basicShader->Finish();
     glEnable(GL_DEPTH_TEST);
+}
+
+void VirtualSensorManager::RenderShadowMap()
+{
+    glBindFramebuffer(GL_FRAMEBUFFER, shadowFrameBuffer);
+    mat4 projection = perspectiveFov<float>(pi<float>() / 3.0f, width, height, 0.1f, 15.0f);
+    mat4 cameraMatrix = translate(mat4(), vec3(-1.0f, 2.95f, -1.0f));
+    cameraMatrix = rotate(cameraMatrix, -pi<float>() / 2, vec3(1.0f, 0.0f, 0.0f));
+    mat4 viewMatrix = inverse(cameraMatrix);
+    depthShader->Use();
+    glUniformMatrix4fv(depthShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(projection));
+    glUniformMatrix4fv(depthShader->GetLocation("view"), 1, GL_FALSE, value_ptr(viewMatrix));
+    roomModel->Draw(depthShader);
+    depthShader->Finish();
+    glBindFramebuffer(GL_FRAMEBUFFER, 2);
+    glActiveTexture(GL_TEXTURE9);
+    glBindTexture(GL_TEXTURE_2D, depthTexture);
 }

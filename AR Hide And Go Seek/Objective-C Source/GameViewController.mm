@@ -24,6 +24,7 @@
 - (void)tearDownGL;
 
 - (void)onPanEvent:(UIPanGestureRecognizer*) recognizer;
+- (void)onTapEvent:(UITapGestureRecognizer*) recognizer;
 
 @end
 
@@ -47,6 +48,11 @@
 	panGesture.minimumNumberOfTouches = 1;
 	panGesture.maximumNumberOfTouches = 1;
     [self.view addGestureRecognizer:panGesture];
+    
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapEvent:)];
+    tapGesture.numberOfTapsRequired = 1;
+    tapGesture.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:tapGesture];
 	
 	sharedSensorInstance = [StructureSensorS sharedSensorInstance];
 	[sharedSensorInstance initializeSensor:self withContext:self.context];
@@ -129,6 +135,15 @@
             
         default:
             break;
+    }
+}
+
+- (void)onTapEvent:(UITapGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        CGPoint point = [recognizer locationInView:self.view];
+        Tapped(point.x, point.y);
     }
 }
 

@@ -9,6 +9,7 @@
 #include "Main.hpp"
 #include "OpenGLES/ES3/gl.h"
 #include "glm/gtc/type_ptr.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #include "VirtualSensorManager.hpp"
 #include "StructureSensorManager.hpp"
 #include "VisibilityGrid.hpp"
@@ -47,12 +48,12 @@ void Initialize(float width, float height)
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     textureManager = new TextureManager();
-    //sensorManager = new VirtualSensorManager(textureManager, width, height);
-	sensorManager = new StructureSensorManager(textureManager, width, height);
+    sensorManager = new VirtualSensorManager(textureManager, width, height);
+	//sensorManager = new StructureSensorManager(textureManager, width, height);
 	
     basicMeshShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     
-    advancedMeshShader = new ShaderProgram("AdvancedMesh", {"position", "uv", "normal", "bone1Index", "bone2Index", "bone3Index", "bone4Index", "weight1", "weight2", "weight3", "weight4"}, {"projection", "view", "model", "bind", "pose", "uvMap", "ambientColor", "lightColor"});
+    advancedMeshShader = new ShaderProgram("AdvancedMesh", {"position", "uv", "normal", "bone1Index", "bone2Index", "bone3Index", "bone4Index", "weight1", "weight2", "weight3", "weight4"}, {"projection", "view", "model", "light", "bind", "pose", "uvMap", "shadowMap", "ambientColor", "lightColor"});
     
     pointShader = new ShaderProgram("PointShader", {"position", "visible"}, {"projection", "view", "model"});
     
@@ -75,19 +76,27 @@ void Draw()
     glUniformMatrix4fv(basicMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
     glUniformMatrix4fv(basicMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
     advancedMeshShader->Use();
+    glUniform1i(advancedMeshShader->GetLocation("shadowMap"), 9);
+    mat4 cameraMatrix = translate(mat4(), vec3(-1.0f, 2.95f, -1.0f));
+    cameraMatrix = rotate(cameraMatrix, -pi<float>() / 2, vec3(1.0f, 0.0f, 0.0f));
+    mat4 viewMatrix = inverse(cameraMatrix);
+    glUniformMatrix4fv(advancedMeshShader->GetLocation("light"), 1, GL_FALSE, value_ptr(viewMatrix));
     glUniformMatrix4fv(advancedMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
     glUniformMatrix4fv(advancedMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
     glUniform3f(advancedMeshShader->GetLocation("ambientColor"), 0.25f, 0.25f, 0.25f);
     glUniform3f(advancedMeshShader->GetLocation("lightColor"), 1.0f, 1.0f, 1.0f);
     animal->Draw(advancedMeshShader);
     advancedMeshShader->Finish();
-    glDisable(GL_DEPTH_TEST);
-    pointShader->Use();
-    glUniformMatrix4fv(pointShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
-    glUniformMatrix4fv(pointShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
-    grid->Draw(pointShader);
-    pointShader->Finish();
-    glEnable(GL_DEPTH_TEST);
+    if (sensorManager->IsDebugMode())
+    {
+        glDisable(GL_DEPTH_TEST);
+        pointShader->Use();
+        glUniformMatrix4fv(pointShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
+        glUniformMatrix4fv(pointShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
+        grid->Draw(pointShader);
+        pointShader->Finish();
+        glEnable(GL_DEPTH_TEST);
+    }
     glEnable(GL_BLEND);
     sensorManager->DrawUI();
     glDisable(GL_BLEND);
@@ -113,4 +122,9 @@ void PanMoved(int deltaX, int deltaY)
 void PanEnded()
 {
     sensorManager->PanEnded();
+}
+
+void Tapped(int x, int y)
+{
+    sensorManager->Tapped(x, y);
 }

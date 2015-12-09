@@ -28,5 +28,5 @@ void main()
         color = vec4(1.0, 0.0, 0.0, 1.0);
     }
     gl_Position = projection * view * model * position;
-    gl_PointSize = 2.0;
+    gl_PointSize = 4.0;
 }

@@ -40,6 +40,7 @@ void ShaderProgram::Load()
     GLuint fragmentShaderID = LoadShader(GL_FRAGMENT_SHADER);
     glCompileShader(vertexShaderID);
     glCompileShader(fragmentShaderID);
+    GLint logLength;
     glAttachShader(shaderProgramID, vertexShaderID);
     glAttachShader(shaderProgramID, fragmentShaderID);
     glLinkProgram(shaderProgramID);

@@ -22,10 +22,13 @@ in float weight4;
 
 out vec2 interpolatedUV;
 out vec4 interpolatedNormal;
+out vec4 shadowCoordinate;
 
 uniform mat4 projection;
 uniform mat4 view;
 uniform mat4 model;
+
+uniform mat4 light;
 
 uniform mat4 bind[15];
 uniform mat4 pose[15];
@@ -66,5 +69,6 @@ void main()
     }
     interpolatedUV = uv;
     interpolatedNormal = model * posedNormal;
+    shadowCoordinate = light * model * posedPosition;
     gl_Position = projection * view * model * posedPosition;
 }

@@ -25,7 +25,7 @@ public:
     glm::vec3 PositionFromRowColumn(int row, int column);
     
     bool IsVisible(int row, int column);
-    void ClosestInvisible(int row, int column, int& invisibileRow, int& invisibleColumn);
+    void ClosestInvisible(int row, int column, int& invisibileRow, int& invisibleColumn, int minDistance);
     void RandomInvisible(int row, int column, int& invisibleRow, int& invisibleColumn);
     void FindPath(int row, int column, int targetRow, int targetColumn, std::vector<int>& pathRows, std::vector<int>& pathColumns);
     

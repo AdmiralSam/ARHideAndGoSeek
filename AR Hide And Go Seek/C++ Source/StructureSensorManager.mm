@@ -142,6 +142,11 @@ void StructureSensorManager::CheckVisibility(std::vector<glm::vec3>& points, std
 	
 }
 
+bool StructureSensorManager::IsDebugMode()
+{
+    return false;
+}
+
 void StructureSensorManager::PanStarted(int x, int y)
 {
 	//n/a
@@ -155,4 +160,9 @@ void StructureSensorManager::PanMoved(int deltaX, int deltaY)
 void StructureSensorManager::PanEnded()
 {
 	//n/a
+}
+
+void StructureSensorManager::Tapped(int x, int y)
+{
+    
 }

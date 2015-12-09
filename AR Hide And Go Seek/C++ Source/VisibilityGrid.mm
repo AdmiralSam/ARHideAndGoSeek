@@ -92,7 +92,7 @@ bool VisibilityGrid::IsVisible(int row, int column)
     return gridVisibility[indexFromRowColumn(row, column)] == 1;
 }
 
-void VisibilityGrid::ClosestInvisible(int row, int column, int& invisibleRow, int& invisibleColumn)
+void VisibilityGrid::ClosestInvisible(int row, int column, int& invisibleRow, int& invisibleColumn, int minDistance)
 {
     set<int> lookedAt;
     queue<int> frontier;
@@ -101,8 +101,10 @@ void VisibilityGrid::ClosestInvisible(int row, int column, int& invisibleRow, in
     frontier.push(indexFromRowColumn(row, column));
     while(frontier.size() > 0) {
         int current = frontier.front();
+        int r, c;
+        rowColumnFromIndex(current, r, c);
         frontier.pop();
-        if(grid[current] && gridVisibility[current] == 0) {
+        if(grid[current] && gridVisibility[current] == 0 && (abs(row - r) + abs(column - c) > minDistance)) {
             rowColumnFromIndex(current, invisibleRow, invisibleColumn);
             return;
         }

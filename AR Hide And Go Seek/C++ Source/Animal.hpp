@@ -26,4 +26,5 @@ private:
     int currentRow, currentColumn;
     std::vector<int> pathRows, pathColumns;
     bool idle;
+    int moveTime;
 };

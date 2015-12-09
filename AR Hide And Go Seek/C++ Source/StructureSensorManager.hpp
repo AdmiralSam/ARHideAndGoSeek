@@ -28,10 +28,13 @@ public:
 	glm::mat4 GetViewMatrix() override;
 	
 	void CheckVisibility(std::vector<glm::vec3>& points, std::vector<int>& visibility) override;
+    
+    bool IsDebugMode() override;
 	
 	void PanStarted(int x, int y) override;
 	void PanMoved(int deltaX, int deltaY) override;
 	void PanEnded() override;
+    void Tapped(int x, int y) override;
 	
 private:
 	int width, height;

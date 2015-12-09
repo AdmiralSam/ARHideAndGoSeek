@@ -19,3 +19,4 @@ void Update(float deltaTime);
 void PanStarted(int x, int y);
 void PanMoved(int deltaX, int deltaY);
 void PanEnded();
+void Tapped(int x, int y);
