@@ -40,6 +40,31 @@ void ShaderProgram::Load()
     GLuint fragmentShaderID = LoadShader(GL_FRAGMENT_SHADER);
     glCompileShader(vertexShaderID);
     glCompileShader(fragmentShaderID);
+    
+    GLint success;
+    glGetShaderiv(vertexShaderID, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        GLint loglength;
+        glGetShaderiv(vertexShaderID, GL_INFO_LOG_LENGTH, &loglength);
+        GLchar log[loglength];
+        glGetShaderInfoLog(vertexShaderID, loglength, &loglength, log);
+        NSLog(@"vertex shader failed to compile! :[ \n");
+        NSLog(@"%@", [NSString stringWithCString:log encoding:NSUTF8StringEncoding]);
+        exit(-1);
+    }
+    
+    GLint success2;
+    glGetShaderiv(fragmentShaderID, GL_COMPILE_STATUS, &success2);
+    if (!success2) {
+        GLint loglength;
+        glGetShaderiv(fragmentShaderID, GL_INFO_LOG_LENGTH, &loglength);
+        GLchar log[loglength];
+        glGetShaderInfoLog(fragmentShaderID, loglength, &loglength, log);
+        NSLog(@"fragment shader failed to compile! :[ \n");
+        NSLog(@"%@", [NSString stringWithCString:log encoding:NSUTF8StringEncoding]);
+        exit(-1);
+    }
+    
     glAttachShader(shaderProgramID, vertexShaderID);
     glAttachShader(shaderProgramID, fragmentShaderID);
     glLinkProgram(shaderProgramID);

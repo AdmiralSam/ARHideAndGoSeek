@@ -14,7 +14,7 @@
 
 @interface StructureSensorS : NSObject <STSensorControllerDelegate>
 {
-    
+    GLuint depthTextureID;
 }
 
 + (id) sharedSensorInstance;
@@ -25,5 +25,7 @@
 - (GLKMatrix4) getPose;
 - (GLuint)getLumaTextureID;
 - (GLuint)getChromaTextureID;
+- (GLuint)getDepthTextureID;
+
 
 @end

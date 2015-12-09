@@ -37,6 +37,7 @@ private:
 	int width, height;
 	ShaderProgram* basicShader;
 	ShaderProgram* cameraShader;
+    ShaderProgram *depthBufferShader;
     BasicMesh* roomModel;
 	
 	GLuint verticesID, uvsID, indexListID;

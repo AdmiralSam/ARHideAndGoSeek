@@ -103,7 +103,8 @@
     pose = GLKMatrix4MakeTranslation(0.0f, -1.5f, 0.0f);
     tracker.initialCameraPose = pose;
     ready = false;
-	
+    
+    glGenTextures(1, &(depthTextureID));
 	CVReturn err = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, context, NULL, &videoTextureCache);
 }
 
@@ -242,6 +243,14 @@
     //[self renderDepthFrame:depthFrame];
     //[self renderNormalsFrame:depthFrame];
     //[self renderColorFrame:colorFrame.sampleBuffer];
+    
+    glActiveTexture(GL_TEXTURE6);
+    glBindTexture(GL_TEXTURE_2D, depthTextureID);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_R32F, depthFrame.width, depthFrame.height, 0, GL_RED, GL_FLOAT, depthFrame.depthInMillimeters);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
     NSLog(@"end - sensorDidOutputSynchronizedDepthFrame:");
 }
@@ -416,6 +425,11 @@
 - (GLuint)getChromaTextureID
 {
 	return CVOpenGLESTextureGetName(chromaTexture);
+}
+
+- (GLuint)getDepthTextureID
+{
+    return depthTextureID;
 }
 
 @end
