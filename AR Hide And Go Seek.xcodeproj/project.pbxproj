@@ -67,6 +67,8 @@
 		10D17F5A1C16C04400EE20E5 /* CameraShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 10D17F581C16C04400EE20E5 /* CameraShader.fsh */; };
 		10D17F5B1C16C04400EE20E5 /* CameraShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 10D17F591C16C04400EE20E5 /* CameraShader.vsh */; };
 		46AFBF491C140B67000D7784 /* TrackerThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46AFBF481C140B67000D7784 /* TrackerThread.mm */; };
+		46F831161C17F64C00632ACD /* DepthBufferShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 46F831151C17F64C00632ACD /* DepthBufferShader.fsh */; };
+		46F831181C17F66C00632ACD /* DepthBufferShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 46F831171C17F66C00632ACD /* DepthBufferShader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +151,8 @@
 		10D17F591C16C04400EE20E5 /* CameraShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = CameraShader.vsh; sourceTree = "<group>"; };
 		46AFBF471C140B67000D7784 /* TrackerThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackerThread.h; sourceTree = "<group>"; };
 		46AFBF481C140B67000D7784 /* TrackerThread.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrackerThread.mm; sourceTree = "<group>"; };
+		46F831151C17F64C00632ACD /* DepthBufferShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthBufferShader.fsh; sourceTree = "<group>"; };
+		46F831171C17F66C00632ACD /* DepthBufferShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthBufferShader.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +263,8 @@
 				038FAE8F1C0EA6DE00575BFD /* BasicMesh.vsh */,
 				10D17F581C16C04400EE20E5 /* CameraShader.fsh */,
 				10D17F591C16C04400EE20E5 /* CameraShader.vsh */,
+				46F831151C17F64C00632ACD /* DepthBufferShader.fsh */,
+				46F831171C17F66C00632ACD /* DepthBufferShader.vsh */,
 				03F8BF2B1C1032EB001B5833 /* DepthShader.fsh */,
 				03F8BF2C1C1032EB001B5833 /* DepthShader.vsh */,
 				035637C41BFD864600FD45A4 /* PointShader.fsh */,
@@ -358,7 +364,7 @@
 				TargetAttributes = {
 					035637BA1BFD864600FD45A4 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = WT2GEFA9Q6;
+						DevelopmentTeam = 7V27N27SQ2;
 					};
 				};
 			};
@@ -412,6 +418,8 @@
 				10409F141C0EC8D9004BF469 /* 090f6b4a65924643acc26e2a0e8dceef_003.jpg in Resources */,
 				10409F181C0EC9C7004BF469 /* BasicMesh.vsh in Resources */,
 				03D9579B1C140E63001C8B64 /* AdvancedMesh.vsh in Resources */,
+				46F831161C17F64C00632ACD /* DepthBufferShader.fsh in Resources */,
+				46F831181C17F66C00632ACD /* DepthBufferShader.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +635,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek4";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -711,7 +719,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/AR Hide And Go Seek/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek4";
+				PRODUCT_BUNDLE_IDENTIFIER = "SNR.AR-Hide-And-Go-Seek3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

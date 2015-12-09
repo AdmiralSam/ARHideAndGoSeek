@@ -22,6 +22,8 @@ StructureSensorManager::StructureSensorManager(TextureManager* manager, int scre
     basicShader = new ShaderProgram("BasicMesh", {"position", "uv"}, {"projection", "view", "model", "uvMap"});
     roomModel = new BasicMesh("classroom.obj", manager);
     roomModel->SetRotation(vec3(0.0f, -pi<float>() / 2.0f, -pi<float>() / 2.0f));
+    
+    depthBufferShader = new ShaderProgram("DepthBufferShader", {"position", "uv"}, {"uvMap", "nearPlane", "farPlane"});
 	
 	cameraShader = new ShaderProgram("CameraShader", {"position", "uv"}, {"SamplerY", "SamplerUV"});
 	const GLfloat vertices[] = {
@@ -66,8 +68,32 @@ StructureSensorManager::~StructureSensorManager()
 
 void StructureSensorManager::Draw()
 {
-	glDisable(GL_DEPTH_TEST);
+    
+    /*
+     
+     Depth buffer modification commented out for final submission as it 
+     doesn't work and hurts performance.
+     
+    depthBufferShader->Use();
+    glBindBuffer(GL_ARRAY_BUFFER, verticesID);
+    glVertexAttribPointer(depthBufferShader->GetLocation("position"), 4, GL_FLOAT, GL_FALSE, 0, NULL);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, uvsID);
+    glVertexAttribPointer(depthBufferShader->GetLocation("uv"), 2, GL_FLOAT, GL_FALSE, 0, NULL); //bind to shader variable
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexListID);
+    glActiveTexture(GL_TEXTURE6);
+    glBindTexture(GL_TEXTURE_2D, [[StructureSensorS sharedSensorInstance] getDepthTextureID]);
+    
+    glUniform1i(depthBufferShader->GetLocation("uvMap"), 6);
+    glUniform1i(depthBufferShader->GetLocation("nearPlane"), 0.1f);
+    glUniform1i(depthBufferShader->GetLocation("farPlane"), 15.f);
+    
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 
+    depthBufferShader->Finish();*/
+    
+    glDisable(GL_DEPTH_TEST);
+    
 	cameraShader->Use();
 	glEnable(GL_TEXTURE_2D);
 	glBindBuffer(GL_ARRAY_BUFFER, verticesID);
@@ -85,13 +111,13 @@ void StructureSensorManager::Draw()
 	
 	glUniform1i(cameraShader->GetLocation("SamplerY"), 2);
 	glUniform1i(cameraShader->GetLocation("SamplerUV"), 3);
-	
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexListID);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 	cameraShader->Finish();
 	
 	glEnable(GL_DEPTH_TEST);
-	
+    
+
+    
     basicShader->Use();
     glUniformMatrix4fv(basicShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(GetProjectionMatrix()));
     glUniformMatrix4fv(basicShader->GetLocation("view"), 1, GL_FALSE, value_ptr(GetViewMatrix()));
@@ -117,8 +143,8 @@ mat4 StructureSensorManager::GetProjectionMatrix()
 mat4 StructureSensorManager::GetViewMatrix()
 {
     GLKMatrix4 view = [[StructureSensorS sharedSensorInstance] getPose];
-    
     mat4 glView;
+    
     for (int i = 0; i < 4; i++)
     {
         for(int j = 0; j < 4; j++)
@@ -126,15 +152,11 @@ mat4 StructureSensorManager::GetViewMatrix()
             glView[i][j] = view.m[4 * i + j];
         }
     }
-    /*mat4 flipY = scale(mat4(), vec3(1.0f, -1.0f, -1.0f));
-    mat4 swapXandZ = mat4();
-    swapXandZ[0][0] = 0;
-    swapXandZ[0][1] = 1;
-    swapXandZ[1][0] = 1;
-    swapXandZ[1][1] = 0;
-    return swapXandZ * flipY * glView;*/
     
-    return glView;
+    // Y & Z need to be flipped and multiplied by inverse view
+    mat4 flipY = scale(mat4(), vec3(1.0f, -1.0f, -1.0f));
+    
+    return flipY * inverse(glView) * flipY;
 }
 
 void StructureSensorManager::CheckVisibility(std::vector<glm::vec3>& points, std::vector<int>& visibility)
