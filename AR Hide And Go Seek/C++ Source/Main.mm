@@ -37,8 +37,12 @@ Animal* animal;
 int currentRow, currentColumn;
 int targetRow, targetColumn;
 
+float screenWidth, screenHeight;
+
 vector<int> rows;
 vector<int> columns;
+
+mat4 lightMatrix;
 
 void Initialize(float width, float height)
 {
@@ -60,6 +64,19 @@ void Initialize(float width, float height)
     grid = new VisibilityGrid(-5.4f, 3.4f, -2.9f, 0.9f, 0.1f, 90, 40);
     
     animal = new Animal(grid, textureManager);
+    
+    screenWidth = width;
+    screenHeight = height;
+    
+    mat4 projection = perspectiveFov<float>(pi<float>() / 2.0f, 2 * screenWidth, 2 * screenHeight, 0.1f, 15.0f);
+    mat4 cameraMatrix = translate(mat4(), vec3(-1.0f, 2.95f, -1.0f));
+    cameraMatrix = rotate(cameraMatrix, -pi<float>() / 2, vec3(1.0f, 0.0f, 0.0f));
+    mat4 viewMatrix = inverse(cameraMatrix);
+    mat4 biasMatrix(0.5, 0.0, 0.0, 0.0,
+                    0.0, 0.5, 0.0, 0.0,
+                    0.0, 0.0, 0.5, 0.0,
+                    0.5, 0.5, 0.5, 1.0);
+    lightMatrix = projection * viewMatrix;
 }
 
 void Dispose()
@@ -77,10 +94,8 @@ void Draw()
     glUniformMatrix4fv(basicMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
     advancedMeshShader->Use();
     glUniform1i(advancedMeshShader->GetLocation("shadowMap"), 9);
-    mat4 cameraMatrix = translate(mat4(), vec3(-1.0f, 2.95f, -1.0f));
-    cameraMatrix = rotate(cameraMatrix, -pi<float>() / 2, vec3(1.0f, 0.0f, 0.0f));
-    mat4 viewMatrix = inverse(cameraMatrix);
-    glUniformMatrix4fv(advancedMeshShader->GetLocation("light"), 1, GL_FALSE, value_ptr(viewMatrix));
+
+    glUniformMatrix4fv(advancedMeshShader->GetLocation("light"), 1, GL_FALSE, value_ptr(lightMatrix));
     glUniformMatrix4fv(advancedMeshShader->GetLocation("projection"), 1, GL_FALSE, value_ptr(sensorManager->GetProjectionMatrix()));
     glUniformMatrix4fv(advancedMeshShader->GetLocation("view"), 1, GL_FALSE, value_ptr(sensorManager->GetViewMatrix()));
     glUniform3f(advancedMeshShader->GetLocation("ambientColor"), 0.25f, 0.25f, 0.25f);

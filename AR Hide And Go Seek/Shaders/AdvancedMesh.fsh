@@ -25,9 +25,9 @@ void main()
     mediump float intensity = max(dot(normalize(interpolatedNormal), vec4(0.0, 1.0, 0.0, 0.0)), 0.0);
     mediump float shadowDepth = textureProj(shadowMap, shadowCoordinate);
     mediump float shadow = 1.0;
-    if (shadowDepth < gl_FragCoord.z)
+    if (shadowDepth < shadowCoordinate.z)
     {
         shadow = 0.0;
     }
-    fragmentColor = vec4((ambientColor + shadow * intensity * lightColor) * texture(uvMap, interpolatedUV).xyz, 1.0);
+    fragmentColor = vec4((ambientColor + intensity * lightColor) * texture(uvMap, interpolatedUV).xyz, 1.0);
 }

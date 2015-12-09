@@ -64,6 +64,7 @@ private:
     glm::vec2 freezeLocation;
     
     GLuint shadowFrameBuffer;
+    GLint defaultFrameBuffer;
     GLuint depthTexture;
     
     void Setup2DDrawing();

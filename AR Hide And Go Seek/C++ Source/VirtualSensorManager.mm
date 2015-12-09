@@ -52,9 +52,14 @@ VirtualSensorManager::VirtualSensorManager(TextureManager* manager, int screenWi
     debugButtonTrueID = manager->LoadTexture("joystickInner.png");
     freezeButtonFalseID = manager->LoadTexture("joystickOuter.png");
     freezeButtonTrueID = manager->LoadTexture("joystickInner.png");
-    
+    defaultFrameBuffer = 2;
     glGenFramebuffers(1, &shadowFrameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, shadowFrameBuffer);
+    GLuint colorRenderbuffer;
+    glGenRenderbuffers(1, &colorRenderbuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA8, width, height);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, colorRenderbuffer);
     glGenTextures(1, &depthTexture);
     glBindTexture(GL_TEXTURE_2D, depthTexture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -271,7 +276,8 @@ void VirtualSensorManager::DrawImage(int x, int y, int drawWidth, int drawHeight
 void VirtualSensorManager::RenderShadowMap()
 {
     glBindFramebuffer(GL_FRAMEBUFFER, shadowFrameBuffer);
-    mat4 projection = perspectiveFov<float>(pi<float>() / 3.0f, width, height, 0.1f, 15.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    mat4 projection = perspectiveFov<float>(pi<float>() / 2.0f, width, height, 0.1f, 15.0f);
     mat4 cameraMatrix = translate(mat4(), vec3(-1.0f, 2.95f, -1.0f));
     cameraMatrix = rotate(cameraMatrix, -pi<float>() / 2, vec3(1.0f, 0.0f, 0.0f));
     mat4 viewMatrix = inverse(cameraMatrix);
@@ -280,7 +286,7 @@ void VirtualSensorManager::RenderShadowMap()
     glUniformMatrix4fv(depthShader->GetLocation("view"), 1, GL_FALSE, value_ptr(viewMatrix));
     roomModel->Draw(depthShader);
     depthShader->Finish();
-    glBindFramebuffer(GL_FRAMEBUFFER, 2);
+    glBindFramebuffer(GL_FRAMEBUFFER, defaultFrameBuffer);
     glActiveTexture(GL_TEXTURE9);
     glBindTexture(GL_TEXTURE_2D, depthTexture);
 }
