@@ -11,7 +11,63 @@
             <a href="index.html">Purpose, Goals, and Outcomes</a>
         </nav>
         <article>
-            <h1>Something here</h1>
+            
+            <h1>Purpose, Goals, and Outcomes</h1>
+            
+            <section>
+                <h2>Purpose</h2>
+                <p>
+                    Create a mobile augmented reality game in which the objective is to find Skitty who runs away to hide after being spotted. 
+                    Skitty is not meant to be good at hiding, and will often have her tail sticking out to make her easier to find. 
+                    The game takes place in a pre-modeled environment for tracking purposes, and uses an Occipital Structure, which uses infrared light to create 
+                    a depth map image, or an array of the distance away from the sensor for each frame. 
+                    The depth data and tracking from the sensor would be used for real-time occlusions and tracking would help in knowing the user's position within the environment.    
+                </p>
+            </section>
+            
+            <section>
+                <h2>Goals</h2>
+                <ul>
+                    <li>Tracking with the Structure Sensor</li>
+                    <li>Rendering the Camera Frame</li>
+                    <li>Use the Depth Buffer from the Structure Sensor</li>
+                    <li>Visibility Grid and Depth Sensing</li>
+                    <li>AI for Skitty</li>
+                    <li>Skeletal Animation</li>
+                    <li>Lambertian Shading (Phong)</li>
+                    <li>Shadow Mapping</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Outcomes</h2>
+                <p>
+                    We made two versions of the game:
+                </p>
+                
+                <ul>
+                    <li>Augmented reality version using the Structure Sensor</li>
+                    <li>Simulated augmented reality version</li>
+                </ul>
+                
+                <p>
+                    The augmented reality version of the game which was our original goal uses the Structure Sensor to track. 
+                    We prove that tracking works by rendering the model we created using the Matterport into the scene and when the user pans with the mobile device, the model pans accordingly.
+                    We left the model in the scene because we were not able to get the depth buffer to work properly. We were able to read the data from the depth sensor, 
+                    but we were unable to draw it into the buffer so we were not able to do real-time occlusion. 
+                    Since we were unable to fill the depth data properly, Skitty always thinks she is hiding and never runs away to hide.
+                </p>
+                
+                <p>
+                    We also created a simulated augmented reality version of our game in which we do not do any tracking, but instead we render the model of the environment into the scene and
+                    the user is able to move through it using two joysticks, one for orientation and one for position. 
+                    We also have two more buttons, one shows and hides the visibility grid and the other one freezes and unfreezes Skitty to allow the player to take a closer look.
+                    The visibility grid is used for the AI of Skitty and it stores the information of which grid cells are visible and invisible. 
+                    We were able to implement skeletal animation and Lambertian shading, however we were not able to get shadow mapping fully working.
+                </p>
+                
+            </section>
+                
             <p>fun</p>
         </article>
     </body>
