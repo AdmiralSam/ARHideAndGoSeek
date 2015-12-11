@@ -59,7 +59,7 @@ header {
     background-color: white;
     padding: 2rem 0;
     padding-left: 2rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 nav {
@@ -89,4 +89,25 @@ article {
     min-width: 30rem;
     margin: auto;
     padding: 1rem 1rem;
+	line-height: 1.25rem;
+}
+
+p {
+	margin: 1em 0;
+}
+
+h1 {
+	font-size: 2rem;
+	line-height: 2.5rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+
+ul {
+	list-style-type: disc;
+	list-style-position: inside;
+	margin: 1em 1em;
 }
