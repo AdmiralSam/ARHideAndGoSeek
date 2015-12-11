@@ -85,7 +85,7 @@ nav a:hover {
 article {
     background-color: white;
     width: 70%;
-    max-width: 50rem;
+    max-width: 60rem;
     min-width: 30rem;
     margin: auto;
     padding: 1rem 1rem;
@@ -104,6 +104,11 @@ h1 {
 h2 {
 	font-size: 1.5rem;
 	line-height: 2rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
 }
 
 ul {
