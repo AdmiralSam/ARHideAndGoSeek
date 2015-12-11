@@ -11,21 +11,113 @@
             <a href="index.html">Home</a>
             <a href="process.html">Process</a>
             <a href="algorithms.html">Algorithms</a>
-            <a href="credits.html">Credits</a>
+            <a href="resources.html">Resources</a>
         </nav>
         <article>
             <h1>Algorithms</h1>
-
             <section>
-                <p>
-                    Visibility Grid, AI, Shadow Mapping, Skeletal Animation, Structure Sensor: pose, depth buffer
-                </p>
+				<h2>Structure Sensor</h2>
+				<section>
+					<h3>Converting Tracking Pose to OpenGL View Matrix</h3>
+					<p>
+						The tracker class returns a 4x4 matrix that represents the camera's
+						pose. This matrix, however, is not in the correct format to be used
+						in OpenGL. The Structure Sensor uses a Y-down Z-towards coordinate
+						system, and the matrix is from camera-space to world-space. In order
+						to convert the pose returned by the tracker for use by OpenGL, we
+						had to invert the tracker pose and multiply both sides with a 180
+						degree rotation around the X-axis. This can then be used as the view
+						matrix (world-space to camera-space) in OpenGL.
+					</p>
+				</section>
+				<section>
+					<h3>Writing Depth Sensor Information into the Depth Buffer (Incomplete)</h3>
+					<p>
+						In order to perform realtime occlusion and visibility testing, we
+						needed to take the values measured from the depth sensor and write
+						them to OpenGL's depth buffer. The depth sensor returns distances in
+						millimeters. We first wrote the array into a single channel floating-point
+						texture. This texture is passed into the fragment shader, which then
+						converts millimeters into a depth value in the range [-1, 1] using
+						the location of the near and far planes.
+					</p>
+				</section>
             </section>
-            
-                
-                
-                
-            
+			<section>
+				<h2>Graphics/AI</h2>
+				<section>
+					<h3>Getting a Visibility Grid from the Depth Buffer</h3>
+					<p>
+						Our game revolves around Skitty being able to know where the player
+						can and cannot see. To do this, we take a grid of points on the floor
+						and check their visibility. This is done by converting them into normalized
+						device coordinates and comparing their depth to the depth buffer. If the value
+						in the depth buffer is lower, the point is not visible. The only issue
+						we ran into was the fact that OpenGL ES does not allow reading from the
+						depth buffer. We went around this problem by rendering the depth buffer
+						in grayscale to the screen, reading the screen, then drawing our graphics
+						on top.
+					</p>
+				</section>
+				<section>
+					<h3>Artificial Intelligence for Skitty</h3>
+					<p>
+						The core theme of our game is playing hide and go seek with Skitty.
+						In order to do this, Skitty must be able to run into places that
+						she thinks is hidden from the player. The visibility information
+						is retrieved by our visibility grid. For our current implementation,
+						we perform breadth-first flood fill from Skitty's current location
+						to find the nearest hidden grid point. Once the point is chosen, A*
+						is used to find the shortest path that avoids obstacles. If her target
+						location becomes visible during transit, it is recalculated.
+					</p>
+				</section>
+				<section>
+					<h3>Skeletal Animation for Skitty</h3>
+					<p>
+						One graphical feature we wanted to include in our game was character
+						animation. In order to do this, we used skeletal animation and skinning.
+						There are three parts to this system: the model, the rig, and the animation
+						keyframes. The model defines the vertices in a default or bind pose. The
+						rig defines a series of joints as heiarchial coordinate systems represented
+						by transformation matrices relative to their parent. The animation keyframes
+						specify the modified rig at specific points in time. A pose can be generated
+						at any point in time by interpolating between two keyframes. The process of
+						skinning, or calculating where the vertices will move to, is done in the
+						vertex shader by transforming it into a joint's coordinate system, applying
+						a pose, then transforming it back into model space.
+					</p>
+				</section>
+				<section>
+					<h3>Per Pixel Lambertian Shading</h3>
+					<p>
+						For our lighting model, we used Lambertian shading, which models purely
+						diffuse lighting for rough surfaces. The basis of Lambertian shading is
+						that the lighting intensity is proportional to the cosine between the normal
+						of the surface and the direction of the light. This is maximum when the
+						normal is pointing into the light and zero when pointing away from it.
+						Per pixel lighting, or Phong shading, is when the lighting calculation
+						is done on the fragment shader by interpolating the normal vector over
+						the surface. This provides higher fidelity even for meshes with low
+						triangle counts at the expense of performance.
+					</p>
+				</section>
+				<section>
+					<h3>Shadow Mapping with Real World Objects (Incomplete)</h3>
+					<p>
+						In order to make our game more immersive, lighting in the real world should
+						affect objects in the virtual world. Shadows are one of the most effective
+						ways of making things look real. In order to apply shadows from the real
+						world, we need to have a 3D model of the environment. We used Matterport
+						to scan the classroom and obtain the 3D model. Once we have this model and
+						a pose, we can then apply shadow mapping as normal. Shadow mapping works
+						by rendering the scene's depth from the perspective of the light. This
+						rendering, known as a shadow map, is used when the scene is once again
+						rendered from the perspective of the actual camera to determine if an 
+						object is in shadow or not.
+					</p>
+				</section>
+			</section>
         </article>
     </body>
 </html>
