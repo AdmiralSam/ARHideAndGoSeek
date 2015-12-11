@@ -9,12 +9,11 @@
         <header>AR Hide and Go Seek</header>
         <nav>
             <a href="index.html">Home</a>
-            <a href="index.html">Design</a>
-            <a href="index.html">Algorithms</a>
-            <a href="index.html">Credits</a>
+            <a href="design.html">Design</a>
+            <a href="algorithms.html">Algorithms</a>
+            <a href="credits.html">Credits</a>
         </nav>
         <article>
-            
             <h1>Purpose, Goals, and Outcomes</h1>
             
             <section>
@@ -22,8 +21,8 @@
                 <p>
 				The purpose of our project was to explore interactive augmented reality
 				games that incorporated a larger degree of player motion. Using Occipital's
-				Structure Sensor for state of the art tracking, we could create a game that
-				takes the player's environment into account for increased interactivity.
+				Structure Sensor for state of the art tracking, we wanted to create a game
+				that took the player's environment into account for increased interactivity.
                 </p>
             </section>
             
@@ -40,30 +39,37 @@
             <section>
                 <h2>Outcomes</h2>
                 <p>
-                    We made two versions of the game:
+                We have two versions of the augmented reality hide and go seek game:
                 </p>
-                
-                <ul>
-                    <li>Augmented reality version using the Structure Sensor</li>
-                    <li>Simulated augmented reality version</li>
-                </ul>
-                
+				<ul>
+					<li>A version that used the Structure Sensor for realtime tracking</li>
+					<li>A version that simulated augmented reality with joysticks</li>
+				</ul>
                 <p>
-                    The augmented reality version of the game which was our original goal uses the Structure Sensor to track. 
-                    We prove that tracking works by rendering the model we created using the Matterport into the scene and when the user pans with the mobile device, the model pans accordingly.
-                    We left the model in the scene because we were not able to get the depth buffer to work properly. We were able to read the data from the depth sensor, 
-                    but we were unable to draw it into the buffer so we were not able to do real-time occlusion. 
-                    Since we were unable to fill the depth data properly, Skitty always thinks she is hiding and never runs away to hide.
-                </p>
-                
-                <p>
-                    We also created a simulated augmented reality version of our game in which we do not do any tracking, but instead we render the model of the environment into the scene and
-                    the user is able to move through it using two joysticks, one for orientation and one for position. 
-                    We also have two more buttons, one shows and hides the visibility grid and the other one freezes and unfreezes Skitty to allow the player to take a closer look.
-                    The visibility grid is used for the AI of Skitty and it stores the information of which grid cells are visible and invisible. 
-                    We were able to implement skeletal animation and Lambertian shading, however we were not able to get shadow mapping fully working.
-                </p>
-                
+				This was to allow simultaneous progress on both integrating the Structure
+				Sensor and developing the AI and graphics.
+				</p>
+				<section>
+					<h3>Structure Sensor Version</h3>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/8xw1vOYUH0k" frameborder="0" allowfullscreen></iframe>
+					<p>
+					In our Structure Sensor version, we were able to take pose information
+					from the sensor and match it to our OpenGL world. We were also able to
+					read the depth sensor's values, but we were not able to write them to
+					OpenGL's depth buffer for realtime occlusion and visibility testing.
+					</p>
+				</section>
+				
+				<section>
+					<h3>Simulated AR Version</h3>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/CqPT7kAIFmI" frameborder="0" allowfullscreen></iframe>
+					<p>
+					In our simulated AR version, we were able to implement most of our game's
+					functionality. This includes joystick control, visibility testing, basic
+					hiding AI, animations, and basic lighting. We were not, however, able to 
+					render real world shadows on our virtual objects.
+					</p>
+				</section>
             </section>
         </article>
     </body>
