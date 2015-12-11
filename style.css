@@ -116,3 +116,27 @@ ul {
 	list-style-position: inside;
 	margin: 1em 1em;
 }
+.profile-container {
+	text-align: center;
+}
+
+.profile {
+	display:inline-block;
+	width: 256px;
+	height: 512px;
+	margin: .5rem;
+	padding: .5rem;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #65767F;
+	text-align: left;
+	vertical-align:top;
+}
+
+.profile p {
+	font-size: 80%;
+}
+
+.profile li {
+	font-size: 80%;
+}
