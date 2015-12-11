@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AR HGS - Design</title>
+        <link rel="stylesheet" type="text/css" href="style.css"
+    </head>
+    <body>
+        <header>AR Hide and Go Seek</header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="process.html">Process</a>
+            <a href="algorithms.html">Algorithms</a>
+            <a href="credits.html">Credits</a>
+        </nav>
+        <article>
+            <h1>Development Process</h1>
+            <section>
+                <h2>iOS, OpenGLES</h2>
+                <p>
+                    We were are relatively new to programming for iOS so our first step was to familiarize ourselves with programming in Objective C in combination with C++.
+                    We wanted to use C++ because we planned to use OpenCV to make our tracking more robust. We wanted to use model-based tracking for our application and had
+                    created a 3D model of our classroom using the Matterport. One of the first steps was to render the classroom model onto our screen. For this we had to learn
+                    how to use OpenGLES which none of us had used before. We learned how to use shaders and wrote classes that would take care of all that for us to greatly 
+                    simplify our code. We began refactoring our code early on because it made debugging easier and coding faster.
+                </p>
+            </section>
+                
+            <section>
+                <h2>Attempted Tracking with Our Own Code</h2>
+                <p>
+                    A key element of virtual and augmented reality applications is tracking. Our original goal was to implement our own model-based tracking algorithm and only 
+                    use the Structure Sensor's depth data for realtime occlusion. We tackled frame-to-frame tracking with both feature detection and edge detection, and obtained
+                    a pose from a camera image of a chessboard and applied it to the 3D model space, and although we were able to have these components more or less working 
+                    individually, they were not robust enough for our application. Since we were already planning to use the Structure Sensor to obtain the depth data, we decided 
+                    to also use it for tracking.
+                </p>
+                        
+                <h2>Tracking with the Occipital Structure Sensor</h2>
+                <p>
+                    The Structure Sensor provides smooth, high-quality tracking using the device's camera and IMU (Inertial Measurement Unit). We started by simply trying to 
+                    initialize the Structure Sensor from our code using the SDK, but we quickly ran into problems. We only had the examples that came with the SDK to help us 
+                    and the documentation was sparse and not very detailed, which significantly slowed down our progress. We encounterd issues in every step such as figuring out 
+                    how to reset the Structure after tracking was lost, mapping the pose matrix to the correct view matrix, and then in filling the depth buffer from the                                             data obtained from the sensor. One of the biggest issues was not knowing the format of the data we were obtaining from the sensor because we did not know 
+                    how to use it or modify it to fit our needs.
+                </p>
+            </section>
+                
+            <secton>
+                <h2>An Alternative to Tracking</h2>
+                <p>
+                    We decided to implement another version of our project that would not do tracking, but instead would simulate augmented reality because of the issues
+                    with the structure sensor, the fact that we only had one sensor, and because we would be able to work on the game part of our application simultaneously. 
+                    We rendered the classroom model to the screen and added two joysticks, one for orientation and one for position, to allow movement through the environment.
+                    We used inheritance and polymorphism to make switching in between the two different versions of our project easy (change one line of code).
+                </p>          
+            </secton>
+            
+            <section>
+                <h2>Graphics</h2>
+                <p>
+                    The first thing we implemented was a visibility grid using the classroom model as the depth buffer. The depth buffer is needed in order to be able to tell
+                    which parts of the classroom are visible and invisible to the player so that Skitty knows where she can hide. After we had the grid working, which we tested
+                    by drawing red points for the hidden parts and green for the visible parts, we implemented the AI for Skitty. The next step was to implement skeletal
+                    animation and finally shadow mapping, which we got to somewhat work, but it was not working completely so we excluded that code. We tested skeletal animation
+                    with two bones in a cube snake, a simple case, and then we finally made Skitty using Blender. The format for animation we used was .iqe which we downloaded as
+                    a plugin for Blender so that we could read it in and use it in our code.
+                </p>
+            </section> 
+        </article>
+    </body>
+</html>
